@@ -33,16 +33,17 @@ async def help(ctx):
     caller_message = ctx.message.content
     if len(caller_message.split()) == 1:
         # The message which called the help command has no params
-        message_text = "```\nAvailable Commands:\n"
+        message_text = "Available Commands:\n```\n"
         for cog in docstring_values.keys():
-            message_text += cog
+            message_text += f"* {cog}"
         message_text += "\n```"
         await ctx.send(message_text)
     else:
         # The command has parameters, search for cog with required name
         cog = caller_message.split()[1]
         try:
-            em = discord.Embed(title="Help", description="Get to know the commands")
+            em = discord.Embed()
+            em.add_field(name="name", value=cog, inline=False)
             for key, value in docstring_values[cog].items():
                 em.add_field(name=key, value=value, inline=False)
             await ctx.send(embed=em)
@@ -66,7 +67,7 @@ async def __parse_docstrings():
     values = {}
     for filename in os.listdir('./cogs'):
         if filename.endswith('.py'):
-            values[filename] = await __parse_docstring(os.path.join("cogs", filename))
+            values[filename.strip(".py")] = await __parse_docstring(os.path.join("cogs", filename))
     return values
 
 
