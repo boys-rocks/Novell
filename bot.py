@@ -36,6 +36,7 @@ async def help(ctx):
 		message_text = "```\nAvailable Commands:\n"
 		for cog in docstring_values.keys():
 			message_text += cog
+		message_text += "\n```"
 		await ctx.send(message)
 	else:
 		# The command has parameters, search for cog with required name
