@@ -13,7 +13,7 @@ class Crypto(commands.Cog):
         if currentPrice:
             await ctx.send(f"The Current Price of {symbol} is {currentPrice}")
         else:
-            await ctx.send("I'm having trouble finding that cryptocurrency, ,check for typos and try again :)")
+            await ctx.send("I'm having trouble finding that cryptocurrency, check for typos and try again :)")
     
 def setup(bot):
     bot.add_cog(Crypto(bot))
