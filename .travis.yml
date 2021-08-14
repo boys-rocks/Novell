@@ -8,5 +8,5 @@ python:
 install:
   - pip install -r requirements.txt
 
-script: -bot.py
-  -test.py
+script: - bot.py
+  - test.py
