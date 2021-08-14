@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import os
+import os,random
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
 
@@ -29,6 +29,9 @@ async def ping(ctx):
 @bot.command()
 async def help(ctx):
     await ctx.send("there is supposed to be a help command here.")
-
+    
+@bot.command()
+async def dice(ctx):
+    await ctx.send(f'{random.randint(1,6)}')
 
 bot.run(DISCORD_TOKEN)
