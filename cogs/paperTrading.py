@@ -1,8 +1,6 @@
 import sys
 import discord
 from discord.ext import commands 
-# setting path
-sys.path.append('../')
 from helpers import getPrice
 
 class Crypto(commands.Cog):
