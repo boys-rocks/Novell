@@ -5,6 +5,7 @@ from helpers import logHelper
 from gtts import gTTS
 import os
 import logging
+import ast
 from pymongo import MongoClient
 from helpers.getPrefix import getPrefix
 logging.basicConfig(level=logging.INFO)
