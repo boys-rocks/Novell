@@ -4,26 +4,26 @@ import os
 import ast
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
-
+print(DISCORD_TOKEN)
 bot = commands.Bot(command_prefix=",", help_command=None)
 
 
 @bot.event
 async def on_ready():
-    print('Ready..')
-    print('Logged in as: ', bot.user)
-    print('Prefix: ', bot.command_prefix)
-    print('Latency: ', round(bot.latency * 1000), 'ms')
-    for filename in os.listdir('./cogs'):
-        if filename.endswith('.py'):
-            bot.load_extension(f'cogs.{filename[:-3]}')
+    print("Ready..")
+    print("Logged in as: ", bot.user)
+    print("Prefix: ", bot.command_prefix)
+    print("Latency: ", round(bot.latency * 1000), "ms")
+    for filename in os.listdir("./cogs"):
+        if filename.endswith(".py"):
+            bot.load_extension(f"cogs.{filename[:-3]}")
         else:
             print(f"Unable to load {filename}")
 
 
 @bot.command()
 async def ping(ctx):
-    em = discord.Embed(title='Pong!', description=f'{round(bot.latency * 1000)} ms')
+    em = discord.Embed(title="Pong!", description=f"{round(bot.latency * 1000)} ms")
     await ctx.send(embed=em)
 
 
@@ -48,7 +48,9 @@ async def help(ctx):
                 em.add_field(name=key, value=value, inline=False)
             await ctx.send(embed=em)
         except:
-            em = discord.Embed(title='Error', description=f'Could not find command {cog}')
+            em = discord.Embed(
+                title="Error", description=f"Could not find command {cog}"
+            )
             await ctx.send(embed=em)
 
 
@@ -58,16 +60,21 @@ async def __parse_docstring(filename):
     module = ast.parse(contents)
     docstring = ast.get_docstring(module)
     if not docstring:
-        docstring = "description: <Unknown>\n" + \
-                    "syntax: <Unknown>"
-    return {line.split(": ")[0]: "".join(line.split(": ")[1:]) for line in docstring.split("\n") if line.strip()}
+        docstring = "description: <Unknown>\n" + "syntax: <Unknown>"
+    return {
+        line.split(": ")[0]: "".join(line.split(": ")[1:])
+        for line in docstring.split("\n")
+        if line.strip()
+    }
 
 
 async def __parse_docstrings():
     values = {}
-    for filename in os.listdir('./cogs'):
-        if filename.endswith('.py'):
-            values[filename.strip(".py")] = await __parse_docstring(os.path.join("cogs", filename))
+    for filename in os.listdir("./cogs"):
+        if filename.endswith(".py"):
+            values[filename.strip(".py")] = await __parse_docstring(
+                os.path.join("cogs", filename)
+            )
     return values
 
 
