@@ -13,6 +13,7 @@ class Moderation(commands.Cog):
         await member.kick(reason=reason)
         await ctx.send(embed=discord.Embed(title='Kicked: ', description=f'{member} for {reason}.'))
 
+
 def setup(bot):
     bot.add_cog(Moderation(bot))
 

@@ -71,4 +71,4 @@ async def __parse_docstrings():
     return values
 
 
-bot.run('ODc1NTcxODQ3Njc1MTUwMzc2.YRXd0w.Oi79mDhK6FEwliBtoPKH7fWYcck')
+bot.run(DISCORD_TOKEN)
