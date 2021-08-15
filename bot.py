@@ -2,11 +2,19 @@ import discord
 from discord.ext import commands
 import os
 import ast
+from pymongo import MongoClient
+from helpers.getPrefix import getPrefix
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
+MONGODB = os.environ.get("MONGODB", None)
 
-bot = commands.Bot(command_prefix=",", help_command=None)
 
+bot = commands.Bot(command_prefix=getPrefix, help_command=None)
+
+
+client = MongoClient(MONGODB)
+db = client['discord']
+collection = db['bot']
 
 @bot.event
 async def on_ready():
@@ -21,10 +29,23 @@ async def on_ready():
             print(f"Unable to load {filename}")
 
 
+@bot.event
+async def on_guild_join(guild):
+    guild_id = guild.id
+    collection.insert_one({'_id': guild_id, 'prefix': ','})
+    print('done')
+
+
 @bot.command()
 async def ping(ctx):
     em = discord.Embed(title="Pong!", description=f"{round(bot.latency * 1000)} ms")
     await ctx.send(embed=em)
+
+
+@bot.command()
+async def prefix(ctx, prefix):
+    collection.update_one({'_id': ctx.guild.id},{'$set':{'prefix':prefix}})
+    await ctx.send(embed=discord.Embed(title='Updated Prefix: ', description=f'New prefix: {prefix}'))
 
 
 @bot.command()
