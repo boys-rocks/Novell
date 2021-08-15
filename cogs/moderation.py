@@ -9,6 +9,7 @@ class Moderation(commands.Cog):
 
     @commands.command()
     async def kick(self, ctx, member: discord.Member, *, reason=None):
+        await member.send(embed=discord.Embed(title=f'You have been kicked from {ctx.guild}', description=f'Reason: {reason}'))
         await member.kick(reason=reason)
         await ctx.send(embed=discord.Embed(title='Kicked: ', description=f'{member} for {reason}.'))
 
