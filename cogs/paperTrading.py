@@ -7,7 +7,7 @@ class Crypto(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(help='Retrieve price data on specified cryptocurrency')
     async def price(self,ctx,symbol):
         currentPrice = getPrice.getPrice(symbol)
         if currentPrice:
