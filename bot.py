@@ -23,7 +23,7 @@ async def on_ready():
 
 @bot.command()
 async def ping(ctx):
-    em = discord.Embed(title='Pong!', description=f'{round(bot.latency * 100)} ms')
+    em = discord.Embed(title='Pong!', description=f'{round(bot.latency * 1000)} ms')
     await ctx.send(embed=em)
 
 
