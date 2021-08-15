@@ -1,13 +1,11 @@
 import discord
 from discord.ext import commands
-from discord import FFmpegPCMAudio
 from helpers import logHelper
-from gtts import gTTS
 import os
 import logging
-import ast
 from pymongo import MongoClient
 from helpers.getPrefix import getPrefix
+import ast
 logging.basicConfig(level=logging.INFO)
 os.sys.path.append('/ffmpeg/bin')
 
