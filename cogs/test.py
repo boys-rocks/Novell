@@ -1,3 +1,8 @@
+"""
+description: This is an example description
+syntax: This is an example syntax
+"""
+
 import discord
 from discord.ext import commands
 
