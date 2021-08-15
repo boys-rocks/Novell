@@ -4,7 +4,7 @@ import os
 import ast
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
-print(DISCORD_TOKEN)
+
 bot = commands.Bot(command_prefix=",", help_command=None)
 
 
