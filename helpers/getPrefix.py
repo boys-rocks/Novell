@@ -1,6 +1,9 @@
 from pymongo import MongoClient
+import os
 
-client = MongoClient("mongodb+srv://user:OzwrCJAoUJI78syX@cluster0.tsodk.mongodb.net/discord?retryWrites=true&w=majority")
+MONGODB = os.environ.get("MONGODB", None)
+
+client = MongoClient(MONGODB)
 db = client['discord']
 collection = db['bot']
 
