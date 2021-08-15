@@ -20,6 +20,12 @@ class Moderation(commands.Cog):
         await member.ban(reason=reason)
         await ctx.send(embed=discord.Embed(title='Banned: ', description=f'{member} for {reason}.'))
 
+    @commands.command()
+    @commands.has_permissions(manage_messages=True)
+    async def purge(self, ctx, limit=1000):
+        await ctx.channel.purge(limit=limit)
+        await ctx.send(embed=discord.Embed(title='Purged: ', description=f'{limit} messages.'), delete_after=5)
+
 
 def setup(bot):
     bot.add_cog(Moderation(bot))
