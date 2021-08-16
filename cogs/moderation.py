@@ -22,7 +22,7 @@ class Moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_messages=True)
-    async def purge(self, ctx, limit: int):
+    async def purge(self, ctx, limit:int):
         await ctx.channel.purge(limit=limit)
         await ctx.send(embed=discord.Embed(title='Purged: ', description=f'{limit} messages.'), delete_after=5)
 
