@@ -15,19 +15,27 @@ DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
 
 
 
+bot = commands.Bot(command_prefix="nb.", help_command=None)
+
 MONGODB = os.environ.get("MONGODB", None)
 
 bot = commands.Bot(command_prefix='*', help_command=None)
 
 client = MongoClient(MONGODB)
-db = client['discord']
-collection = db['bot']
- 
-for filename in os.listdir('./cogs'):
-    try:
-        if filename.endswith('.py'):
-            bot.load_extension(f'cogs.{filename[:-3]}')
-            logger.info(f"Succesfully Loaded Cog: {filename}")
+
+db = client["discord"]
+collection = db["bot"]
+
+
+@bot.event
+async def on_ready():
+    print("Ready..")
+    print("Logged in as: ", bot.user)
+    print("Prefix: ", bot.command_prefix)
+    print("Latency: ", round(bot.latency * 1000), "ms")
+    for filename in os.listdir("./cogs"):
+        if filename.endswith(".py"):
+            bot.load_extension(f"cogs.{filename[:-3]}")
         else:
             print(f"Unable to load {filename}")
             logger.warning(f"Unable to load {filename}, is it suppose to be in cog directory?")
@@ -36,13 +44,17 @@ for filename in os.listdir('./cogs'):
 @bot.event
 async def on_guild_join(guild):
     guild_id = guild.id
-    collection.insert_one({'_id': guild_id, 'prefix': ','})
-    print('done')
+    collection.insert_one({"_id": guild_id, "prefix": ","})
+    print("done")
 
 @bot.command(help = "Chage prefix command, Refactor into base cog?")
 async def prefix(ctx, prefix):
-    collection.update_one({'_id': ctx.guild.id},{'$set':{'prefix':prefix}})
-    await ctx.send(embed=discord.Embed(title='Updated Prefix: ', description=f'New prefix: {prefix}'))
+    collection.update_one({"_id": ctx.guild.id}, {"$set": {"prefix": prefix}})
+    await ctx.send(
+        embed=discord.Embed(
+            title="Updated Prefix: ", description=f"New prefix: {prefix}"
+        )
+    )
 
 @bot.command("Help command in bot.py file, refactor into help cog?")
 async def helpv1(ctx):
