@@ -17,7 +17,7 @@ DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
 
 MONGODB = os.environ.get("MONGODB", None)
 
-bot = commands.Bot(command_prefix='*', help_command=None)
+bot = commands.Bot(command_prefix='nb.', help_command=None)
 
 client = MongoClient(MONGODB)
 db = client['discord']
