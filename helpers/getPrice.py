@@ -24,7 +24,13 @@ def getPrice(symbol):
     try:
         data = request("GET", "/api/v3/ticker/price", {"symbol":symbol+"USDT"})
         price = str(data['price'])
-        return price
+        return [price,symbol]
     except Exception as e:
         logHelper.logger.warning(f"Exception caught in getPrice function: {e}")
+def getCost(symbol, amount):
+    symbol = symbol.upper()
+    price_and_coin = getPrice(symbol)
+    current = float(price_and_coin[0])
+    return [current*amount,price_and_coin[1]]
+
 
