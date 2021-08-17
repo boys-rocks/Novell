@@ -9,13 +9,11 @@ import ast
 logging.basicConfig(level=logging.INFO)
 os.sys.path.append('/ffmpeg/bin')
 
-DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
+DISCORD_TOKEN = "ODIzNzcxNTQyOTQ5MzMwOTg0.YFlrCA.hanRCCbWR8MEK__e7Z_vyvewQdE"
 
 MONGODB = os.environ.get("MONGODB", None)
 
-
-bot = commands.Bot(command_prefix=getPrefix, help_command=None)
-
+bot = commands.Bot(command_prefix='*', help_command=None)
 
 client = MongoClient(MONGODB)
 db = client['discord']
@@ -37,12 +35,12 @@ async def on_guild_join(guild):
     collection.insert_one({'_id': guild_id, 'prefix': ','})
     print('done')
 
-@bot.command()
+@bot.command(help = "Chage prefix command, Refactor into base cog?")
 async def prefix(ctx, prefix):
     collection.update_one({'_id': ctx.guild.id},{'$set':{'prefix':prefix}})
     await ctx.send(embed=discord.Embed(title='Updated Prefix: ', description=f'New prefix: {prefix}'))
 
-@bot.command()
+@bot.command("Help command in bot.py file, refactor into help cog?")
 async def helpv1(ctx):
     docstring_values = await __parse_docstrings()
     caller_message = ctx.message.content
