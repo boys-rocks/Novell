@@ -15,7 +15,9 @@ class Choose(commands.Cog):
 
     @commands.command()
     async def choose(self, ctx, *args):
-        respose = choice(["choose", "prefer", "think you should go with", ""])
+        respose = choice(
+            ["choose", "prefer", "think you should go with", "would choose"]
+        )
         await ctx.send(f"Well! , I {respose} {choice(args)}")
 
 

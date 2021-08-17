@@ -9,6 +9,7 @@ import ast
 from helpers.getWeather import getLocationKey, getWeather
 
 
+
 logging.basicConfig(level=logging.INFO)
 os.sys.path.append('/ffmpeg/bin')
 
@@ -34,13 +35,23 @@ for filename in os.listdir('./cogs'):
 @bot.event
 async def on_guild_join(guild):
     guild_id = guild.id
-    collection.insert_one({'_id': guild_id, 'prefix': ','})
-    print('done')
+    collection.insert_one({"_id": guild_id, "prefix": ","})
+    print("done")
 
+
+@bot.command()
+async def ping(ctx):
+    em = discord.Embed(title="Pong!",
+                       description=f"{round(bot.latency * 1000)} ms")
+    await ctx.send(embed=em)
+
+
+@bot.command()
 @bot.command(help = "Chage prefix command, Refactor into base cog?")
 async def prefix(ctx, prefix):
-    collection.update_one({'_id': ctx.guild.id},{'$set':{'prefix':prefix}})
-    await ctx.send(embed=discord.Embed(title='Updated Prefix: ', description=f'New prefix: {prefix}'))
+    collection.update_one({"_id": ctx.guild.id}, {"$set": {"prefix": prefix}})
+    await ctx.send(embed=discord.Embed(title="Updated Prefix: ",
+                                       description=f"New prefix: {prefix}"))
 
 @bot.command("Help command in bot.py file, refactor into help cog?")
 async def helpv1(ctx):
@@ -63,9 +74,8 @@ async def helpv1(ctx):
                 em.add_field(name=key, value=value, inline=False)
             await ctx.send(embed=em)
         except:
-            em = discord.Embed(
-                title="Error", description=f"Could not find command {cog}"
-            )
+            em = discord.Embed(title="Error",
+                               description=f"Could not find command {cog}")
             await ctx.send(embed=em)
 
 
@@ -78,8 +88,7 @@ async def __parse_docstring(filename):
         docstring = "description: <Unknown>\n" + "syntax: <Unknown>"
     return {
         line.split(": ")[0]: "".join(line.split(": ")[1:])
-        for line in docstring.split("\n")
-        if line.strip()
+        for line in docstring.split("\n") if line.strip()
     }
 
 
@@ -88,8 +97,7 @@ async def __parse_docstrings():
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             values[filename.strip(".py")] = await __parse_docstring(
-                os.path.join("cogs", filename)
-            )
+                os.path.join("cogs", filename))
     return values
 try:
     bot.run(DISCORD_TOKEN)
