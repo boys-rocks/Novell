@@ -8,13 +8,12 @@ from helpers.getPrefix import getPrefix
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
 MONGODB = os.environ.get("MONGODB", None)
 
-
-bot = commands.Bot(command_prefix=getPrefix, help_command=None)
-
+bot = commands.Bot(command_prefix="nb.", help_command=None)
 
 client = MongoClient(MONGODB)
-db = client['discord']
-collection = db['bot']
+db = client["discord"]
+collection = db["bot"]
+
 
 @bot.event
 async def on_ready():
@@ -32,20 +31,22 @@ async def on_ready():
 @bot.event
 async def on_guild_join(guild):
     guild_id = guild.id
-    collection.insert_one({'_id': guild_id, 'prefix': ','})
-    print('done')
+    collection.insert_one({"_id": guild_id, "prefix": ","})
+    print("done")
 
 
 @bot.command()
 async def ping(ctx):
-    em = discord.Embed(title="Pong!", description=f"{round(bot.latency * 1000)} ms")
+    em = discord.Embed(title="Pong!",
+                       description=f"{round(bot.latency * 1000)} ms")
     await ctx.send(embed=em)
 
 
 @bot.command()
 async def prefix(ctx, prefix):
-    collection.update_one({'_id': ctx.guild.id},{'$set':{'prefix':prefix}})
-    await ctx.send(embed=discord.Embed(title='Updated Prefix: ', description=f'New prefix: {prefix}'))
+    collection.update_one({"_id": ctx.guild.id}, {"$set": {"prefix": prefix}})
+    await ctx.send(embed=discord.Embed(title="Updated Prefix: ",
+                                       description=f"New prefix: {prefix}"))
 
 
 @bot.command()
@@ -69,9 +70,8 @@ async def help(ctx):
                 em.add_field(name=key, value=value, inline=False)
             await ctx.send(embed=em)
         except:
-            em = discord.Embed(
-                title="Error", description=f"Could not find command {cog}"
-            )
+            em = discord.Embed(title="Error",
+                               description=f"Could not find command {cog}")
             await ctx.send(embed=em)
 
 
@@ -84,8 +84,7 @@ async def __parse_docstring(filename):
         docstring = "description: <Unknown>\n" + "syntax: <Unknown>"
     return {
         line.split(": ")[0]: "".join(line.split(": ")[1:])
-        for line in docstring.split("\n")
-        if line.strip()
+        for line in docstring.split("\n") if line.strip()
     }
 
 
@@ -94,8 +93,7 @@ async def __parse_docstrings():
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             values[filename.strip(".py")] = await __parse_docstring(
-                os.path.join("cogs", filename)
-            )
+                os.path.join("cogs", filename))
     return values
 
 
