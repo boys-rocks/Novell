@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.ext.commands import *
 from pymongo import MongoClient
 import asyncio
+import os
 
 MONGODB = os.environ.get('MONGODB', None)
 
@@ -49,6 +50,7 @@ class AFK(commands.Cog):
         except Exception as ex:
             print(ex)
         
+
 
     async def afkcheck(self, message):
         if message.author.bot:
