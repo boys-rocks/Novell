@@ -32,6 +32,7 @@ for filename in os.listdir('./cogs'):
             logger.warning(f"Unable to load {filename}, is it suppose to be in cog directory?")
     except Exception as e:
         logger.warning(f"Unable to load cog: {e}")
+      
 @bot.event
 async def on_guild_join(guild):
     guild_id = guild.id
@@ -39,9 +40,12 @@ async def on_guild_join(guild):
     print("done")
 
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send(f'Pong! `{bot.latency * 1000}`ms')
+async def latency(ctx):
+   time_1 = time.perf_counter()
+   await ctx.trigger_typing()
+   time_2 = time.perf_counter()
+   ping = round((time_2-time_1)*1000)
+   await ctx.send(f"ping = {ping}")
 
 
 @bot.command()
