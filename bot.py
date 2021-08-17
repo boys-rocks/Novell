@@ -41,9 +41,7 @@ async def on_guild_join(guild):
 
 @bot.command()
 async def ping(ctx):
-    em = discord.Embed(title="Pong!",
-                       description=f"{round(bot.latency * 1000)} ms")
-    await ctx.send(embed=em)
+    await ctx.send(f'Pong! `{bot.latency * 1000}`ms')
 
 
 @bot.command()
