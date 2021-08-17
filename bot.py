@@ -1,18 +1,28 @@
 import discord
 from discord.ext import commands
+from helpers.logHelper import logger
 import os
-import ast
+import logging
 from pymongo import MongoClient
 from helpers.getPrefix import getPrefix
+import ast
+from helpers.getWeather import getLocationKey, getWeather
+
+logging.basicConfig(level=logging.INFO)
+os.sys.path.append('/ffmpeg/bin')
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
-MONGODB = os.environ.get("MONGODB", None)
+
 
 
 bot = commands.Bot(command_prefix="nb.", help_command=None)
 
+MONGODB = os.environ.get("MONGODB", None)
+
+bot = commands.Bot(command_prefix='*', help_command=None)
 
 client = MongoClient(MONGODB)
+
 db = client["discord"]
 collection = db["bot"]
 
@@ -28,22 +38,16 @@ async def on_ready():
             bot.load_extension(f"cogs.{filename[:-3]}")
         else:
             print(f"Unable to load {filename}")
-
-
+            logger.warning(f"Unable to load {filename}, is it suppose to be in cog directory?")
+    except Exception as e:
+        logger.warning(f"Unable to load cog: {e}")
 @bot.event
 async def on_guild_join(guild):
     guild_id = guild.id
     collection.insert_one({"_id": guild_id, "prefix": ","})
     print("done")
 
-
-@bot.command()
-async def ping(ctx):
-    em = discord.Embed(title="Pong!", description=f"{round(bot.latency * 1000)} ms")
-    await ctx.send(embed=em)
-
-
-@bot.command()
+@bot.command(help = "Chage prefix command, Refactor into base cog?")
 async def prefix(ctx, prefix):
     collection.update_one({"_id": ctx.guild.id}, {"$set": {"prefix": prefix}})
     await ctx.send(
@@ -52,9 +56,8 @@ async def prefix(ctx, prefix):
         )
     )
 
-
-@bot.command()
-async def help(ctx):
+@bot.command("Help command in bot.py file, refactor into help cog?")
+async def helpv1(ctx):
     docstring_values = await __parse_docstrings()
     caller_message = ctx.message.content
     if len(caller_message.split()) == 1:
@@ -102,6 +105,8 @@ async def __parse_docstrings():
                 os.path.join("cogs", filename)
             )
     return values
-
-
-bot.run(DISCORD_TOKEN)
+try:
+    bot.run(DISCORD_TOKEN)
+    logger.info("Bot Is Off\n----------------------------------- END OF SESSION")
+except Exception as e:
+    logger.warning(f"Bot Failed to initialise: {e}")

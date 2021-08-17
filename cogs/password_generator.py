@@ -18,7 +18,7 @@ class PasswordGenerator(commands.Cog):
         """
         self.client = client
 
-    @commands.command()
+    @commands.command(help = "Password from unicode decimal ranges.")
     async def make_password(self, ctx):
 
         """

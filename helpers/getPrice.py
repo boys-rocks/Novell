@@ -1,4 +1,5 @@
 import requests
+from helpers.logHelper import logger
 symbolNamePairs = {
     'BITCOIN':'BTC',
     'ETHEREUM':'ETH',
@@ -14,7 +15,7 @@ def request(method, path, params=None):
         data = resp.json()
         return data
     except Exception as e:
-        print(f"Exception caught in requests function: {e}")
+        logger.warning(f"Exception caught in requests function: {e}")
         
 def getPrice(symbol):
     symbol = symbol.upper()
@@ -23,7 +24,13 @@ def getPrice(symbol):
     try:
         data = request("GET", "/api/v3/ticker/price", {"symbol":symbol+"USDT"})
         price = str(data['price'])
-        return price        
+        return [price,symbol]
     except Exception as e:
-        print(f"Exception caught in getPrice function: {e}")
+        logger.warning(f"Exception caught in getPrice function: {e}")
+def getCost(symbol, amount):
+    symbol = symbol.upper()
+    price_and_coin = getPrice(symbol)
+    current = float(price_and_coin[0])
+    return [current*amount,price_and_coin[1]]
+
 
