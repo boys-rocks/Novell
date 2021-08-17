@@ -49,7 +49,9 @@ async def joinMusicChannel(ctx):
 def endSong(guild, path):
     pass
 class PlaySounds(commands.Cog):
-    """Bot Audio Module"""
+    """
+    Bot Audio Module
+    """
     def __init__(self, bot):
         self.bot = bot
     @commands.command(help="Definitely Doesn't Play Nyan Cat")

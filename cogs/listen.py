@@ -1,5 +1,8 @@
 from discord.ext import commands
 class Listen(commands.Cog):
+    """
+    Bot Voice Channel Commands
+    """
     def __init__(self, bot):
         self.bot = bot
     @commands.command(help = 'Bot joins voice channel')

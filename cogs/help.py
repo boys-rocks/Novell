@@ -4,6 +4,9 @@ from discord.ext import commands
 from helpers import getPrice, checkParams
 
 class help(commands.Cog):
+    """
+    Main help Module for now
+    """
     def __init__(self, bot):
         self.bot = bot
 
@@ -21,7 +24,7 @@ class help(commands.Cog):
             )
             help_embed.add_field(
                 name="Details",
-                value="Type `,help <command name>` for more details about each command.",
+                value="Type `*help <command name>` for more details about each command.",
                 inline=False
             )
 

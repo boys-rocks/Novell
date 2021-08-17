@@ -1,6 +1,9 @@
 from discord.ext import commands
 from helpers import logHelper
 class Base(commands.Cog):
+    """
+    Initail event Module, Not Accessed by Commands
+    """
     def __init__(self, bot):
         self.bot = bot
     @commands.Cog.listener()

@@ -2,6 +2,9 @@ import discord
 from discord.ext import commands
 
 class Test(commands.Cog):
+    """
+    Testing Module
+    """
     def __init__(self, bot):
         self.bot = bot
     @commands.command(help='Checks if Cogs are working')
