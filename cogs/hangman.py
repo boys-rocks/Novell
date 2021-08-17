@@ -9,7 +9,7 @@ LOGO = "**ｈａｎｇｍａｎ**\n\n``rule:\n1.you will get 5 lives\n2.with eac
 async def make_blanks(rng):
     blanks = list()
     for _ in range(rng):
-        blanks.append("_̲_̲_̲")
+        blanks.append("_̲_̲")
     return blanks
 
 
