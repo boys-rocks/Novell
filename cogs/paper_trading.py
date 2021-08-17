@@ -21,13 +21,13 @@ class Crypto(commands.Cog):
             await ctx.send(f"The Current Price of {symbol} is {currentPrice}")
         else:
             await ctx.send("I'm having trouble finding that cryptocurrency, check for typos and try again :)")
-    @commands.command(name="newacc")           
+    @commands.command(name="newacc",help='Create new Papertrading acc')           
     async def newacc(self, ctx):
         print("\n\n\n"+str(str(ctx.author))+"\n\n\n")
         x = str(ctx.author)
         result = newaccount(x)
         await ctx.send(result)  
-    @commands.command(name="buy")           
+    @commands.command(name="buy",help='Buy Crypto Currency')           
     async def buy(self, ctx, symbol, amount):
         x = str(ctx.author)
         if exist(x):
@@ -37,7 +37,7 @@ class Crypto(commands.Cog):
             await ctx.send(result) 
         else:
             await ctx.send("No account to buy with! enter: *newacc to create one")
-    @commands.command(name="sell")           
+    @commands.command(name="sell",help='Sell Crypto Currency')           
     async def sell(self, ctx, symbol, amount):
         x = str(ctx.author)
         if exist(x):
@@ -47,7 +47,7 @@ class Crypto(commands.Cog):
             await ctx.send(result) 
         else:
             await ctx.send("No account to sell with.... Enter: *newacc to create one")
-    @commands.command(name="balance")           
+    @commands.command(name="balance",help="Get cash balance of paper trading account")           
     async def balance(self, ctx):
         x = str(ctx.author)
         if exist(x):
@@ -56,7 +56,7 @@ class Crypto(commands.Cog):
             await ctx.send(result) 
         else:
             await ctx.send("No account... enter: *newacc to create one")
-    @commands.command(name="coins")           
+    @commands.command(name="coins", help='Get list of coins you have')           
     async def coins(self, ctx):
         x = str(ctx.author)
         if exist(x):
@@ -68,7 +68,7 @@ class Crypto(commands.Cog):
                 await ctx.send("You haven't purchased any coins yet!")
         else:
             await ctx.send("No account... enter: *newacc to create one")
-    @commands.command(name="portfolio")         
+    @commands.command(name="portfolio",help='Get value of portfolio')         
     async def portfolio(self, ctx):
         x = str(ctx.author)
         if exist(x):
