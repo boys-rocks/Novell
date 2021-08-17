@@ -1,15 +1,19 @@
 import discord
 from discord.ext import commands
-from helpers import logHelper
+from helpers.logHelper import logger
 import os
 import logging
 from pymongo import MongoClient
 from helpers.getPrefix import getPrefix
 import ast
+from helpers.getWeather import getLocationKey, getWeather
+
 logging.basicConfig(level=logging.INFO)
 os.sys.path.append('/ffmpeg/bin')
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
+
+
 
 MONGODB = os.environ.get("MONGODB", None)
 
@@ -23,12 +27,12 @@ for filename in os.listdir('./cogs'):
     try:
         if filename.endswith('.py'):
             bot.load_extension(f'cogs.{filename[:-3]}')
-            logHelper.logger.info(f"Succesfully Loaded Cog: {filename}")
+            logger.info(f"Succesfully Loaded Cog: {filename}")
         else:
             print(f"Unable to load {filename}")
-            logHelper.logger.warning(f"Unable to load {filename}, is it suppose to be in cog directory?")
+            logger.warning(f"Unable to load {filename}, is it suppose to be in cog directory?")
     except Exception as e:
-        logHelper.logger.warning(f"Unable to load cog: {e}")
+        logger.warning(f"Unable to load cog: {e}")
 @bot.event
 async def on_guild_join(guild):
     guild_id = guild.id
@@ -91,6 +95,6 @@ async def __parse_docstrings():
     return values
 try:
     bot.run(DISCORD_TOKEN)
-    logHelper.logger.info("Bot Is Off\n----------------------------------- END OF SESSION")
+    logger.info("Bot Is Off\n----------------------------------- END OF SESSION")
 except Exception as e:
-    logHelper.logger.warning(f"Bot Failed to initialise: {e}")
+    logger.warning(f"Bot Failed to initialise: {e}")
