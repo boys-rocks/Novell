@@ -1,4 +1,5 @@
 import discord
+from discord import Intents
 from discord.ext import commands
 import os
 import ast
@@ -9,7 +10,10 @@ DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
 MONGODB = os.environ.get("MONGODB", None)
 
 
-bot = commands.Bot(command_prefix=getPrefix, help_command=None)
+intents = discord.Intents().all()
+intents.members = True
+
+bot = commands.Bot(command_prefix=getPrefix, help_command=None, intents=intents)
 
 
 client = MongoClient(MONGODB)
@@ -99,4 +103,4 @@ async def __parse_docstrings():
     return values
 
 
-bot.run(DISCORD_TOKEN)
+bot.run('ODc1NTcxODQ3Njc1MTUwMzc2.YRXd0w.gOmnTsDPbR8nOOBFsEfaqBLcrqY')
