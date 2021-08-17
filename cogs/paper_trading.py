@@ -4,21 +4,17 @@ from discord.ext import commands
 from helpers import getPrice
 from helpers.manageacc import newaccount, exist
 from helpers.save import save,load
-
-
-
 class Crypto(commands.Cog):
     """
     Paper Trading Module
     """
     def __init__(self, bot):
         self.bot = bot
-
     @commands.command(help='Retrieve price data on specified cryptocurrency')
     async def price(self,ctx,symbol):
-        currentPrice = getPrice.getPrice(symbol)
-        if currentPrice:
-            await ctx.send(f"The Current Price of {symbol} is {currentPrice}")
+        coin_and_price = getPrice.getPrice(symbol)
+        if coin_and_price:
+            await ctx.send(f"The Current Price of {symbol} is {coin_and_price[0]}")
         else:
             await ctx.send("I'm having trouble finding that cryptocurrency, check for typos and try again :)")
     @commands.command(name="newacc",help='Create new Papertrading acc')           
