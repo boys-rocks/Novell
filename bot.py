@@ -9,7 +9,7 @@ import ast
 logging.basicConfig(level=logging.INFO)
 os.sys.path.append('/ffmpeg/bin')
 
-DISCORD_TOKEN = "ODIzNzcxNTQyOTQ5MzMwOTg0.YFlrCA.hanRCCbWR8MEK__e7Z_vyvewQdE"
+DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
 
 MONGODB = os.environ.get("MONGODB", None)
 
