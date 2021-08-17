@@ -44,6 +44,7 @@ class AFK(commands.Cog):
         except Exception as ex:
             print(ex)
 
+
     async def afkcheck(self, message):
         if message.author.bot:
             return
