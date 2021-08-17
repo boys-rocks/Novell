@@ -4,7 +4,9 @@ from discord.ext.commands import *
 from pymongo import MongoClient
 import asyncio
 
-client = MongoClient("mongodb+srv://user:OzwrCJAoUJI78syX@cluster0.tsodk.mongodb.net/discord?retryWrites=true&w=majority")
+MONGODB = os.environ.get('MONGODB', None)
+
+client = MongoClient(MONGODB)
 db = client['discord']
 collection = db['bot']
 
@@ -35,14 +37,18 @@ class AFK(commands.Cog):
 
     async def afkcommand(self, ctx, reason):
         try:
+            await ctx.author.edit(nick=f'[AFK] {ctx.message.author}')
+        except Exception as ex:
+            print('Exception: ', ex)
+        try:
             collection.update_one({'_id': 'afk'}, {'$set':{str(ctx.author.id): reason}})
             embed=discord.Embed(title='AFK set:', description=reason,color=discord.Color.random())
-            await ctx.author.edit(nick=f'[AFK] {ctx.message.author}')
             await ctx.send(embed=embed)
             await asyncio.sleep(10)
             collection.update_one({'_id': 'afk'}, {'$set': {f'k{str(ctx.author.id)}': '10'}})
         except Exception as ex:
             print(ex)
+        
 
     async def afkcheck(self, message):
         if message.author.bot:
@@ -51,12 +57,15 @@ class AFK(commands.Cog):
             results = collection.find_one({'_id':'afk'})
             if results[str(message.author.id)] != None:
                 try:
+                    await message.author.edit(nick=None)
+                except Exception as ex:
+                    print('Exception: ', ex)
+
+                try:
                     if results[str(f'k{message.author.id}')] == '10':
                         collection.update_one({'_id':'afk'},{'$unset':{str(message.author.id):''}})
                         collection.update_one({'_id':'afk'},{'$unset':{f'k{str(message.author.id)}':''}})
                         embed=discord.Embed(title='Welcome back',description='Removed the AFK.',color=discord.Color.random())
-                        await message.author.edit(nick=None)
-
                         await message.channel.send(embed=embed)
                 except Exception as ex:
                     print(ex)
