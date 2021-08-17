@@ -7,7 +7,9 @@ from discord.ext import commands
 
 
 class Hash(commands.Cog):
-    """ Cog provides a command for the user to see their string hashed. """
+    """
+    Cog provides a command for the user to see their string hashed.
+    """
 
     def __init__(self, client):
         """ Initialize cog """
