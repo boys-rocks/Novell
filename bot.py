@@ -48,7 +48,6 @@ async def latency(ctx):
    await ctx.send(f"ping = {ping}")
 
 
-@bot.command()
 @bot.command(help = "Chage prefix command, Refactor into base cog?")
 async def prefix(ctx, prefix):
     collection.update_one({"_id": ctx.guild.id}, {"$set": {"prefix": prefix}})
