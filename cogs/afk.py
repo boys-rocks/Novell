@@ -49,6 +49,7 @@ class AFK(commands.Cog):
             collection.update_one({'_id': 'afk'}, {'$set': {f'k{str(ctx.author.id)}': '10'}})
         except Exception as ex:
             print(ex)
+        
 
 
     async def afkcheck(self, message):
