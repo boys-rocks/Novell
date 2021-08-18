@@ -1,3 +1,5 @@
 __pycache__
 .vscode
 NUUB_BOT.log
+.idea
+venv
