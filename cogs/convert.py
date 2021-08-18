@@ -24,7 +24,7 @@ class Convert(commands.Cog):
     @commands.command()
     async def convert_to_hex(self, ctx, dec: int):
         if isinstance(dec, int):
-            result = bin(dec).removeprefix("0x").upper()
+            result = hex(dec).removeprefix("0x").upper()
             await ctx.send(result)
         else:
             await ctx.send("I can only convert integers")
