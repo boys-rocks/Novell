@@ -10,10 +10,10 @@ class Fun(commands.Cog):
     async def activity(self, ctx):
         import requests
         x = requests.get("https://www.boredapi.com/api/activity")
-        await ctx.send(embed=discord.Embed(title=x.json()['activity'], description=x.json()['type'])
+        await ctx.send(embed=discord.Embed(title=x.json()['activity'], description=x.json()['type']))
 
     @commands.command(help='Predict which country a name is from')
-    async def name(self, ctx, *, name):
+    async def nameinfo(self, ctx, *, name):
         y = requests.get(f'https://api.nationalize.io?name={name}')
         await ctx.send(f'Your name is likely from {y.json()['country'][0]['country_id']}')
 
