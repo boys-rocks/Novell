@@ -32,6 +32,7 @@ for filename in os.listdir('./cogs'):
             logger.warning(f"Unable to load {filename}, is it suppose to be in cog directory?")
     except Exception as e:
         logger.warning(f"Unable to load cog: {e}")
+      
 @bot.event
 async def on_guild_join(guild):
     guild_id = guild.id
@@ -39,14 +40,14 @@ async def on_guild_join(guild):
     print("done")
 
 
-@bot.command()
-async def ping(ctx):
-    em = discord.Embed(title="Pong!",
-                       description=f"{round(bot.latency * 1000)} ms")
-    await ctx.send(embed=em)
+async def latency(ctx):
+   time_1 = time.perf_counter()
+   await ctx.trigger_typing()
+   time_2 = time.perf_counter()
+   ping = round((time_2-time_1)*1000)
+   await ctx.send(f"ping = {ping}")
 
 
-@bot.command()
 @bot.command(help = "Chage prefix command, Refactor into base cog?")
 async def prefix(ctx, prefix):
     collection.update_one({"_id": ctx.guild.id}, {"$set": {"prefix": prefix}})

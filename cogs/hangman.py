@@ -3,13 +3,13 @@ from discord.ext import commands
 from resources.hangman_data import word_list
 from random import choice
 
-LOGO = "ｈａｎｇｍａｎ\n\n``rule:\n1.you will get 5 lives\n2.with each incorrect guess, you lose one live\n3.if you can guess all the alphabets in the word with live remaining you WIN\n4.Otherwise, you LOSE.``"
+LOGO = "**ｈａｎｇｍａｎ**\n\n``rule:\n1.you will get 5 lives\n2.with each incorrect guess, you lose one live\n3.if you can guess all the alphabets in the word with live remaining you WIN\n4.Otherwise, you LOSE.``"
 
 
 async def make_blanks(rng):
     blanks = list()
     for _ in range(rng):
-        blanks.append("_̲_̲_̲")
+        blanks.append("_̲_̲")
     return blanks
 
 
@@ -25,7 +25,6 @@ class Hangman(commands.Cog):
         self.end_of_game = False
         self.lives = 5
         await ctx.send(f"{LOGO}")
-        await ctx.send(chosen_word)
         blanks = await make_blanks(len(chosen_word))
         await ctx.send(f'```{"   ".join(blanks)}```')
         while not self.end_of_game:
@@ -58,7 +57,7 @@ class Hangman(commands.Cog):
             await ctx.send(f"```{'  '.join(blanks)}```")
 
             # Check if user has got all letters.
-            if "_̲_̲_̲" not in blanks:
+            if "_̲_̲" not in blanks:
                 self.end_of_game = True
                 await ctx.send("You WIN !!!.")
                 break
