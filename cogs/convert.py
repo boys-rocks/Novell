@@ -2,11 +2,17 @@ from discord.ext import commands
 
 
 class Convert(commands.Cog):
+    """
+    Converts between number systems
+    """
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
     async def convert_to_bin(self, ctx, dec: int):
+        """
+        Converts decimal to binary
+        """
         if isinstance(dec, int):
             result = bin(dec).replace("0b", "")
             await ctx.send(result)
@@ -15,6 +21,9 @@ class Convert(commands.Cog):
 
     @commands.command()
     async def convert_from_bin(self, ctx, bin: str):
+        """
+        Converts binary to decimal
+        """
         try:
             result = int(bin, 2)
         except ValueError:
@@ -23,6 +32,9 @@ class Convert(commands.Cog):
 
     @commands.command()
     async def convert_to_hex(self, ctx, dec: int):
+        """
+        Converts decimal to hexadecimal
+        """
         if isinstance(dec, int):
             result = hex(dec).removeprefix("0x").upper()
             await ctx.send(result)
@@ -31,6 +43,9 @@ class Convert(commands.Cog):
 
     @commands.command()
     async def convert_from_hex(self, ctx, hex: str):
+        """
+        Converts hexadecimal to decimal
+        """
         try:
             result = int(hex, 16)
         except ValueError:
