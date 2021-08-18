@@ -1,3 +1,4 @@
+
 import discord
 from discord.ext import commands
 from discord.ext.commands import *
@@ -69,14 +70,14 @@ class AFK(commands.Cog):
             except Exception as ex:
                 pass
 
-                    try:
-                        if results[str(f'k{message.author.id}')] == '10':
-                            collection.update_one({'_id':'afk'},{'$unset':{str(message.author.id):''}})
-                            collection.update_one({'_id':'afk'},{'$unset':{f'k{str(message.author.id)}':''}})
-                            embed=discord.Embed(title='Welcome back',description='Removed the AFK.',color=discord.Color.random())
-                            await message.channel.send(embed=embed)
-                    except Exception as ex:
-                        pass
+                try:
+                    if results[str(f'k{message.author.id}')] == '10':
+                        collection.update_one({'_id':'afk'},{'$unset':{str(message.author.id):''}})
+                        collection.update_one({'_id':'afk'},{'$unset':{f'k{str(message.author.id)}':''}})
+                        embed=discord.Embed(title='Welcome back',description='Removed the AFK.',color=discord.Color.random())
+                        await message.channel.send(embed=embed)
+                except Exception as ex:
+                    pass
 
 def setup(bot):
     bot.add_cog(AFK(bot))
