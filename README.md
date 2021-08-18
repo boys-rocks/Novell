@@ -52,7 +52,7 @@
 
 # Contributing
 
-Estimating duration from bitrate, this may be inaccuratePull requests are welcome. For major changes please open an issue first to discuss what you would like to change.
+Estimating duration from bitrate, this may be inaccurate. Pull requests are welcome. For major changes please open an issue first to discuss what you would like to change.
 
 Before submitting your PR, consider running some code formatter on the lines you touched or added. This will help reduce the time spent on fixing small styling issues in code review. Good options are yapf or autopep8 which likely can be integrated into your favorite editor.
 
