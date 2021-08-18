@@ -56,12 +56,15 @@ class AFK(commands.Cog):
         if message.author.bot:
             return
         else:
-            results = collection.find_one({'_id':'afk'})
+            try:
+                results = collection.find_one({'_id':'afk'})
+            except Exception as ex:
+                pass
             if results[str(message.author.id)] != None:
                 try:
                     await message.author.edit(nick=None)
                 except Exception as ex:
-                    print('Exception: ', ex)
+                    pass
 
                 try:
                     if results[str(f'k{message.author.id}')] == '10':
@@ -70,7 +73,7 @@ class AFK(commands.Cog):
                         embed=discord.Embed(title='Welcome back',description='Removed the AFK.',color=discord.Color.random())
                         await message.channel.send(embed=embed)
                 except Exception as ex:
-                    print(ex)
+                    pass
 
 def setup(bot):
     bot.add_cog(AFK(bot))
