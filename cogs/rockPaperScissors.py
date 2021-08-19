@@ -10,7 +10,7 @@ class RockPaperScissors(commands.Cog):
     @commands.command()
     async def rps(self, ctx):
         avl_moves = ["rock", "paper", "scissors"]
-        await ctx.send(f"Rock, paper, or scissors? Choose wisely...")
+        await ctx.send(f"rock, paper, or scissors? Choose wisely...")
 
         def check(msg):
             return (
@@ -20,9 +20,6 @@ class RockPaperScissors(commands.Cog):
             )
 
         usr_move = (await self.bot.wait_for("message", check=check)).content
-        if usr_move.content.lower() not in avl_moves:
-            await ctx.send("invalid move ")
-            return
         comp_move = choice(avl_moves)
         if usr_move == "rock":
             if comp_move == "rock":
@@ -65,6 +62,8 @@ class RockPaperScissors(commands.Cog):
                 await ctx.send(
                     f"Oh well, we tied.\nYour choice: {usr_move}\nMy choice: {comp_move}"
                 )
+        else:
+            await ctx.send("invalid move/choice")
 
 
 def setup(bot):
