@@ -40,9 +40,10 @@ class Fun(commands.Cog):
         em.add_field(name='Currency:', value=f'{currency}, {currency2}')
         language = y['languages'][0]['name']
         em.add_field(name='Languages:', value=f'{language}')
-        image = y['flag']
-        em.set_image(url=image)
+        flag = f'https://www.countryflags.io/{code1}/flat/64.png'
+        em.set_image(url=flag)
         await ctx.send(embed=em)
+
 
 def setup(bot):
     bot.add_cog(Fun(bot))
