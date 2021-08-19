@@ -32,13 +32,15 @@ class HigherLower(commands.Cog):
                     continue
                 else:
                     await ctx.send(
-                        f"Compare A: {format_ques(question_one)}"
-                        "   vs  "
+                        f"Compare A: {format_ques(question_one)}\n"
+                        "   vs   \n"
                         f"Compare B: {format_ques(question_two)}"
                     )
-                    guess = await self.bot.wait_for(
-                        "Who has more followers? Type 'A' or 'B':"
-                    ).content.lower()
+                    user_reply = await self.bot.wait_for(
+                        "Who has more followers? Type 'A' or 'B':",
+                        check=lambda message: message.author == ctx.author,
+                    )
+                    guess = f"{user_reply.content.lower()}"
                     if guess == "a":
                         guess = question_one["follower_count"]
                     elif guess == "b":
