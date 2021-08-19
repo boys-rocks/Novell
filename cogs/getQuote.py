@@ -8,7 +8,7 @@ def fetch_quote():
     anime_name = response.json()["anime"]
     character_name = response.json()["character"]
     character_quote = response.json()["quote"]
-    return f"``{character_quote}``\n - {character_name}\n - {anime_name} "
+    return f"```{character_quote}\n -- {character_name} [ {anime_name} ] ```"
 
 
 class GetQuote(commands.Cog):

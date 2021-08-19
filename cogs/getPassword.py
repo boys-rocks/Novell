@@ -13,7 +13,7 @@ class GetPassword(commands.Cog):
         characters = string.ascii_letters + string.punctuation + string.digits
         password = "".join(choice(characters) for x in range(query))
         await ctx.author.send(
-            f"Disclaimer: We are not responsible for compromised accounts. \nPassword: {password}"
+            f"```Disclaimer: We are not responsible for compromised accounts. \n\nPassword: {password}```"
         )
 
 

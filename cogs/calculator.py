@@ -9,7 +9,7 @@ class Calculator(commands.Cog):
     @commands.command()
     async def clc(self, ctx, query):
         result = eval(query)
-        await ctx.send(result)
+        await ctx.send(f"```{query} = {result}```")
 
 
 def setup(bot):

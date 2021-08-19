@@ -20,13 +20,13 @@ class Dictionary(commands.Cog):
         ) as response:
             rsp = response.json()
             await ctx.send(
-                f"``word: {rsp['word']}\npronunciation: {rsp['pronunciation']}\ndefinition: {rsp['definitions'][0]['definition']}``"
+                f"```word: {rsp['word']}\ndefinition: {rsp['definitions'][0]['definition']}```"
             )
             try:
                 await ctx.send(response.json()["definitions"][0]["image_url"])
 
             except:
-                print("error")
+                print("no image available")
 
 
 def setup(bot):

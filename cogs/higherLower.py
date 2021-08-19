@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 from random import choice
+
+from requests.models import guess_filename
 from resources.higherlowerdata import data
 from resources.higherlowerdata import reaction_negative, reaction_positive
 
@@ -32,30 +34,28 @@ class HigherLower(commands.Cog):
                     continue
                 else:
                     await ctx.send(
-                        f"Compare A: {format_ques(question_one)}\n"
-                        "   vs   \n"
-                        f"Compare B: {format_ques(question_two)}"
+                        f"```Compare A: {format_ques(question_one)}\n\t\t\t VS \nCompare B: {format_ques(question_two)}\n\nWho has more followers? Type 'A' or 'B':```"
                     )
-                    user_reply = await self.bot.wait_for(
-                        "Who has more followers? Type 'A' or 'B':",
+                    guess = await self.bot.wait_for(
+                        "message",
                         check=lambda message: message.author == ctx.author,
                     )
-                    guess = f"{user_reply.content.lower()}"
-                    if guess == "a":
+
+                    if guess.content.lower() == "a":
                         guess = question_one["follower_count"]
-                    elif guess == "b":
+                    elif guess.content.lower() == "b":
                         guess = question_two["follower_count"]
-                    if guess == max(
+                    if guess.content.lower() == max(
                         question_one["follower_count"], question_two["follower_count"]
                     ):
                         score += 1
                         await ctx.send(
-                            f"{choice(reaction_positive)}, Your score is {score} "
+                            f"```{choice(reaction_positive)}, Your score is {score} ```"
                         )
 
                     else:
                         await ctx.send(
-                            f"{choice(reaction_negative)}. Final score: {score}"
+                            f"```{choice(reaction_negative)}. Final score: {score}```"
                         )
                         break
             is_playing = False

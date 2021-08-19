@@ -17,7 +17,7 @@ class UrlShortner(commands.Cog):
     @commands.command()
     async def shrink(self, ctx, full_url):
 
-        await ctx.send(f"shortened link:\n {shortner(full_url)}")
+        await ctx.send(f"```shortened link:\n {shortner(full_url)}```")
 
 
 def setup(bot):
