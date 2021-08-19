@@ -16,7 +16,7 @@ class RockPaperScissors(commands.Cog):
             return (
                 msg.author == ctx.author
                 and msg.channel == ctx.channel
-                and msg.content.lower() in comp_move
+                and msg.content.lower() in avl_moves
             )
 
         usr_move = (await self.bot.wait_for("message", check=check)).content
