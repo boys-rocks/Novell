@@ -7,11 +7,13 @@ from pymongo import MongoClient
 from helpers.getPrefix import getPrefix
 import ast
 from helpers.getWeather import getLocationKey, getWeather
+import time
 
 logging.basicConfig(level=logging.INFO)
 os.sys.path.append("/ffmpeg/bin")
 
-DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
+# DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
+DISCORD_TOKEN = "ODc2NDU3NDExOTQxMTIyMTA4.YRkWkg.-AVoV2ysjgyIaGvXkyLR9CXyudE"
 MONGODB = os.environ.get("MONGODB", None)
 
 bot = commands.Bot(command_prefix="nb.", help_command=None)
