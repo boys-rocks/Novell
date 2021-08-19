@@ -41,7 +41,7 @@ class Fun(commands.Cog):
         language = y['languages'][0]['name']
         em.add_field(name='Languages:', value=f'{language}')
         image = y['flag']
-        em.set_image(image)
+        em.set_image(url=image)
         await ctx.send(embed=em)
 
 def setup(bot):
