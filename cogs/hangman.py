@@ -29,14 +29,14 @@ class Hangman(commands.Cog):
         await ctx.send(f'```{"   ".join(blanks)}```')
         while not self.end_of_game:
             guess = await self.bot.wait_for(
-                'message', check=lambda message: message.author == ctx.author)
+                "message", check=lambda message: message.author == ctx.author
+            )
             if guess.content.lower() == "exit":
                 self.end_of_game = True
                 break
             # Check guessed letter
             if guess.content.lower() in blanks:
-                await ctx.send(
-                    f"```You've already guessed {guess.content.lower()}.```")
+                await ctx.send(f"```You've already guessed {guess.content.lower()}.```")
             for position in range(word_length):
                 letter = chosen_word[position]
                 if letter == guess.content.lower():

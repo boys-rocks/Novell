@@ -9,8 +9,7 @@ class Bored(commands.Cog):
 
     @commands.command()
     async def bored(self, ctx):
-        with requests.get(
-                url=f"http://www.boredapi.com/api/activity/") as response:
+        with requests.get(url=f"http://www.boredapi.com/api/activity/") as response:
             link = ""
             try:
                 link = response.json()["link"]

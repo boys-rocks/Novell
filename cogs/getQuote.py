@@ -16,7 +16,7 @@ class GetQuote(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def inspire_me(self, ctx):
+    async def quote(self, ctx):
         await ctx.send(fetch_quote())
 
 

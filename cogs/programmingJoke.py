@@ -10,9 +10,9 @@ class ProgrammingJoke(commands.Cog):
     @commands.command()
     async def projoke(self, ctx):
         with requests.get(
-                url=f"https://v2.jokeapi.dev/joke/programming?type=single"
+            url=f"https://v2.jokeapi.dev/joke/programming?type=single"
         ) as response:
-            await ctx.send(response.json()['joke'])
+            await ctx.send(response.json()["joke"])
 
 
 def setup(bot):

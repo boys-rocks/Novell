@@ -1,11 +1,15 @@
 from classes.paper_trade_class import account, all
 from helpers.save import save, load
+
+
 def exist(x):
     listOfAll = load("all")
     if x in listOfAll.lis:
         return True
     else:
-        return False  
+        return False
+
+
 def newaccount(x):
     listOfAll = load("all")
     print(listOfAll.number)

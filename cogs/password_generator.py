@@ -18,7 +18,7 @@ class PasswordGenerator(commands.Cog):
         """
         self.client = client
 
-    @commands.command(help = "Password from unicode decimal ranges.")
+    @commands.command(help="Password from unicode decimal ranges.")
     async def make_password(self, ctx):
 
         """
@@ -32,13 +32,17 @@ class PasswordGenerator(commands.Cog):
         # Generate list of special characters.
         special_characters = []
         for unicode_value in range(33, 127):
-            if unicode_value in range(33, 48) or unicode_value in range(58, 65) \
-            or unicode_value in range(91, 97) or unicode_value in range(123, 127):
+            if (
+                unicode_value in range(33, 48)
+                or unicode_value in range(58, 65)
+                or unicode_value in range(91, 97)
+                or unicode_value in range(123, 127)
+            ):
                 special_characters.append(chr(unicode_value))
 
         while True:
             # Initialize on each loop.
-            password = ''
+            password = ""
             has_lower_alpha, has_upper_alpha, has_numeric = False, False, False
 
             # Randomly select 20 characters in unicode decimal range 33 to 126
@@ -57,14 +61,21 @@ class PasswordGenerator(commands.Cog):
             has_special_char = any(each in special_characters for each in password)
 
             # Rerun loop if any type is missing or end loop otherwise.
-            if has_upper_alpha == False or has_lower_alpha == False \
-                    or has_numeric == False or has_special_char == False:
+            if (
+                has_upper_alpha == False
+                or has_lower_alpha == False
+                or has_numeric == False
+                or has_special_char == False
+            ):
                 continue
             else:
                 break
 
         # Private message user the password generated
-        await ctx.author.send(f"Disclaimer: We are not responsible for compromised accounts. "f"\nPassword: {password}")
+        await ctx.author.send(
+            f"Disclaimer: We are not responsible for compromised accounts. "
+            f"\nPassword: {password}"
+        )
 
 
 # Standard cog setup.

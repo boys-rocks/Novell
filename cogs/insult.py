@@ -10,10 +10,9 @@ class ThrowInsult(commands.Cog):
     @commands.command()
     async def insult(self, ctx):
         with requests.get(
-                url=
-                f"https://evilinsult.com/generate_insult.php?lang=en&type=json"
+            url=f"https://evilinsult.com/generate_insult.php?lang=en&type=json"
         ) as response:
-            await ctx.send(response.json()['insult'])
+            await ctx.send(response.json()["insult"])
 
 
 def setup(bot):
