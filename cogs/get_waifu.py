@@ -8,17 +8,8 @@ class GetWaifu(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def sfw(self, ctx, query):
-        with requests.get(
-                url=f"https://api.waifu.pics/sfw/{query}") as response:
-            try:
-                await ctx.send(response.json()["url"])
-            except:
-                await ctx.send("Looks like no one likes you")
-
-    async def nsfw(self, ctx, query):
-        with requests.get(
-                url=f"https://api.waifu.pics/nsfw/{query}") as response:
+    async def waifu(self, ctx, query):
+        with requests.get(url=f"https://api.waifu.pics/sfw/{query}") as response:
             try:
                 await ctx.send(response.json()["url"])
             except:

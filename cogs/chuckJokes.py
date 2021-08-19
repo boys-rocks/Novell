@@ -9,9 +9,8 @@ class ChuckJokes(commands.Cog):
 
     @commands.command()
     async def chuckjokes(self, ctx):
-        with requests.get(
-                url=f"http://api.icndb.com/jokes/random") as response:
-            await ctx.send(response.json()['value']['joke'])
+        with requests.get(url=f"http://api.icndb.com/jokes/random") as response:
+            await ctx.send(response.json()["value"]["joke"])
 
 
 def setup(bot):

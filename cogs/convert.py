@@ -5,6 +5,7 @@ class Convert(commands.Cog):
     """
     Converts between number systems
     """
+
     def __init__(self, bot):
         self.bot = bot
 
