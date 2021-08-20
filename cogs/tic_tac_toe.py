@@ -31,11 +31,9 @@ class TicTacToe(commands.Cog):
             await ctx.send("Where do you want to go?")
             move = await self.bot.wait_for(
                 "message", check=lambda message: message.author == ctx.author)
-            # if move.content.strip().lower() == "exit":
-            #     ctx.send("Exiting...")
-            #     return
-            # else:
-            #     ctx.send("Not exiting")
+            if move.content.strip().lower() == "exit":
+                await ctx.send("Exiting...")
+                return
             try:
                 move = int(move.content.strip().lower())
             except ValueError:
