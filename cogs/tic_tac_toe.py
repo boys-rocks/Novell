@@ -22,7 +22,7 @@ class TicTacToe(commands.Cog):
          - impossible
         """
 
-        if difficulty.lower() not in ["easy, difficult, impossible"]:
+        if difficulty.lower() not in ["easy", "difficult", "impossible"]:
             await ctx.send("Unavailable difficulty")
             return
         game = TicTacToeGame("X", "O", TicTacToeGame.PLAYER, difficulty)
