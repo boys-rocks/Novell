@@ -63,6 +63,10 @@ class TicTacToe(commands.Cog):
 
     @commands.command()
     async def play_tic_tac_toe_multiplayer(self, ctx, opponent):
+        """
+        Play Tic-Tac-Toe against someone on your discord server!
+        Simply write play_tic_tac_toe_multiplayer and mention them
+        """
         challenger = ctx.author
         opponent = ctx.guild.get_member(int(re.sub("[^0-9]", "", opponent)))
         invite = opponent.mention + "! " + challenger.mention + " is in inviting you to a game of Tic-Tac-Toe. Accept?"
