@@ -48,6 +48,9 @@ class GitHub(commands.Cog):
             em.add_field(name='Fork', value=x['fork'])
             em.add_field(name='Language(s)', value=x['language'])
             em.add_field(name='Forks Count', value=x['forks'])
+            em.add_field(name='Open Issues', value=x['open_issues'])
+            em.add_field(name='Watchers', value=x['watchers'])
+            em.add_field(name='Stars', value=x['stargazers_count']
             em.add_field(name='License', value=x['license']['name'])
             image_url = x['owner']['avatar_url']
             em.set_thumbnail(url=image_url)
