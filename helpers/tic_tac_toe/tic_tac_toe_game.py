@@ -26,8 +26,8 @@ class TicTacToeGame:
         self.active_player = self.PLAYER if self.active_player == self.COMPUTER else self.COMPUTER
         return True
 
-    def make_ai_move(self):
-        self.make_move(tic_tac_toe_ai.ai_move(self))
+    def get_ai_move(self):
+        return tic_tac_toe_ai.ai_move(self)
 
     def unmake_move(self, position):
         self.board[position] = self.EMPTY

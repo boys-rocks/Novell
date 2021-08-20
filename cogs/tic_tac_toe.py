@@ -44,7 +44,9 @@ class TicTacToe(commands.Cog):
                 continue
             game.make_move(move)
             await ctx.send(game.to_string())
-            game.make_ai_move()
+            ai_move = game.make_ai_move()
+            await ctx.send("I choose " + str(ai_move))
+            game.make_move(ai_move)
         winner = game.get_winner()
         await ctx.send(game.to_string())
         if winner == game.PLAYER:
