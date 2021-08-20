@@ -37,7 +37,7 @@ class Fun(commands.Cog):
         em.add_field(name='Regions:', value=f'{region1}, {region2}')
         currency = y['currencies'][0]['code']
         currency2 = y['currencies'][0]['name']
-        em.add_field(name='Currency:', value=f'{currency1}, {currency2}')
+        em.add_field(name='Currency:', value=f'{currency}, {currency2}')
         language = y['languages'][0]['name']
         em.add_field(name='Languages:', value=f'{language}')
         await ctx.send(embed=em)

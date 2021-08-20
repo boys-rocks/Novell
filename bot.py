@@ -79,6 +79,10 @@ async def helpv1(ctx):
                                description=f"Could not find command {cog}")
             await ctx.send(embed=em)
 
+@bot.command()
+async def check(ctx):
+    await ctx.send('success')
+
 
 async def __parse_docstring(filename):
     with open(filename, "r") as f:
@@ -101,7 +105,7 @@ async def __parse_docstrings():
                 os.path.join("cogs", filename))
     return values
 try:
-    bot.run(DISCORD_TOKEN)
+    bot.run('ODc3MTYzMjA4Nzk5MDUxODA2.YRun5Q.DaA5GGVEyVZ2tc7qaMT2zzPmbuY')
     logger.info("Bot Is Off\n----------------------------------- END OF SESSION")
 except Exception as e:
     logger.warning(f"Bot Failed to initialise: {e}")
