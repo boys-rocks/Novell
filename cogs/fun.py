@@ -48,6 +48,13 @@ class Fun(commands.Cog):
         em.set_thumbnail(url=flag)
         await ctx.send(embed=em)
 
+    @commands.command()
+    async def cat(self,ctx):
+        x = requests.get('https://api.thecatapi.com/v1/images/search')
+        imageurl = x.json()[0]['url']
+        em = discord.Embed(title='Cat?')
+        em.set_image(url=imageurl)
+        await ctx.send(embed=em)
 
 def setup(bot):
     bot.add_cog(Fun(bot))
