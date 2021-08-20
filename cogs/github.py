@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import requests
 
 class GitHub(commands.Cog):
     def __init__(self, bot):
@@ -24,6 +25,7 @@ class GitHub(commands.Cog):
             em.add_field(name='Public Repos', value=x.json()['public_repos'])
             em.add_field(name='Followers', value=x.json()['followers'])
             em.add_field(name='Following', value=x.json()['following'])
+            await ctx.send(embed=em)
         except Exception as ex:
             print('Exception:', ex)
 
