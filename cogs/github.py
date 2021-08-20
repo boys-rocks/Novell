@@ -37,7 +37,7 @@ class GitHub(commands.Cog):
             title = x['full_name']
             id0 = x['id']
             url1 = x['html_url']
-            em = discord.Embed(title=f'[{title}]({url1}) ({id0})', description=f'')
+            em = discord.Embed(title=f'{id0}', description=f'[{title}]({url1}) ')
             owner1 = x['owner']['login']
             owner2 = x['owner']['html_url']
             typez = x['owner']['type']
