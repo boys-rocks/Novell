@@ -86,6 +86,10 @@ async def helpv1(ctx):
             )
             await ctx.send(embed=em)
 
+@bot.command()
+async def check(ctx):
+    await ctx.send('success')
+
 
 async def __parse_docstring(filename):
     with open(filename, "r") as f:
