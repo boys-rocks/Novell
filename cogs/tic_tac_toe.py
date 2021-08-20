@@ -43,6 +43,8 @@ class TicTacToe(commands.Cog):
                 await ctx.send("You can't choose field " + str(move))
                 continue
             game.make_move(move)
+            if game.check_game_over():
+                break
             await ctx.send(game.to_string())
             ai_move = game.get_ai_move()
             await ctx.send("I choose " + str(ai_move))
