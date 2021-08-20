@@ -47,7 +47,7 @@ class GitHub(commands.Cog):
             em.add_field(name='Descritpion', value=desc)
             em.add_field(name='Fork', value=x['fork'])
             em.add_field(name='Language(s)', value=x['language'])
-            em.add_field(name='Forks Count', value=x['forks_counts'])
+            em.add_field(name='Forks Count', value=x['forks'])
             em.add_field(name='License', value=x['license']['name'])
             image_url = x['owner']['avatar_url']
             em.set_thumbnail(url=image_url)
