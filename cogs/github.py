@@ -51,6 +51,7 @@ class GitHub(commands.Cog):
             em.add_field(name='License', value=x['license']['name'])
             image_url = x['owner']['avatar_url']
             em.set_thumbnail(url=image_url)
+            await ctx.send(embed=em)
         except Exception as ex:
             print('Exception: ', ex)
 
