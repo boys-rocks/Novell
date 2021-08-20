@@ -26,6 +26,10 @@ class TicTacToe(commands.Cog):
             await ctx.send("Unavailable difficulty")
             return
         game = TicTacToeGame("X", "O", TicTacToeGame.PLAYER, difficulty)
+        await ctx.send(game.check_game_over())
+        await ctx.send(game.check_draw())
+        await ctx.send(game.check_winner(game.PLAYER))
+        await ctx.send(game.check_winner(game.COMPUTER))
         while not game.check_game_over():
             move = await self.bot.wait_for(
                 "message", check=lambda message: message.author == ctx.author).content.strip()
