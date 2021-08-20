@@ -45,7 +45,7 @@ class Fun(commands.Cog):
         language = y['languages'][0]['name']
         em.add_field(name='Languages:', value=f'{language}')
         flag = f'https://www.countryflags.io/{code1}/flat/64.png'
-        em.set_image(url=flag)
+        em.set_thumbnail(url=flag)
         await ctx.send(embed=em)
 
 
