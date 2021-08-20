@@ -69,16 +69,25 @@ class TicTacToeGame:
         else:
             return None
 
+    def symbol(self, number):
+        if number == self.COMPUTER:
+            return self.computer_symbol
+        elif number == self.PLAYER:
+            return self.player_symbol
+        elif number == self.EMPTY:
+            return " "
+        return "?"
+
     def to_string(self, including_number_grid: bool = False):
         if including_number_grid:
-            return f"``` {self.board[7]} | {self.board[8]} | {self.board[9]} " + " " * 10 + " 7 | 8 | 9 \n" + \
-                   "---+---+---" + " " * 10 + "---+---+---" + \
-                   f" {self.board[4]} | {self.board[5]} | {self.board[6]} " + " " * 10 + " 4 | 5 | 6 \n" + \
-                   "---+---+---" + " " * 10 + "---+---+---" + \
-                   f" {self.board[1]} | {self.board[2]} | {self.board[3]} " + " " * 10 + " 1 | 2 | 3 ```"
+            return f"``` {self.symbol(self.board[7])} | {self.symbol(self.board[8])} | {self.symbol(self.board[9])} " + " " * 10 + " 7 | 8 | 9 \n" + \
+                   "---+---+---" + " " * 10 + "---+---+---\n" + \
+                   f" {self.symbol(self.board[4])} | {self.symbol(self.board[5])} | {self.symbol(self.board[6])} " + " " * 10 + " 4 | 5 | 6 \n" + \
+                   "---+---+---" + " " * 10 + "---+---+---\n" + \
+                   f" {self.symbol(self.board[1])} | {self.symbol(self.board[2])} | {self.symbol(self.board[3])} " + " " * 10 + " 1 | 2 | 3 ```"
         else:
-            return f"``` {self.board[7]} | {self.board[8]} | {self.board[9]} \n" + \
+            return f"``` {self.symbol(self.board[7])} | {self.symbol(self.board[8])} | {self.symbol(self.board[9])} \n" + \
                    "---+---+---\n" + \
-                   f" {self.board[4]} | {self.board[5]} | {self.board[6]} \n" + \
+                   f" {self.symbol(self.board[4])} | {self.symbol(self.board[5])} | {self.symbol(self.board[6])} \n" + \
                    "---+---+---\n" + \
-                   f" {self.board[1]} | {self.board[2]} | {self.board[3]} ```"
+                   f" {self.symbol(self.board[1])} | {self.symbol(self.board[2])} | {self.symbol(self.board[3])} ```"
