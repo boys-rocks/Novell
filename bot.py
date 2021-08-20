@@ -105,7 +105,7 @@ async def __parse_docstrings():
                 os.path.join("cogs", filename))
     return values
 try:
-    bot.run('ODc3MTYzMjA4Nzk5MDUxODA2.YRun5Q.DaA5GGVEyVZ2tc7qaMT2zzPmbuY')
+    bot.run(DISCORD_TOKEN)
     logger.info("Bot Is Off\n----------------------------------- END OF SESSION")
 except Exception as e:
     logger.warning(f"Bot Failed to initialise: {e}")
