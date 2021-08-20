@@ -1,5 +1,3 @@
-import random
-
 from helpers.tic_tac_toe.tic_tac_toe_game import TicTacToeGame
 
 

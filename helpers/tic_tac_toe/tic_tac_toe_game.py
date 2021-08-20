@@ -1,4 +1,5 @@
-import tic_tac_toe_ai
+from helpers.tic_tac_toe import tic_tac_toe_ai
+
 
 class TicTacToeGame:
     PLAYER = 1
