@@ -54,7 +54,9 @@ class TicTacToeGame:
                 (self.board[1] == self.board[5] == self.board[9] == to_check))
 
     def check_draw(self):
-        return self.EMPTY not in self.board.keys()
+        return self.EMPTY not in self.board.values() and \
+               not self.check_winner(self.PLAYER) and \
+               not self.check_winner(self.COMPUTER)
 
     def check_game_over(self):
         return self.check_winner(self.PLAYER) or self.check_winner(self.COMPUTER) or self.check_draw()
