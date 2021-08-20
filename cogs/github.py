@@ -6,7 +6,7 @@ class GitHub(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command('Get information on a github account')
+    @commands.command(help='Get information on a github account')
     async def ghuser(self, ctx, *, user):
         x = requests.get(f'https://api.github.com/users/{user}')
 
