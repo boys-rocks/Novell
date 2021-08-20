@@ -23,7 +23,7 @@ class TicTacToe(commands.Cog):
         """
 
         if difficulty.lower() not in ["easy, difficult, impossible"]:
-            ctx.send("Unavailable difficulty")
+            await ctx.send("Unavailable difficulty")
             return
         game = TicTacToeGame("X", "O", TicTacToeGame.PLAYER, difficulty)
         while not game.check_game_over():
@@ -34,23 +34,23 @@ class TicTacToe(commands.Cog):
             try:
                 move = int(move)
             except ValueError:
-                ctx.send("This doesn't look like a number")
+                await ctx.send("This doesn't look like a number")
                 continue
             if move not in game.possible_moves():
-                ctx.send("You can't choose field " + str(move))
+                await ctx.send("You can't choose field " + str(move))
                 continue
             game.make_move(move)
-            ctx.send(game.to_string())
+            await ctx.send(game.to_string())
             game.make_ai_move()
-            ctx.send(game.to_string(True))
-            ctx.send("Where do you want to go next")
+            await ctx.send(game.to_string(True))
+            await ctx.send("Where do you want to go next")
         winner = game.get_winner()
         if winner == game.PLAYER:
-            ctx.send("You won! Congratulation!")
+            await ctx.send("You won! Congratulation!")
         elif winner == game.COMPUTER:
-            ctx.send("I won! Better luck next time!")
+            await ctx.send("I won! Better luck next time!")
         else:
-            ctx.send("It's a Draw! Wanna play again?")
+            await ctx.send("It's a Draw! Wanna play again?")
 
 
 def setup(bot):

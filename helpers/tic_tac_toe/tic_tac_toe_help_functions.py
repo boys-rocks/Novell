@@ -1,21 +1,16 @@
-import random
-
-from helpers.tic_tac_toe.tic_tac_toe_game import TicTacToeGame
-
-
-def corner_move(game: TicTacToeGame):
+def corner_move(game):
     return list(set(game.possible_moves()) & {1, 3, 7, 9})
 
 
-def center_move(game: TicTacToeGame):
+def center_move(game):
     return list(set(game.possible_moves()) & {5})
 
 
-def side_move(game: TicTacToeGame):
+def side_move(game):
     return list(set(game.possible_moves()) & {2, 4, 6, 8})
 
 
-def test_if_win_is_possible(game: TicTacToeGame, to_check=None):
+def test_if_win_is_possible(game, to_check=None):
     if to_check is None:
         to_check = game.active_player
     possible_moves = []
@@ -27,7 +22,7 @@ def test_if_win_is_possible(game: TicTacToeGame, to_check=None):
     return possible_moves
 
 
-def test_if_fork_is_possible(game: TicTacToeGame, to_check=None):
+def test_if_fork_is_possible(game, to_check=None):
     if to_check is None:
         to_check = game.active_player
     possible_moves = []
@@ -39,7 +34,7 @@ def test_if_fork_is_possible(game: TicTacToeGame, to_check=None):
     return possible_moves
 
 
-def force_player_to_block(game: TicTacToeGame):
+def force_player_to_block(game):
     possible_moves = []
     for move in game.possible_moves():
         game.make_move(move)
@@ -55,7 +50,7 @@ def force_player_to_block(game: TicTacToeGame):
 
 # ai functions:
 
-def corner_center_side(game: TicTacToeGame):
+def corner_center_side(game):
     possible_moves = corner_move(game)
     if len(possible_moves) > 0:
         return possible_moves
@@ -69,7 +64,7 @@ def corner_center_side(game: TicTacToeGame):
         return possible_moves
 
 
-def center_corner_side(game: TicTacToeGame):
+def center_corner_side(game):
     possible_moves = center_move(game)
     if len(possible_moves) > 0:
         return possible_moves

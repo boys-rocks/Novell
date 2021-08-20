@@ -1,10 +1,9 @@
 import random
 
-import tic_tac_toe_help_functions as ttt
-from tic_tac_toe_game import TicTacToeGame
+from helpers.tic_tac_toe import tic_tac_toe_help_functions as ttt
 
 
-def ai_move(game: TicTacToeGame):
+def ai_move(game):
     win_moves = ttt.test_if_win_is_possible(game, game.COMPUTER)
     if len(win_moves) > 0:
         return random.choice(win_moves)
