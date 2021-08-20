@@ -27,7 +27,7 @@ class TicTacToeGame:
         return True
 
     def make_ai_move(self):
-        tic_tac_toe_ai.ai_move(self)
+        self.make_move(tic_tac_toe_ai.ai_move(self))
 
     def unmake_move(self, position):
         self.board[position] = self.EMPTY
