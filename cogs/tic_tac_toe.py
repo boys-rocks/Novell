@@ -27,9 +27,12 @@ class TicTacToe(commands.Cog):
             return
         game = TicTacToeGame("X", "O", TicTacToeGame.PLAYER, difficulty)
         while not game.check_game_over():
+            await ctx.send(game.to_string(True))
+            await ctx.send("Where do you want to go?")
             move = await self.bot.wait_for(
                 "message", check=lambda message: message.author == ctx.author).content.strip()
             if move.lower() == "exit":
+                ctx.send("Exiting...")
                 return
             try:
                 move = int(move)
@@ -42,9 +45,8 @@ class TicTacToe(commands.Cog):
             game.make_move(move)
             await ctx.send(game.to_string())
             game.make_ai_move()
-            await ctx.send(game.to_string(True))
-            await ctx.send("Where do you want to go next")
         winner = game.get_winner()
+        await ctx.send(game.to_string())
         if winner == game.PLAYER:
             await ctx.send("You won! Congratulation!")
         elif winner == game.COMPUTER:
