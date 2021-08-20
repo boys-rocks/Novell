@@ -54,9 +54,9 @@ class TicTacToeGame:
                 (self.board[1] == self.board[5] == self.board[9] == to_check))
 
     def check_draw(self):
-        return self.EMPTY not in self.board.values() and \
-               not self.check_winner(self.PLAYER) and \
-               not self.check_winner(self.COMPUTER)
+        return ((self.EMPTY not in self.board.values()) and
+                (not self.check_winner(self.PLAYER)) and
+                not self.check_winner(self.COMPUTER))
 
     def check_game_over(self):
         return self.check_winner(self.PLAYER) or self.check_winner(self.COMPUTER) or self.check_draw()
@@ -71,14 +71,14 @@ class TicTacToeGame:
 
     def to_string(self, including_number_grid: bool = False):
         if including_number_grid:
-            return f" {self.board[7]} | {self.board[8]} | {self.board[9]} " + " " * 10 + " 7 | 8 | 9 \n" + \
+            return f"``` {self.board[7]} | {self.board[8]} | {self.board[9]} " + " " * 10 + " 7 | 8 | 9 \n" + \
                    "---+---+---" + " " * 10 + "---+---+---" + \
                    f" {self.board[4]} | {self.board[5]} | {self.board[6]} " + " " * 10 + " 4 | 5 | 6 \n" + \
                    "---+---+---" + " " * 10 + "---+---+---" + \
-                   f" {self.board[1]} | {self.board[2]} | {self.board[3]} " + " " * 10 + " 1 | 2 | 3 "
+                   f" {self.board[1]} | {self.board[2]} | {self.board[3]} " + " " * 10 + " 1 | 2 | 3 ```"
         else:
-            return f" {self.board[7]} | {self.board[8]} | {self.board[9]} \n" + \
+            return f"``` {self.board[7]} | {self.board[8]} | {self.board[9]} \n" + \
                    "---+---+---\n" + \
                    f" {self.board[4]} | {self.board[5]} | {self.board[6]} \n" + \
                    "---+---+---\n" + \
-                   f" {self.board[1]} | {self.board[2]} | {self.board[3]} "
+                   f" {self.board[1]} | {self.board[2]} | {self.board[3]} ```"
