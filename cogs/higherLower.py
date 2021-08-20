@@ -36,11 +36,13 @@ class HigherLower(commands.Cog):
                     await ctx.send(
                         f"```Compare A: {format_ques(question_one)}\n\t\t\t VS \nCompare B: {format_ques(question_two)}\n\nWho has more followers? Type 'A' or 'B':```"
                     )
+                    print("checkpoint1")
                     guess = await self.bot.wait_for(
                         "message",
                         check=lambda message: message.author == ctx.author,
                     )
-
+                    print(guess.content)
+                    print("checkpoint2")
                     if guess.content.lower() == "a":
                         guess = question_one["follower_count"]
                     elif guess.content.lower() == "b":
