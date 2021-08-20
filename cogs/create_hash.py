@@ -12,7 +12,7 @@ class Hash(commands.Cog):
     """
 
     def __init__(self, client):
-        """ Initialize cog """
+        """Initialize cog"""
         self.client = client
 
     @commands.command()
@@ -41,12 +41,12 @@ class Hash(commands.Cog):
             await ctx.send("Available hashing algorithms: md5, sha1, sha256, sha512")
 
         # Encodes and outputs hash
-        a_hash.update(user_value.encode('utf-8'))
+        a_hash.update(user_value.encode("utf-8"))
         await ctx.send(a_hash.hexdigest())
 
     @make_hash.error
     async def on_hash_command_error(self, ctx, error):
-        """ Catches exception when user does not provide all arguments. Outputs required format """
+        """Catches exception when user does not provide all arguments. Outputs required format"""
 
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send("Invalid input. Please provide all required arguments.")
