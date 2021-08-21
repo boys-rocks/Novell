@@ -15,10 +15,7 @@ os.sys.path.append("/ffmpeg/bin")
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
 MONGODB = os.environ.get("MONGODB", None)
 
-intents = discord.Intents.default()
-intents.members = True
-
-bot = commands.Bot(command_prefix="nb.", help_command=None, intents=intents)
+bot = commands.Bot(command_prefix="nb.", help_command=None)
 
 client = MongoClient(MONGODB)
 db = client["discord"]
