@@ -56,11 +56,11 @@ class Fun(commands.Cog):
             pauthor = x['info']['author']
             em = discord.Embed(title=x['info']['name'], description = f'By {pauthor}')
             url = x['info']['package_url']
-            em.add_field(name='URL', value= f'[Link]({url})')
+            em.add_field(name='URL', value= f'[Link]({url})',inline=True)
             
-            em.add_field(name='Email', value=x['info']['author_email'])
-            em.add_field(name='Home page', value=x['info']['home_page'])
-            em.add_field(name='License', value=x['info']['license'])
+            em.add_field(name='Email', value=x['info']['author_email'],inline=True)
+            em.add_field(name='Home page', value=x['info']['home_page'],inline=True)
+            em.add_field(name='License', value=x['info']['license'],inline=True)
             url = x['info']['package_url']
 
             await ctx.send(embed=em)
