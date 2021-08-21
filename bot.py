@@ -116,7 +116,7 @@ async def __parse_docstrings():
 
 
 try:
-    bot.run('ODc3MTYzMjA4Nzk5MDUxODA2.YRun5Q.DzsTP8m3cJ3tfWXFvKxq4j4tBTY')
+    bot.run(DISCORD_TOKEN)
     logger.info("Bot Is Off\n----------------------------------- END OF SESSION")
 except Exception as e:
     logger.warning(f"Bot Failed to initialise: {e}")
