@@ -70,7 +70,7 @@ class TicTacToe(commands.Cog):
         challenger = ctx.author
         opponent = ctx.guild.get_member(int(re.sub("[^0-9]", "", opponent)))
         invite = opponent.mention + "! " + challenger.mention + " is in inviting you to a game of Tic-Tac-Toe. Accept?"
-        if ask_for_acceptance.ask(invite, opponent, ctx.channel, self.bot):
+        if await ask_for_acceptance.ask(invite, opponent, ctx.channel, self.bot):
             await ctx.send("An epic Tic-Tac-Toe Duel is about to start between " +
                            challenger.mention + " and " + opponent.mention)
         else:
