@@ -55,8 +55,9 @@ class Fun(commands.Cog):
             x = x.json()
             pauthor = x['info']['author']
             em = discord.Embed(title=x['info']['name'], description = f'By {pauthor}')
+            url = x['info']['package_url']
             em.add_field(name='URL', value= f'[Link]({url})')
-
+            
             em.add_field(name='Email', value=x['info']['author_email'])
             em.add_field(name='Home page', value=x['info']['home_page'])
             em.add_field(name='License', value=x['info']['license'])
