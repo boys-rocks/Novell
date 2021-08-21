@@ -1,0 +1,2 @@
+thumbsup = "👍"
+thumbsdown = "👎"
