@@ -2,7 +2,7 @@ import discord
 from helpers import emojis
 
 
-def ask(message: str, who: discord.Member, channel: discord.abc.Messageable, bot: discord.ext.commands.Bot):
+async def ask(message: str, who: discord.Member, channel: discord.abc.Messageable, bot: discord.ext.commands.Bot):
     request = await channel.send(message)
     await request.add_reaction(emojis.thumbsup)
     await request.add_reaction(emojis.thumbsdown)
