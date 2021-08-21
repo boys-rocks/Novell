@@ -12,10 +12,10 @@ async def ask(message: str, who: discord.Member, channel: discord.abc.Messageabl
     while True:
         reaction, user = await bot.wait_for("reaction_add", check=check)
         if reaction.emoji == emojis.thumbsup:
-            await request.delete(1)
+            await request.delete()
             return True
         elif reaction.emoji == emojis.thumbsdown:
-            await request.delete(1)
+            await request.delete()
             return False
         else:
-            reaction.remove()
+            await reaction.remove(user)
