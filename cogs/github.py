@@ -2,57 +2,65 @@ import discord
 from discord.ext import commands
 import requests
 
-class GitHub(commands.Cog):
+
+class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(help='Get information on a github account')
-    async def ghuser(self, ctx, *, user):
-        x = requests.get(f'https://api.github.com/users/{user}')
+    @commands.command(help="Get an activity")
+    async def activity(self, ctx):
+        import requests
 
-        try:
-            title = x.json()['login']
-            link = x.json()['html_url']
-            em = discord.Embed(title=title, description=f'[User Link]({link})')
-            avatar_url = x.json()['avatar_url'] + '.png'
-            em.set_thumbnail(url=avatar_url)
-            em.add_field(name='Name', value=x.json()['name'])
-            em.add_field(name='Company', value=x.json()['company'])
-            em.add_field(name='Location', value=x.json()['location'])
-            em.add_field(name='Hireable', value=x.json()['hireable'])
-            em.add_field(name='Email', value=x.json()['email'])
-            em.add_field(name='Bio', value=x.json()['bio'])
-            em.add_field(name='Public Repos', value=x.json()['public_repos'])
-            em.add_field(name='Followers', value=x.json()['followers'])
-            em.add_field(name='Following', value=x.json()['following'])
-            await ctx.send(embed=em)
-        except Exception as ex:
-            print('Exception:', ex)
+        x = requests.get("https://www.boredapi.com/api/activity")
+        await ctx.send(
+            embed=discord.Embed(
+                title=x.json()["activity"], description=x.json()["type"]
+            )
+        )
 
-    @commands.command(help='Get information on a github repository')
-    async def ghrepo(self, ctx, user,*, repo):
-        try:
-            x = requests.get(f'https://api.github.com/repos/{user}/{repo}')
-            x = x.json()
-            title = x['full_name']
-            id0 = x['id']
-            url1 = x['html_url']
-            em = discord.Embed(title=f'[{title}]({url1}) ({id0})', description=f'')
-            owner1 = x['owner']['login']
-            owner2 = x['owner']['html_url']
-            typez = x['owner']['type']
-            em.add_field(name='Owner', value=f'[{owner1}]({owner2}), Type: {typez}')
-            em.add_field(name='Private', value=x['private'])
-            desc = x['description']
-            em.add_field(name='Descritpion', value=desc)
-            em.add_field(name='Fork', value=x['fork'])
-            em.add_field(name='Language(s)', value=x['language'])
-            em.add_field(name='Forks Count', value=x['forks_counts'])
-            em.add_field(name='License', value=x['license']['name'])
-            image_url = x['owner']['avatar_url']
-            em.set_thumbnail(url=image_url)
-        except Exception as ex:
-            print('Exception: ', ex)
+    @commands.command(help="Predict which country a name is from")
+    async def name(self, ctx, *, name):
+        y = requests.get(f"https://api.nationalize.io?name={name}")
+        result = y.json()["country"][0]["country_id"]
+        await ctx.send(f"Your name is likely from {result}")
+
+    @commands.command(help='Get information on a country')
+    async def country(self, ctx, *, name):
+        x = requests.get(f'https://restcountries.eu/rest/v2/name/{name}?fullText=true')
+        y = x.json()[0]
+        em = discord.Embed(title=name)
+        code1 = y['alpha2Code']
+        code2 = y['alpha3Code']
+        em.add_field(name='Country Code:', value=f'{code1}, {code2}')
+        callcode = y['callingCodes'][0]
+        em.add_field(name='Call Code:', value=f'{callcode}')
+        capital = y['capital']
+        em.add_field(name='Capital:', value=f'{capital}')
+        region1 = y['subregion']
+        region2 = y['region']
+        em.add_field(name='Regions:', value=f'{region1}, {region2}')
+        currency = y['currencies'][0]['code']
+        currency2 = y['currencies'][0]['name']
+        em.add_field(name='Currency:', value=f'{currency}, {currency2}')
+        language = y['languages'][0]['name']
+        em.add_field(name='Languages:', value=f'{language}')
+        flag = f'https://www.countryflags.io/{code1}/flat/64.png'
+        em.set_thumbnail(url=flag)
+        await ctx.send(embed=em)
+
+    @commands.command()
+    async def pypi(self,ctx,*,package):
+      x = requests.get(f'http://pypi.python.org/pypi/{package}/json')
+      x = x.json()
+      pauthor = x['info']['author']
+      em = discord.Embed(title=x['info']['name'], description = f'By {pauthor}')
+      em.add_field(name='URL', value= f'[Link]({url})')
+      em.add_field(name='Email', value=x['info']['author_email'])
+      em.add_field(name='Home page', value=x['info']['home_page'])
+      em.add_field(name='License', value=x['info']['license'])
+      url = x['info']['package_url']
+      
+      await ctx.send(embed=em)
 
 def setup(bot):
-    bot.add_cog(GitHub(bot))
+    bot.add_cog(Fun(bot))

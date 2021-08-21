@@ -48,6 +48,19 @@ class Fun(commands.Cog):
         em.set_thumbnail(url=flag)
         await ctx.send(embed=em)
 
+    @commands.command()
+    async def pypi(self,ctx,*,package):
+      x = requests.get(f'http://pypi.python.org/pypi/{package}/json')
+      x = x.json()
+      pauthor = x['info']['author']
+      em = discord.Embed(title=x['info']['name'], description = f'By {pauthor}')
+      url = x['info']['package_url']
+      em.add_field(name='URL', value= f'[Link]({url})')
+      em.add_field(name='Email', value=x['info']['author_email'])
+      em.add_field(name='Home page', value=x['info']['home_page'])
+      em.add_field(name='License', value=x['info']['license'])
+      
+      await ctx.send(embed=em)
 
 def setup(bot):
     bot.add_cog(Fun(bot))
