@@ -49,12 +49,22 @@ class Fun(commands.Cog):
         await ctx.send(embed=em)
 
     @commands.command()
-    async def cat(self,ctx):
-        x = requests.get('https://api.thecatapi.com/v1/images/search')
-        imageurl = x.json()[0]['url']
-        em = discord.Embed(title='Cat?')
-        em.set_image(url=imageurl)
-        await ctx.send(embed=em)
+    async def pypi(self,ctx,*,package):
+        try:
+            x = requests.get(f'http://pypi.python.org/pypi/{package}/json')
+            x = x.json()
+            pauthor = x['info']['author']
+            em = discord.Embed(title=x['info']['name'], description = f'By {pauthor}')
+            em.add_field(name='URL', value= f'[Link]({url})')
+
+            em.add_field(name='Email', value=x['info']['author_email'])
+            em.add_field(name='Home page', value=x['info']['home_page'])
+            em.add_field(name='License', value=x['info']['license'])
+            url = x['info']['package_url']
+
+            await ctx.send(embed=em)
+        except Exception as ex:
+            print('Exception: ', ex)
 
 def setup(bot):
     bot.add_cog(Fun(bot))
