@@ -51,7 +51,7 @@ class Fun(commands.Cog):
     @commands.command()
     async def pypi(self,ctx,*,package):
         try:
-            x = requests.get(f'http://pypi.python.org/pypi/{package}/json')
+            x = requests.get(f'https://pypi.python.org/pypi/{package}/json')
             x = x.json()
             pauthor = x['info']['author']
             em = discord.Embed(title=x['info']['name'], description = f'By {pauthor}')
