@@ -3,3 +3,4 @@ __pycache__
 NUUB_BOT.log
 .idea
 venv
+.env
