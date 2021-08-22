@@ -23,7 +23,7 @@ class Moderation(commands.Cog):
         await member.ban(reason=reason)
         await ctx.send(embed=discord.Embed(title='Banned: ', description=f'{member} for {reason}.'))
 
-    @commands.command("Purges Messages")
+    @commands.command(help="Purges Messages")
     @commands.has_permissions(manage_messages=True)
     async def purge(self, ctx, limit=1000):
         await ctx.channel.purge(limit=limit)
