@@ -12,7 +12,6 @@ class GetWaifu(commands.Cog):
         
         
         
-        
 
     @commands.command()
     async def waifu(self, ctx, query):
