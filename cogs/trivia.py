@@ -7,6 +7,7 @@ class Trivia(commands.Cog):
     """
     Trivia questions module
     """
+
     def __init__(self, bot):
         self.bot = bot
 

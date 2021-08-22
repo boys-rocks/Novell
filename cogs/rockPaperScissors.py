@@ -7,6 +7,7 @@ class RockPaperScissors(commands.Cog):
     """
     Play Rock Paper Scissors
     """
+
     def __init__(self, bot):
         self.bot = bot
 

@@ -16,7 +16,7 @@ class TicTacToe(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(help="Play tic_tac_toe against the computer", aliases=['ttt'])
+    @commands.command(help="Play tic_tac_toe against the computer", aliases=["ttt"])
     async def play_tic_tac_toe(self, ctx, difficulty: str):
         """
         Available difficulties:
@@ -33,7 +33,8 @@ class TicTacToe(commands.Cog):
             await ctx.send(game.to_string(True))
             await ctx.send("Where do you want to go?")
             move = await self.bot.wait_for(
-                "message", check=lambda message: message.author == ctx.author)
+                "message", check=lambda message: message.author == ctx.author
+            )
             if move.content.strip().lower() == "exit":
                 await ctx.send("Exiting...")
                 return
@@ -61,7 +62,7 @@ class TicTacToe(commands.Cog):
         else:
             await ctx.send("It's a Draw! Wanna play again?")
 
-    @commands.command(help="Play tic_tac_toe against a friend",aliases=['tttmulti'])
+    @commands.command(help="Play tic_tac_toe against a friend", aliases=["tttmulti"])
     async def play_tic_tac_toe_multiplayer(self, ctx, opponent):
         """
         Play Tic-Tac-Toe against someone on your discord server!
@@ -70,13 +71,27 @@ class TicTacToe(commands.Cog):
         challenger = ctx.author
         opponent = ctx.guild.get_member(int(re.sub("[^0-9]", "", opponent)))
         await ctx.send(" " + str(opponent))
-        invite = opponent.mention + "! " + challenger.mention + " is in inviting you to a game of Tic-Tac-Toe. Accept?"
+        invite = (
+            opponent.mention
+            + "! "
+            + challenger.mention
+            + " is in inviting you to a game of Tic-Tac-Toe. Accept?"
+        )
         if await ask_for_acceptance.ask(invite, opponent, ctx.channel, self.bot):
-            await ctx.send("An epic Tic-Tac-Toe Duel is about to start between " +
-                           challenger.mention + " and " + opponent.mention)
+            await ctx.send(
+                "An epic Tic-Tac-Toe Duel is about to start between "
+                + challenger.mention
+                + " and "
+                + opponent.mention
+            )
         else:
-            await ctx.send("Hey " + challenger.mention + "! I am sad to inform you " +
-                           opponent.mention + " hasn't accepted the invite")
+            await ctx.send(
+                "Hey "
+                + challenger.mention
+                + "! I am sad to inform you "
+                + opponent.mention
+                + " hasn't accepted the invite"
+            )
             return
         active_player = opponent
         game = TicTacToeGame("X", "O", TicTacToeGame.PLAYER, "")
@@ -84,7 +99,8 @@ class TicTacToe(commands.Cog):
             await ctx.send("It is " + active_player.mention + "'s turn!")
             await ctx.send(game.to_string(including_number_grid=True))
             move = await self.bot.wait_for(
-                "message", check=lambda message: message.author == active_player)
+                "message", check=lambda message: message.author == active_player
+            )
             if move.content.strip().lower() == "exit":
                 await ctx.send(active_player.mention + " gave up!")
                 return
@@ -104,7 +120,9 @@ class TicTacToe(commands.Cog):
         elif winner == game.COMPUTER:
             await ctx.send(challenger.mention + " won against " + opponent.mention)
         else:
-            await ctx.send("It's a draw between " + challenger.mention + " and " + opponent.mention)
+            await ctx.send(
+                "It's a draw between " + challenger.mention + " and " + opponent.mention
+            )
 
 
 def setup(bot):

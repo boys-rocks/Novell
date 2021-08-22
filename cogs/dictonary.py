@@ -12,6 +12,7 @@ class Dictionary(commands.Cog):
     """
     Dictionary Module
     """
+
     def __init__(self, bot):
         self.bot = bot
 

@@ -16,6 +16,7 @@ class AFK(commands.Cog):
     """
     AFK Module
     """
+
     def __init__(self, bot):
         self.bot = bot
 

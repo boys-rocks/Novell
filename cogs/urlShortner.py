@@ -5,13 +5,14 @@ import requests
 
 def shortner(url):
     with requests.get(
-            f'https://cutt.ly/api/api.php?key=18e866ec48230e692db0f4a225c72fcabfb1e&short={url}'
+        f"https://cutt.ly/api/api.php?key=18e866ec48230e692db0f4a225c72fcabfb1e&short={url}"
     ) as response:
         return f"{response.json()['url']['shortLink']}"
 
 
 class UrlShortner(commands.Cog):
     "Command for shortening urls"
+
     def __init__(self, bot):
         self.bot = bot
 

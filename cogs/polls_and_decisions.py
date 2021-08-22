@@ -3,11 +3,15 @@ from discord.ext import commands
 import datetime
 from random import choice
 from requests.models import Response
+
 """
 merged choose cog into this cog
 """
+
+
 class Helpful(commands.Cog):
     "Polls and decision making commands"
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -68,7 +72,7 @@ class Helpful(commands.Cog):
                             return
                     return
 
-    @commands.command(help = "Multi Choice Polls")
+    @commands.command(help="Multi Choice Polls")
     async def multi_choice(self, ctx, desc, *choices):
         await ctx.message.delete()
 
@@ -97,6 +101,7 @@ class Helpful(commands.Cog):
         msg = await ctx.send(embed=embed)
         for i in range(1, len(choices) + 1):
             await msg.add_reaction(self.reactions[i])
+
     @commands.command(help="Coin toss command")
     async def toss(self, ctx):
         await ctx.send(f"Coin is tossed, and.... it's {choice(['HEADS','TAILS'])}")
