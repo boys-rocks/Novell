@@ -23,3 +23,5 @@ jobs:
           git checkout $GITHUB_HEAD_REF
           git commit -am "fixup: Format Python code with Black"
           git push
+      - name: re-Run black --check .
+        run: black --check .
