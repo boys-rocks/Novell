@@ -12,10 +12,14 @@ import time
 logging.basicConfig(level=logging.INFO)
 os.sys.path.append("/ffmpeg/bin")
 
-DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
+#DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
+DISCORD_TOKEN = "ODc2NDU3NDExOTQxMTIyMTA4.YRkWkg.ajSmhzm1NUz1BDN8FdgQ0m34sok"
 MONGODB = os.environ.get("MONGODB", None)
 
-bot = commands.Bot(command_prefix="nb.", help_command=None)
+
+intents = discord.Intents.default()
+intents.members = True
+bot = commands.Bot(command_prefix="nb.", help_command=None, intents=intents)
 
 client = MongoClient(MONGODB)
 db = client["discord"]
