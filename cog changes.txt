@@ -1,0 +1,6 @@
+Moved test.py commands into base
+moved chuckjokes, insult, and programming jokes into jokes cog
+moved getPassword.py into password_generator cog (still two password generating commands, dont know which one were keeping)
+moved choose.py cog into poll.py cog and renamed it polls_and_decisions.py
+moved github search cog into wikipedia search cog and renamed the cog search.py
+^also took the pypi search command out of fun and put it into search cog, but left everything else in fun.py
