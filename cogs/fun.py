@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import requests
-
+import random
 
 class Fun(commands.Cog):
     def __init__(self, bot):
@@ -75,5 +75,12 @@ class Fun(commands.Cog):
         em.set_image(url=imageurl)
         await ctx.send(embed=em)
 
+    @commands.command()
+    async def meme(self, ctx):
+        x = requests.get('https://meme-api.herokuapp.com/gimme').json()
+        embed = discord.Embed(title=x['title'])
+        url = x['url']
+        embed.set_image(url=url)
+        await ctx.send(embed=embed)
 def setup(bot):
     bot.add_cog(Fun(bot))
