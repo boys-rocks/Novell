@@ -1,2 +1,0 @@
-thumbsup = "👍"
-thumbsdown = "👎"
