@@ -12,8 +12,7 @@ import time
 logging.basicConfig(level=logging.INFO)
 os.sys.path.append("/ffmpeg/bin")
 
-#DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
-DISCORD_TOKEN = "ODc2NDU3NDExOTQxMTIyMTA4.YRkWkg.ajSmhzm1NUz1BDN8FdgQ0m34sok"
+DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
 MONGODB = os.environ.get("MONGODB", None)
 
 
