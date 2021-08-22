@@ -6,7 +6,7 @@ class GitHub(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command('Get information on a github account')
+    @commands.command(help='Get information on a github account')
     async def ghuser(self, ctx, *, user):
         x = requests.get(f'https://api.github.com/users/{user}')
 
@@ -37,7 +37,7 @@ class GitHub(commands.Cog):
             title = x['full_name']
             id0 = x['id']
             url1 = x['html_url']
-            em = discord.Embed(title=f'[{title}]({url1}) ({id0})', description=f'')
+            em = discord.Embed(title=f'{id0}', description=f'[{title}]({url1})')
             owner1 = x['owner']['login']
             owner2 = x['owner']['html_url']
             typez = x['owner']['type']
@@ -47,10 +47,11 @@ class GitHub(commands.Cog):
             em.add_field(name='Descritpion', value=desc)
             em.add_field(name='Fork', value=x['fork'])
             em.add_field(name='Language(s)', value=x['language'])
-            em.add_field(name='Forks Count', value=x['forks_counts'])
+            em.add_field(name='Forks Count', value=x['forks'])
             em.add_field(name='License', value=x['license']['name'])
             image_url = x['owner']['avatar_url']
             em.set_thumbnail(url=image_url)
+            await ctx.send(embed=em)
         except Exception as ex:
             print('Exception: ', ex)
 
