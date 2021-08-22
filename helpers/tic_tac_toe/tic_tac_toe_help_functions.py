@@ -50,6 +50,7 @@ def force_player_to_block(game):
 
 # ai functions:
 
+
 def corner_center_side(game):
     possible_moves = corner_move(game)
     if len(possible_moves) > 0:
