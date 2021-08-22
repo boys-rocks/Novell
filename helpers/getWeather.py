@@ -1,6 +1,7 @@
 import requests
 import os
 from helpers.logHelper import logger
+
 WEATHER_API = os.environ.get("WEATHER_API", None)
 class settings():
     def __init__(self):
