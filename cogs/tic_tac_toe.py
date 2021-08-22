@@ -96,6 +96,7 @@ class TicTacToe(commands.Cog):
                 await ctx.send("You can't choose field " + str(move))
                 continue
             game.make_move(move)
+            active_player = opponent if active_player == challenger else challenger
         winner = game.get_winner()
         await ctx.send(game.to_string())
         if winner == game.PLAYER:
