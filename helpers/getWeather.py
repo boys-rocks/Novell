@@ -5,7 +5,7 @@ from helpers.logHelper import logger
 WEATHER_API = os.environ.get("WEATHER_API", None)
 
 
-class settings():
+class settings:
     def __init__(self):
         self.endpoint = "https://api.weatherbit.io/"
 
@@ -34,12 +34,12 @@ def parse_location(location_received):
 
     for sub_list in char_list:
         for index, value in enumerate(sub_list):
-            if value == ' ' and index != 0:
-                sub_list[index] = '+'
+            if value == " " and index != 0:
+                sub_list[index] = "+"
 
     temp_list = []
     for sub_list in char_list:
-        temp_string = ''
+        temp_string = ""
         for char in sub_list:
             temp_string += char
         temp_list.append(temp_string)
@@ -53,8 +53,12 @@ def getWeather(location):
     location = parse_location(location)
 
     try:
-        data_one = request("GET", "v2.0/current?units=I&city=" + location + "&key=" + WEATHER_API)
-        data_two = request("GET", "v2.0/current?units=M&city=" + location + "&key=" + WEATHER_API)
+        data_one = request(
+            "GET", "v2.0/current?units=I&city=" + location + "&key=" + WEATHER_API
+        )
+        data_two = request(
+            "GET", "v2.0/current?units=M&city=" + location + "&key=" + WEATHER_API
+        )
         tempf = data_one["data"][0]["temp"]
         tempc = data_two["data"][0]["temp"]
         return tempf, tempc
