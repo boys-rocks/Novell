@@ -2,13 +2,8 @@ import sys
 import discord
 from discord.ext import commands
 from helpers import getPrice
-<<<<<<< HEAD
 
 from helpers.save import save, load, newaccount, exist
-=======
-from helpers.manageacc import newaccount, exist
-from helpers.save import save, load
->>>>>>> nuub-botV0.02
 
 
 class Crypto(commands.Cog):
