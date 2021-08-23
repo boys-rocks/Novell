@@ -58,7 +58,6 @@ class AFK(commands.Cog):
                 {"_id": "afk"}, {"$set": {f"k{str(ctx.author.id)}": "10"}}
             )
         except Exception as ex:
-
             print(ex)
 
     async def afkcheck(self, message):
@@ -82,7 +81,6 @@ class AFK(commands.Cog):
                                 {"_id": "afk"},
                                 {"$unset": {f"k{str(message.author.id)}": ""}},
                             )
-
                             embed = discord.Embed(
                                 title="Welcome back",
                                 description="Removed the AFK.",

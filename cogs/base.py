@@ -1,7 +1,10 @@
 import discord
 from discord.ext import commands
 from helpers import logHelper
+<<<<<<< HEAD
 from bot import collection
+=======
+>>>>>>> nuub-botV0.02
 
 
 class Base(commands.Cog):
