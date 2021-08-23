@@ -15,7 +15,7 @@ class GetQuote(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(help="Retrieves a random anime quote")
     async def quote(self, ctx):
         await ctx.send(fetch_quote())
 

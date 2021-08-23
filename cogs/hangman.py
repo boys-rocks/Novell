@@ -17,7 +17,7 @@ class Hangman(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(help="Play Hangman")
     async def hangman(self, ctx):
         chosen_word = choice(word_list)
         word_length = len(chosen_word)

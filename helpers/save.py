@@ -1,24 +1,89 @@
-import pickle as cPickle
-from helpers.logHelper import logger
-import classes.paper_trade_class
+from classes.paper_trade_class import account
+from bot import collection
+
+
+def exist(name):
+    if collection.find_one({"_id": "paper_trading_accounts", name: {"$exists": True}}):
+        return True
+    else:
+        return False
+
+
+def newaccount(x):
+    if exist(x):
+        return "Account already Exists"
+    else:
+        newaccount = account(x)
+        save(newaccount, x)
+        return "Paper trading account created!"
 
 
 def save(e, name):
     try:
-        with open("userdata/" + name + ".pickle", "wb") as output_file:
-            cPickle.dump(e, output_file)
-            print("Saved!")
+        userdata = None
+        if collection.find_one(
+            {"_id": "paper_trading_accounts", name: {"$exists": True}}
+        ):
+            work = collection.update_one(
+                {"_id": "paper_trading_accounts"},
+                {
+                    "$set": {
+                        name: [
+                            e.name,
+                            e.balance,
+                            e.portfolioValue,
+                            e.coins,
+                            e.recentTrades,
+                        ]
+                    }
+                },
+            )
+            userdata = collection.find_one({"_id": "paper_trading_accounts"})
+        else:
+            work = collection.update(
+                {"_id": "paper_trading_accounts"},
+                {
+                    "$set": {
+                        name: [
+                            e.name,
+                            e.balance,
+                            e.portfolioValue,
+                            e.coins,
+                            e.recentTrades,
+                        ]
+                    }
+                },
+            )
+            userdata = collection.find_one({"_id": "paper_trading_accounts"})
     except Exception as e:
-        logger.warning(e)
+        print(e)
 
 
-# pickle_file will be closed at this point, preventing your from accessing it any further
+# save(test, "goth")
+# test.balance = 7000
+# save(test, "gothcow")
 def load(name):
     try:
-        with open("userdata/" + name + ".pickle", "rb") as input_file:
-            e = cPickle.load(input_file)
-            print(e)
-            print("Loaded!")
-            return e
+        if collection.find_one(
+            {"_id": "paper_trading_accounts", name: {"$exists": True}}
+        ):
+            loadAccount = account(name)
+            accountSave = collection.find_one({"_id": "paper_trading_accounts"})[name]
+            print("account loaded " + str(accountSave))
+            loadAccount.balance = accountSave[1]
+            loadAccount.portfolioValue = accountSave[2]
+            loadAccount.coins = accountSave[3]
+            loadAccount.recentTrades = accountSave[4]
+            return loadAccount
+        else:
+            print("acc doesnt exist")
+            return "Account Doesnt Exist"
+
     except Exception as e:
-        logger.warning(e)
+        print(e)
+
+
+# print("testingload")
+# myacc = load("goth")
+# print(myacc.portfolioValue)
+# print(myacc.balance)

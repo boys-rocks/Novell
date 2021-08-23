@@ -11,7 +11,7 @@ class HigherLower(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(help="Play Higher/Lower")
     async def higherlower(self, ctx):
         def pick():
             return choice(data)

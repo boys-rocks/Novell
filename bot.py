@@ -6,19 +6,18 @@ import logging
 from pymongo import MongoClient
 from helpers.getPrefix import getPrefix
 import ast
-from helpers.getWeather import getLocationKey, getWeather
 import time
+from pretty_help import PrettyHelp
 
 logging.basicConfig(level=logging.INFO)
-os.sys.path.append("/ffmpeg/bin")
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
 MONGODB = os.environ.get("MONGODB", None)
 
-
 intents = discord.Intents.default()
 intents.members = True
-bot = commands.Bot(command_prefix="nb.", help_command=None, intents=intents)
+bot = commands.Bot(command_prefix="*", help_command=PrettyHelp(), intents=intents)
+# bot = commands.Bot(command_prefix='*', help_command=None)
 
 client = MongoClient(MONGODB)
 db = client["discord"]
@@ -36,6 +35,47 @@ for filename in os.listdir("./cogs"):
             )
     except Exception as e:
         logger.warning(f"Unable to load cog: {e}")
+"""
+check for frequency data in mongo and create a doc for it if it doesnt exist
+"""
+if not collection.find_one({"_id": "word_command_freq"}):
+    freq_data_exist = collection.find_one({"_id": "word_command_freq"})
+    collection.insert_one({"_id": "word_command_freq"})
+if not collection.find_one({"_id": "paper_trading_accounts"}):
+    freq_data_exist = collection.find_one({"_id": "paper_trading_accounts"})
+    collection.insert_one({"_id": "paper_trading_accounts"})
+
+
+@bot.event
+async def on_message(message):
+    user = message.author
+    contents = message.content.split(" ")
+    word = contents[0]
+    member = str(message.author)
+    if user.bot:
+        pass
+    elif not word:
+        print("no words to add")
+    else:
+        try:
+            if "." in word:
+                word = word.replace(".", "(Dot)")
+            if "$" in word:
+                word = word.replace("$", "(Dollar_Sign)")
+        except Exception as e:
+            print(str(e) + "Caught in on_message")
+            logger.warning(e)
+        print(member + ": " + word)
+        # is_in_word_command_freq=collection.find_one({"_id":"word_command_freq",word:{"$size": 0}})
+        # print(is_in_word_command_freq)
+        if collection.find_one({"_id": "word_command_freq", word: {"$exists": True}}):
+            collection.update_one({"_id": "word_command_freq"}, {"$inc": {word: 1}})
+            print("incremented freq value " + word + " by 1 in word_command_freq doc")
+        else:
+            print(collection.update({"_id": "word_command_freq"}, {"$set": {word: 1}}))
+            print("added " + word + " to word_command_freq")
+        # print(collection.find_one({"_id": "word_command_freq"}))
+    await bot.process_commands(message)
 
 
 @bot.event
@@ -51,72 +91,6 @@ async def latency(ctx):
     time_2 = time.perf_counter()
     ping = round((time_2 - time_1) * 1000)
     await ctx.send(f"ping = {ping}")
-
-
-@bot.command(help="Chage prefix command, Refactor into base cog?")
-async def prefix(ctx, prefix):
-    collection.update_one({"_id": ctx.guild.id}, {"$set": {"prefix": prefix}})
-    await ctx.send(
-        embed=discord.Embed(
-            title="Updated Prefix: ", description=f"New prefix: {prefix}"
-        )
-    )
-
-
-@bot.command("Help command in bot.py file, refactor into help cog?")
-async def helpv1(ctx):
-    docstring_values = await __parse_docstrings()
-    caller_message = ctx.message.content
-    if len(caller_message.split()) == 1:
-        # The message which called the help command has no params
-        message_text = "Available Commands:\n```\n"
-        for cog in docstring_values.keys():
-            message_text += f"* {cog}"
-        message_text += "\n```"
-        await ctx.send(message_text)
-    else:
-        # The command has parameters, search for cog with required name
-        cog = caller_message.split()[1]
-        try:
-            em = discord.Embed()
-            em.add_field(name="name", value=cog, inline=False)
-            for key, value in docstring_values[cog].items():
-                em.add_field(name=key, value=value, inline=False)
-            await ctx.send(embed=em)
-        except:
-            em = discord.Embed(
-                title="Error", description=f"Could not find command {cog}"
-            )
-            await ctx.send(embed=em)
-
-
-@bot.command()
-async def check(ctx):
-    await ctx.send("success")
-
-
-async def __parse_docstring(filename):
-    with open(filename, "r") as f:
-        contents = f.read()
-    module = ast.parse(contents)
-    docstring = ast.get_docstring(module)
-    if not docstring:
-        docstring = "description: <Unknown>\n" + "syntax: <Unknown>"
-    return {
-        line.split(": ")[0]: "".join(line.split(": ")[1:])
-        for line in docstring.split("\n")
-        if line.strip()
-    }
-
-
-async def __parse_docstrings():
-    values = {}
-    for filename in os.listdir("./cogs"):
-        if filename.endswith(".py"):
-            values[filename.strip(".py")] = await __parse_docstring(
-                os.path.join("cogs", filename)
-            )
-    return values
 
 
 try:

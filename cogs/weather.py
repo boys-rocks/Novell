@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from helpers.getWeather import getLocationKey, getWeather
+from helpers.getWeather import getWeather
 
 
 class Weather(commands.Cog):
@@ -12,19 +12,10 @@ class Weather(commands.Cog):
         self.bot = bot
 
     @commands.command(help="Get Tempurature of Specified Location")
-    async def weather(self, ctx, location):
-        location_key = getLocationKey(location)
-        location_temp = getWeather(location_key[0])
+    async def weather(self, ctx, *, location):
+        location_temp_f, location_temp_c = getWeather(location)
         await ctx.send(
-            "The Tempurature of "
-            + location
-            + ", "
-            + location_key[1]
-            + " is "
-            + str(location_temp[0])
-            + "F,  "
-            + str(location_temp[1])
-            + "C"
+            f"The tempurature of {location.title()} is {location_temp_f} F and {location_temp_c} C."
         )
 
 

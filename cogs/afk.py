@@ -12,19 +12,9 @@ db = client["discord"]
 collection = db["bot"]
 
 
-
-
-
-
 class AFK(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-
-
-
-
-
 
     @commands.Cog.listener("on_message")
     async def on_message(self, message):
@@ -46,7 +36,7 @@ class AFK(commands.Cog):
             except Exception as ex:
                 print("Exception: ", ex)
 
-    @commands.command()
+    @commands.command(help="Toggle afk command")
     async def afk(self, ctx, *, reason="AFK"):
         await self.afkcommand(ctx, reason)
 
@@ -68,17 +58,6 @@ class AFK(commands.Cog):
                 {"_id": "afk"}, {"$set": {f"k{str(ctx.author.id)}": "10"}}
             )
         except Exception as ex:
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
             print(ex)
 
     async def afkcheck(self, message):
@@ -93,20 +72,6 @@ class AFK(commands.Cog):
                     except Exception as ex:
                         print("Exception: ", ex)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     try:
                         if results[str(f"k{message.author.id}")] == "10":
                             collection.update_one(
@@ -116,21 +81,6 @@ class AFK(commands.Cog):
                                 {"_id": "afk"},
                                 {"$unset": {f"k{str(message.author.id)}": ""}},
                             )
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
                             embed = discord.Embed(
                                 title="Welcome back",
                                 description="Removed the AFK.",
@@ -141,43 +91,6 @@ class AFK(commands.Cog):
                         print(ex)
             except Exception as ex:
                 pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def setup(bot):

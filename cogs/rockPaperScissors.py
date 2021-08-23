@@ -4,10 +4,14 @@ from random import choice
 
 
 class RockPaperScissors(commands.Cog):
+    """
+    Play Rock Paper Scissors
+    """
+
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(help="Play Rock Paper Scissors")
     async def rps(self, ctx):
         avl_moves = ["rock", "paper", "scissors"]
         await ctx.send(f"rock, paper, or scissors? Choose wisely...")

@@ -7,7 +7,7 @@ class GetWaifu(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command("Get Waifu")
     async def waifu(self, ctx, query):
         with requests.get(url=f"https://api.waifu.pics/sfw/{query}") as response:
             try:

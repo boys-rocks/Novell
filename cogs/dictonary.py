@@ -9,10 +9,14 @@ HEADER = {"Authorization": OWL_BOT_TOKEN}
 
 
 class Dictionary(commands.Cog):
+    """
+    Dictionary Module
+    """
+
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(help="Get word definitions")
     async def dictionary(self, ctx, word):
         with requests.get(
             url=f"https://owlbot.info/api/v4/dictionary/{word}/",

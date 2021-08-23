@@ -11,13 +11,15 @@ def shortner(url):
 
 
 class UrlShortner(commands.Cog):
+    "Command for shortening urls"
+
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(help="Shrinks url")
     async def shrink(self, ctx, full_url):
 
-        await ctx.send(f"```shortened link:\n {shortner(full_url)}```")
+        await ctx.send(f"shortend link:\n {shortner(full_url)}")
 
 
 def setup(bot):
