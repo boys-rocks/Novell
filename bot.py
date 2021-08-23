@@ -6,6 +6,7 @@ import logging
 from pymongo import MongoClient
 from helpers.getPrefix import getPrefix
 import ast
+from helpers.getWeather import getWeather
 import time
 from pretty_help import PrettyHelp
 
