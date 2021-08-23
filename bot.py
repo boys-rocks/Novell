@@ -6,7 +6,7 @@ import logging
 from pymongo import MongoClient
 from helpers.getPrefix import getPrefix
 import ast
-from helpers.getWeather import getLocationKey, getWeather
+from helpers.getWeather import getWeather
 import time
 
 logging.basicConfig(level=logging.INFO)
