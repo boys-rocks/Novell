@@ -1,6 +1,6 @@
 __pycache__
 .vscode
-NUUB_BOT.log
+*.log
 .idea
 venv
 .env

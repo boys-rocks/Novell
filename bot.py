@@ -24,18 +24,21 @@ client = MongoClient(MONGODB)
 db = client["discord"]
 collection = db["bot"]
 
-for filename in os.listdir("./cogs"):
-    try:
-        if filename.endswith(".py"):
-            bot.load_extension(f"cogs.{filename[:-3]}")
-            logger.info(f"Succesfully Loaded Cog: {filename}")
-        else:
-            print(f"Unable to load {filename}")
-            logger.warning(
-                f"Unable to load {filename}, is it suppose to be in cog directory?"
-            )
-    except Exception as e:
-        logger.warning(f"Unable to load cog: {e}")
+all_categories = [category for category in os.listdir("./cogs")]
+print(all_categories)
+for category in all_categories:
+    for filename in os.listdir(f"./cogs/{category}"):
+        try:
+            if filename.endswith(".py"):
+                bot.load_extension(f"cogs.{category}.{filename[:-3]}")
+                logger.info(f"Succesfully Loaded Cog: {filename}")
+            else:
+                print(f"Unable to load {filename}")
+                logger.warning(
+                    f"Unable to load {filename}, is it suppose to be in cog directory?"
+                )
+        except Exception as e:
+            logger.warning(f"Unable to load cog: {e}")
 """
 check for frequency data in mongo and create a doc for it if it doesnt exist
 """
