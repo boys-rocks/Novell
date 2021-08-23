@@ -1,15 +1,8 @@
-# Standard Libraries
-import random
-
 # Third party libraries
 import discord
 from discord.ext import commands
 from random import choice
 import string
-
-"""
-merged getPassword into this cog
-"""
 
 
 class PasswordGenerator(commands.Cog):
@@ -18,11 +11,9 @@ class PasswordGenerator(commands.Cog):
     Generates a password from unicode decimal ranges.
     """
 
-    def __init__(self, client):
-        """
-        Initialize cog.
-        """
-        self.client = client
+    def __init__(self, bot):  # Initialize cog.
+
+        self.bot = bot
 
     @commands.command(help="Generates strong password")
     async def getpassword(self, ctx, query=15):
@@ -34,5 +25,5 @@ class PasswordGenerator(commands.Cog):
 
 
 # Standard cog setup.
-def setup(client):
-    client.add_cog(PasswordGenerator(client))
+def setup(bot):
+    bot.add_cog(PasswordGenerator(bot))

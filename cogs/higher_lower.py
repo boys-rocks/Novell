@@ -1,8 +1,6 @@
 import discord
 from discord.ext import commands
 from random import choice
-
-from requests.models import guess_filename
 from resources.higherlowerdata import data
 from resources.higherlowerdata import reaction_negative, reaction_positive
 

@@ -10,7 +10,7 @@ def shortner(url):
         return f"{response.json()['url']['shortLink']}"
 
 
-class UrlShortner(commands.Cog):
+class UrlShortener(commands.Cog):
     "Command for shortening urls"
 
     def __init__(self, bot):
@@ -23,4 +23,4 @@ class UrlShortner(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(UrlShortner(bot))
+    bot.add_cog(UrlShortener(bot))
