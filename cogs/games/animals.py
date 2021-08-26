@@ -19,7 +19,7 @@ class animals(commands.Cog):
   async def cat(ctx):
       catmbed = discord.Embed(title="oOo a Dog!")
       async with aiohttp.ClientSession() as sesh:
-        async with sesh.get('https://www.reddit.com/r/dog/new.json?sort=hot') as resp:
+        async with sesh.get('https://www.reddit.com/r/DOG/new.json?sort=hot') as resp:
           res = await resp.json()
       try:
         catmbed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
