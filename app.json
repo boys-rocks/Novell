@@ -1,0 +1,39 @@
+{
+    "name": "nuub-bot",
+    "description": "nuub-bot is a multipurpose bot built in python",
+    "keywords": [
+      "discord-bot",
+      "python3",
+      "discord.py"
+    ],
+    "repository": "https://github.com/baneetparmar/nuub_bot",
+    "env": {
+        "DISCORD_TOKEN": {
+          "description": "The auth token for a Discord bot",
+          "required": true
+        },
+        "MONGODB": {
+          "description": "The URI for MongoDB",
+          "required": false
+        },
+        "WEATHER_API": {
+          "description": "API token from __website__",
+          "required": false
+        }
+      },
+    "logo": "https://i.imgur.com/dEXOL4I.png",
+    "success_url": "/welcome",
+    "image": "heroku/python",
+
+    "buildpacks": [
+      {
+        "url": "https://github.com/xrisk/heroku-opus"
+      },
+      {
+          "url":"https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+          },
+      {
+            "url":"heroku/python"
+      }
+    ]
+  }
