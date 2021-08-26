@@ -7,6 +7,20 @@
       "discord.py"
     ],
     "repository": "https://github.com/baneetparmar/nuub_bot",
+    "env": {
+        "DISCORD_TOKEN": {
+          "description": "The auth token for a Discord bot",
+          "required": true
+        },
+        "MONGODB": {
+          "description": "The URI for MongoDB",
+          "required": false
+        },
+        "WEATHER_API": {
+          "description": "API token from __website__",
+          "required": false
+        }
+      },
     "logo": "https://i.imgur.com/dEXOL4I.png",
     "success_url": "/welcome",
     "image": "heroku/python",
