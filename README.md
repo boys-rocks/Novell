@@ -58,6 +58,12 @@ Before submitting your PR, consider running some code formatter on the lines you
 
 Please refrain from formatting the whole file if you just change some small part of it. If you feel the need to tidy up some particularly egregious code, then do that in a separate PR.
 
+# SELF DEPLOY
+
+Get a personal instance of the bot on heroku for your server.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/baneetparmar/nuub_bot/tree/main)
+
 # License
 
 <a href="https://choosealicense.com/licenses/mit/">MIT<a/>
