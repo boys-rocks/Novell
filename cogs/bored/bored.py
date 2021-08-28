@@ -59,7 +59,23 @@ class Bored(commands.Cog):
         em = discord.Embed(title="Cat?")
         em.set_image(url=imageurl)
         await ctx.send(embed=em)
-
+    @commands.command(help="Picture of Dog")
+    async def dog(ctx):
+      catmbed = discord.Embed(title="oOo a Dog!")
+      async with aiohttp.ClientSession() as sesh:
+        async with sesh.get('https://www.reddit.com/r/DOG/new.json?sort=hot') as resp:
+          res = await resp.json()
+      try:
+        catmbed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
+      except:
+        catmbed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
+      await ctx.reply(embed=catmbed)
+    @commands.command(help="5 pictures of dogs and cats \:D")
+    async def awwbomb(ctx):
+    async with sesh.get('https://www.reddit.com/r/dog/new.json?sort=hot') as resp:
+        res = await resp.json()
+    for x in range(0,5):
+        await ctx.send(f"{res['data']['children'] [random.randint(0, 25)]['data']['url']}")
     @commands.command(help="Get Quizzed on trivia questions!")
     async def trivia(self, ctx):
         with requests.get(url=f"http://jservice.io/api/random") as response:
