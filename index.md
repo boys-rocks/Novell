@@ -74,8 +74,13 @@
       * Usage: ``` nb.projoke ```
       * Description: On running this command, NUUB-BOT will output a joke to satisfy your corny programmer humor itch.
 * Quote Commands -
+  * Quote:
+      * Usage: ``` nb.quote ```
+      * Description: On running this command, NUUB-BOT will output a sick and totally not edgy anime character quote, along with name of the quoted character and the anime they are from
 * Waifu Commands -
-
+  * Get Waifu:
+      * Usage: ``` nb.waifu <search criteria>```
+      * Description: On running this command, NUUB-BOT will search the web for the best waifu to match your search criteria.
 
 #### Game Commands
 
