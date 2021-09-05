@@ -5,3 +5,5 @@ __pycache__
 venv
 .env
 NUUB_BOT.log
+temp/avatar.svg
+temp/avatar_mod.png

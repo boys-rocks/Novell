@@ -12,21 +12,21 @@ class genav(commands.Cog):
         self.bot = bot
 
     @commands.command(help="Generate random av")
-    async def genav(ctx, seed=None):
+    async def genav(self, ctx, seed=None):
         if seed is None:
-            seed = random.sample(string.ascii_letters, 5)
+            seed = "".join(random.sample(string.ascii_letters, random.randint(1, 10)))
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://avatars.dicebear.com/api/micah/{seed}.svg?mood[]=happy"
+                f"https://avatars.dicebear.com/api/avataaars/{seed}.svg?mood[]=happy"
             ) as resp:
                 img_data = await resp.content.read()
-        with open("img.svg", "wb") as handler:
+        with open("./temp/avatar.svg", "wb") as handler:
             handler.write(img_data)
-        drawing = svg2rlg("img.svg")
-        renderPM.drawToFile(drawing, "img2.png", fmt="PNG")
-        with open("img2.png", "rb") as fh:
-            f = discord.File(fh, filename="av.png")
-        await ctx.reply(file=f)
+        drawing = svg2rlg("./temp/avatar.svg")
+        renderPM.drawToFile(drawing, "./temp/avatar_mod.png", fmt="PNG")
+        with open("./temp/avatar_mod.png", "rb") as fhand:
+            file = discord.File(fhand, filename="avatar.png")
+        await ctx.reply(file=file)
 
 
 def setup(bot):
