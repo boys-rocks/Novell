@@ -16,7 +16,7 @@
       * Usage: ``` nb.multi_choice <option-one> <option-two> ... <option-n>```
       * Description: Input a list of choices to NUUB-BOT to generate a multiple choice poll. Users interact with the poll by selecting the preset reactions on the poll message NUUB-BOT outputs on command run.
   * Poll (Yes / No Question):
-      * Usage: ``` nb.poll <Yes / no question> ```
+      * Usage: ``` nb.poll <yes / no question> ```
       * Description: Input a yes or no question to NUUB-BOT to generate a poll for. Users interact with the poll by selecting the preset reactions on the poll message NUUB-BOT outputs on command run.
   * Toss:
       * Usage: ``` nb.toss ```
@@ -34,8 +34,32 @@
       * Usage: ``` nb.purge <n> ```
       * Description: Permanently deletes chat messages in the channel it is ran in, starting with the most reason message and going until the nth message (so long as n is less than 1000).
       * Permission: manage_messages = True
-#### Boredom / Fun Commands
 
+
+
+#### Boredom / Fun Commands
+* Boredom Commands -
+  * Activity:
+      * Usage: ``` nb.activity ```
+      * Description: On running this command, NUUB-BOT will output a suggested activity.
+  * Cat:
+      * Usage: ``` nb.cat ``
+      * Description: On running this command, NUUB-BOT will output an image of a cute cat.
+  * Country:
+      * Usage: ``` nb.country <country name>```
+      * Description: Input a country to NUUB-BOT with this command and it will output information on the country provided.
+  * Meme:
+      * Usage: ``` nb.meme ```
+      * Description: On running this command, NUUB-BOT will output a hilarious meme image.
+  * Name(Country guesser):
+      * Usage: ``` nb.name <name> ```
+      * Description: Input a name to NUUB-BOT with this command and it will guess the country of origin of the provided name.
+  * Trivia: 
+      * Usage: ``` nb.trvia ```
+      * Description: On running this command, NUUB-BOT will output a fun trivia fact to enhance your noodle.
+* Quote Commands -
+* Joke Commands -
+* Waifu Commands -
 
 
 #### Game Commands
