@@ -43,7 +43,7 @@
       * Usage: ``` nb.activity ```
       * Description: On running this command, NUUB-BOT will output a suggested activity.
   * Cat:
-      * Usage: ``` nb.cat ``
+      * Usage: ``` nb.cat ```
       * Description: On running this command, NUUB-BOT will output an image of a cute cat.
   * Country:
       * Usage: ``` nb.country <country name>```
