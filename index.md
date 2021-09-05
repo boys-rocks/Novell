@@ -8,7 +8,7 @@
   * Top Commands:
       * Usage: ```nb.topcommands <n>```
       * Description: Input a number less than the total number of NUUB-BOT commands and receive a chronological list of the NUUB-BOT command's usage. The list starts with the highest used command and outputs the frequency of commands until the nth command is reached.
-* Decision / Polling -
+* Decision / Polling Commands -
   * Choose:
       * Usage: ``` nb.choose <option-one> <option-two> ... <option-n> ```
       * Description: Input a list of choices for NUUB-BOT to make a selection from. Options must be one word.
@@ -21,6 +21,19 @@
   * Toss:
       * Usage: ``` nb.toss ```
       * Description: Input this command and NUUB-BOT will output a heads or tails response randomly.
+* Moderation Commands -
+  * Ban User From Server:
+      * Usage: ``` nb.ban <user name> <reason> ```
+      * Description: Bans user from server for a provided reason.
+      * Permission: ban_members = True
+  * Kick User From Server:
+      * Usage: ``` nb.kick <user name> <reason> ```
+      * Description: Kicks user from server for a provided reason.
+      * Permission: kick_members = True
+  * Purge Chat Messages:
+      * Usage: ``` nb.purge <n> ```
+      * Description: Permanently deletes chat messages in the channel it is ran in, starting with the most reason message and going until the nth message (so long as n is less than 1000).
+      * Permission: manage_messages = True
 #### Boredom / Fun Commands
 
 
