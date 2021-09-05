@@ -110,3 +110,11 @@
   * Convert hexadecimal to decimal
       * Usage: ``` nb.convert_from_hex <hexadecimal-number> ```
       * Description: Input a hexadecimal number to NUUB-BOT via this command and it will output the decimal equivelent.
+* Security Commands (NOT INTENDED FOR REAL SECURITY PURPOSES!) -
+  * Create Hash:
+      * Usage: ``` nb.make_hash <hashing-algorithm> <text> ```
+      * Description: Input a hashing algorithm and text to be hashed to NUUB-BOT via this command and it will output the hash of the input text using the specified algorithm.
+      * Parameter <hashing-algorithm> potential values: md5, sha1, sha256, sha512
+  * Create Password:
+      * Usage: ``` nb.getpassword <n> ```
+      * Description: Input a length and NUUB-BOT will generate a password of the specified length. If no length is provided, a default password of length 15 will be output.
