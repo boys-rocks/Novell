@@ -55,7 +55,7 @@
       * Usage: ``` nb.name <name> ```
       * Description: Input a name to NUUB-BOT with this command and it will guess the country of origin of the provided name.
   * Trivia: 
-      * Usage: ``` nb.trvia ```
+      * Usage: ``` nb.trivia ```
       * Description: On running this command, NUUB-BOT will output a fun trivia fact to enhance your noodle.
 * Joke Commands -
   * Affirmation: 
