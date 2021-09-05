@@ -105,8 +105,8 @@
       * Usage: ``` nb.convert_to_bin <decimal-number> ```
       * Description: Input a decimal number to NUUB-BOT via this command and it will output the binary equivelent.
   * Convert decimal to hexadecimal
-      * Usage: ``` nb.convert_to_hex ```
+      * Usage: ``` nb.convert_to_hex <decimal-number> ```
       * Description: Input a decimal number to NUUB-BOT via this command and it will output the hexadecimal equivelent.
   * Convert hexadecimal to decimal
-      * Usage: ``` nb.convert_from_hex ```
+      * Usage: ``` nb.convert_from_hex <hexadecimal-number> ```
       * Description: Input a hexadecimal number to NUUB-BOT via this command and it will output the decimal equivelent.
