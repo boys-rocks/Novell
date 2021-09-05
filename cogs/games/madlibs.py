@@ -1,3 +1,4 @@
+import logging
 import discord
 from discord.ext import commands
 import requests
@@ -11,20 +12,25 @@ class Madlibs(commands.Cog):
 
     @commands.command(help="starts Madlibs game")
     async def madlibs(self, ctx, maxlength=None):
-        if maxlength is None or maxlength < 5:
-            maxlength = 8
+        try:
+            if maxlength is None or int(maxlength) < 5:
+                maxlength = 6
+        except Exception as error:
+            await ctx.send("Invalid max length")
+            logging.warning(f"madlibs: {error}")
+            return
         with requests.get(
             "http://madlibz.herokuapp.com/api/random?minlength=5&maxlength={maxlength}"
         ) as response:
-            user_repsonse = {}
+            user_repsonses = {}
             all_blanks = response.json()["blanks"]
             for blank in all_blanks:
                 await ctx.send(f"enter a/an {blank}:  ")
-                response = await self.bot.wait_for(
+                usr_rsp = await self.bot.wait_for(
                     "message", check=lambda message: message.author == ctx.author
                 )
-                user_repsonse[blank] = response
-            combined_respose = zip(user_repsonse, response.json()["value"])
+                user_repsonses[blank] = usr_rsp
+            combined_respose = zip(user_repsonses, response.json()["value"])
             await ctx.reply(
                 response.json()["title"]
                 + "\n"
