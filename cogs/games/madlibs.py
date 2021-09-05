@@ -30,7 +30,7 @@ class Madlibs(commands.Cog):
                     "message", check=lambda message: message.author == ctx.author
                 )
                 user_repsonses[blank] = usr_rsp
-            combined_respose = zip(user_repsonses, response.json()["value"])
+            combined_respose = zip(response.json()["value"], user_repsonses.values())
             await ctx.reply(
                 response.json()["title"]
                 + "\n"
