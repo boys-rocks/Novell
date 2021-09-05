@@ -14,7 +14,7 @@ class Madlibs(commands.Cog):
     async def madlibs(self, ctx, maxlength=None):
         try:
             if maxlength is None or int(maxlength) < 5:
-                maxlength = 6
+                maxlength = 10
         except Exception as error:
             await ctx.send("Invalid max length")
             logging.warning(f"madlibs: {error}")
@@ -29,7 +29,7 @@ class Madlibs(commands.Cog):
                 usr_rsp = await self.bot.wait_for(
                     "message", check=lambda message: message.author == ctx.author
                 )
-                user_repsonses[blank] = usr_rsp
+                user_repsonses[blank] = usr_rsp.content
             combined_respose = zip(response.json()["value"], user_repsonses.values())
             await ctx.reply(
                 response.json()["title"]
