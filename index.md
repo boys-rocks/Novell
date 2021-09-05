@@ -57,8 +57,23 @@
   * Trivia: 
       * Usage: ``` nb.trvia ```
       * Description: On running this command, NUUB-BOT will output a fun trivia fact to enhance your noodle.
-* Quote Commands -
 * Joke Commands -
+  * Affirmation: 
+      * Usage: ``` nb.affirm ```
+      * Description: On running this command, NUUB-BOT will output a positive affirmation message to stroke your fragile ego.
+  * Chuck Norris: 
+      * Usage: ``` nb.chuckjokes ```
+      * Description: On running this command, NUUB-BOT will output a totally not tired Chuck Norris joke for your pleasure.
+  * Insult: 
+      * Usage: ``` nb.insult ```
+      * Description: On running this command, NUUB-BOT will output a sick burn against you.
+  * Jokes: 
+      * Usage: ``` nb.joke ```
+      * Description: On running this command, NUUB-BOT will output a joke that is sure to put you in stitches.
+  * Programmer jokes: 
+      * Usage: ``` nb.projoke ```
+      * Description: On running this command, NUUB-BOT will output a joke to satisfy your corny programmer humor itch.
+* Quote Commands -
 * Waifu Commands -
 
 
