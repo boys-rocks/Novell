@@ -110,6 +110,29 @@
   * Convert hexadecimal to decimal
       * Usage: ``` nb.convert_from_hex <hexadecimal-number> ```
       * Description: Input a hexadecimal number to NUUB-BOT via this command and it will output the decimal equivelent.
+* Dictionary -
+  * Usage: ``` nb.dictionary <word> ```
+  * Description: Input a word to NUUB-BOT via this command and it will output its definition.
+* Listening Commands -
+  * Bot Join Voice Chat:
+      * Usage: ``` nb.join ```
+      * Description: Pulls NUUB-BOT into your current voice channel. 
+  * Bot Leave Voice Chat:
+      * Usage ``` nb.leave ```
+      * Description: Kicks NUUB-BOT out of your current voice channel.
+* Search Commands - 
+  * Github Repository Search:
+      * Usage: ``` nb.ghrepo <user> <repository> ```
+      * Description: Input a GitHub user name and a GitHub repository name to NUUB-BOT via this command and it will output information on the specified repository.
+  * Github User Search:
+      * Usage: ``` nb.ghuser <user> ```
+      * Description: Input a GitHub user name to NUUB-BOT via this command and it will output information on the specified user.
+  * Pypi search:
+      * Usage: ``` nb.pypi <package> ```
+      * Description: Input a PyPi package name to NUUB-BOT via this command and it will output information on the specified package.
+  * Wikipedia search:
+      * Usage: ``` nb.search <search criteria> ```
+      * Description: Input a search phrase to NUUB-BOT via this command and it will check Wikipedia for information on the search phrase.
 * Security Commands (NOT INTENDED FOR REAL SECURITY PURPOSES!) -
   * Create Hash:
       * Usage: ``` nb.make_hash <hashing-algorithm> <text> ```
@@ -118,3 +141,9 @@
   * Create Password:
       * Usage: ``` nb.getpassword <n> ```
       * Description: Input a length and NUUB-BOT will generate a password of the specified length. If no length is provided, a default password of length 15 will be output.
+* URL Shortener -
+  * Usage: ``` nb.shrink <URL> ```
+  * Description: Input a URL to NUUB-BOT via this command and it will output a shortened version of it.
+* Weather Search - 
+  * Usage: ``` nb.weather <location> ```
+  * Description: Input a location to NUUB-BOT via this command and it will output the temperature for that location in fahrenheit and celsius. For best result, use the format of City, State, Country.
