@@ -83,38 +83,42 @@
       * Description: On running this command, NUUB-BOT will search the web for the best waifu to match your search criteria.
 
 #### Game Commands
-
+* Hangman -
+* Higher / Lower Guessing -
+* Paper Trading -
+* Rock Paper Scissors -
+* Tic Tac Toe -
 
 
 #### Miscellaneous Commands
 * Sound Commands -
-  * Nyan Cat
+  * Nyan Cat:
       * Usage: ``` nb.nyan ```
       * Description: Plays the Nyan Cat song in the voice chat.
-  * Pause
+  * Pause:
       * Usage: ``` nb.pause ```
       * Description: Pauses the current playing audio in the voice chat.
-  * Play
+  * Play:
       * Usage: ``` nb.play <URL> ```
       * Description: Plays sound in the voice channel from the specified URL.
-  * Pog
+  * Pog:
       * Usage: ``` nb.pog <directory> ```
       * Description: Plays a random sound in the voice chat from specified directory.
       * Parameter <directory> potential values:
-  * Rap
+  * Rap:
       * Usage: ``` nb.rap <directory> ```
       * Description: Plays text to speech from song lyrics or text files in the voice channel.
       * Parameter <directory> potential values:
-  * Resume
+  * Resume:
       * Usage: ``` nb.resume ```
       * Description: Resumes the current playing audio in the voice chat.
-  * Song
+  * Song:
       * Usage: ``` nb.song ```
       * Description: Creates a song from a sound clip.
-  * Stop
+  * Stop:
       * Usage: ``` nb.stop ```
       * Description: Stops current playing audio in the voice chat.
-  * Text to Speech
+  * Text to Speech:
       * Usage: ``` nb.tts <text> ```
       * Description: Input a message to NUUB-BOT via this command and it will read it in the voice chat.
 
