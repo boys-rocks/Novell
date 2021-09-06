@@ -87,6 +87,36 @@
 
 
 #### Miscellaneous Commands
+* Sound Commands -
+  * Nyan Cat
+      * Usage: ``` nb.nyan ```
+      * Description: Plays the Nyan Cat song in the voice chat.
+  * Pause
+      * Usage: ``` nb.pause ```
+      * Description: Pauses the current playing audio in the voice chat.
+  * Play
+      * Usage: ``` nb.play <URL> ```
+      * Description: Plays sound in the voice channel from the specified URL.
+  * Pog
+      * Usage: ``` nb.pog <directory> ```
+      * Description: Plays a random sound in the voice chat from specified directory.
+      * Parameter <directory> potential values:
+  * Rap
+      * Usage: ``` nb.rap <directory> ```
+      * Description: Plays text to speech from song lyrics or text files in the voice channel.
+      * Parameter <directory> potential values:
+  * Resume
+      * Usage: ``` nb.resume ```
+      * Description: Resumes the current playing audio in the voice chat.
+  * Song
+      * Usage: ``` nb.song ```
+      * Description: Creates a song from a sound clip.
+  * Stop
+      * Usage: ``` nb.stop ```
+      * Description: Stops current playing audio in the voice chat.
+  * Text to Speech
+      * Usage: ``` nb.tts <text> ```
+      * Description: Input a message to NUUB-BOT via this command and it will read it in the voice chat.
 
 
 
