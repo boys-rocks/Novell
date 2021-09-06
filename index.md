@@ -96,7 +96,7 @@
   * Buy:
       * Usage: ``` nb.buy <symbol> <amount> ```
       * Description: On command run, buys the coins specified in the amount specified.
-      * Parameter <symbol> potential values:
+      * Parameter ```<symbol>``` potential values: See Binance.com for coin list.
   * Coins:
       * Usage: ``` nb.coins ```
       * Description: On command run, NUUB-BOT outputs a list of the coins you have.
@@ -109,11 +109,11 @@
   * Price:
       * Usage: ``` nb.price <symbol> ```
       * Description: On command run, NUUB-BOT outputs the value of the coins specified.
-      * Parameter <symbol> potential values:
+      * Parameter ```<symbol>``` potential values: See Binance.com for coin list.
   * Sell:
       * Usage: ``` nb.sell <symbol> <amount> ```
       * Description: On command run, sells the coins specified in the amount specified.
-      * Parameter <symbol> potential values:
+      * Parameter ```<symbol>``` potential values: See Binance.com for coin list.
 * Rock Paper Scissors -
   * Usage: ``` nb.rps ```
   * Description: Play rock paper scissors with NUUB-BOT. Running the command toggles the game. Make your selection between rock, paper, or scissors in the chat (no command needed for the selection).
@@ -141,11 +141,11 @@
   * Pog:
       * Usage: ``` nb.pog <directory> ```
       * Description: Plays a random sound in the voice chat from specified directory.
-      * Parameter <directory> potential values:
+      * Parameter ```<directory>``` potential values: animesounds, starwars
   * Rap:
       * Usage: ``` nb.rap <directory> ```
       * Description: Plays text to speech from song lyrics or text files in the voice channel.
-      * Parameter <directory> potential values:
+      * Parameter ```<directory>``` potential values: asap, eazye, juicewrld, lilpeep, trump
   * Resume:
       * Usage: ``` nb.resume ```
       * Description: Resumes the current playing audio in the voice chat.
@@ -208,7 +208,7 @@
   * Create Hash:
       * Usage: ``` nb.make_hash <hashing-algorithm> <text> ```
       * Description: Input a hashing algorithm and text to be hashed to NUUB-BOT via this command and it will output the hash of the input text using the specified algorithm.
-      * Parameter <hashing-algorithm> potential values: md5, sha1, sha256, sha512
+      * Parameter ```<hashing-algorithm>``` potential values: md5, sha1, sha256, sha512
   * Create Password:
       * Usage: ``` nb.getpassword <n> ```
       * Description: Input a length and NUUB-BOT will generate a password of the specified length. If no length is provided, a default password of length 15 will be output.
