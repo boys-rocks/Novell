@@ -90,7 +90,30 @@
   * Usage: ``` nb.higherlower```
   * Description: Play a higher lower guessing game with NUUB-BOT. Guess between randomized options from NUUB-BOT for which quantity is greater. Input your guesses in the chat (no commands necessary for guesses)
 * Paper Trading -
-
+  * Balance:
+      * Usage: ``` nb.balance ```
+      * Description: On command run, NUUB-BOT outputs the cash value of your paper trading account.
+  * Buy:
+      * Usage: ``` nb.buy <symbol> <amount> ```
+      * Description: On command run, buys the coins specified in the amount specified.
+      * Parameter <symbol> potential values:
+  * Coins:
+      * Usage: ``` nb.coins ```
+      * Description: On command run, NUUB-BOT outputs a list of the coins you have.
+  * New Account:
+      * Usage: ``` nb.newacc ```
+      * Description: On command run, creates a new account for the user running the command.
+  * Portfolio:
+      * Usage: ``` nb.portfolio ```
+      * Description: On command run, NUUB-BOT outputs your portfolio value.
+  * Price:
+      * Usage: ``` nb.price <symbol> ```
+      * Description: On command run, NUUB-BOT outputs the value of the coins specified.
+      * Parameter <symbol> potential values:
+  * Sell:
+      * Usage: ``` nb.sell <symbol> <amount> ```
+      * Description: On command run, sells the coins specified in the amount specified.
+      * Parameter <symbol> potential values:
 * Rock Paper Scissors -
   * Usage: ``` nb.rps ```
   * Description: Play rock paper scissors with NUUB-BOT. Running the command toggles the game. Make your selection between rock, paper, or scissors in the chat (no command needed for the selection).
