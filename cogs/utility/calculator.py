@@ -8,11 +8,21 @@ class Calculator(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(help="Calculator command")
+    @commands.command(help="Simple Calculator command")
     async def clc(self, ctx, *query):
         problem = " ".join(query)
-        result = eval(problem)
-        await ctx.send(f"```{problem} = {result}```")
+        try:
+            result = eval(problem)
+        except ZeroDivisionError:
+            await ctx.reply("number cannot be divided by 0.")
+            return
+        except SyntaxError:
+            await ctx.reply("Only numbers are supported.")
+            return
+        except:
+            await ctx.reply("Invalid Equation, Please recheck and try again.")
+            return
+        await ctx.reply(f"```{problem} = {result}```")
 
     @commands.command()
     async def convert_to_bin(self, ctx, dec: int):

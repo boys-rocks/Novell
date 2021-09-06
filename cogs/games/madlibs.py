@@ -22,20 +22,25 @@ class Madlibs(commands.Cog):
         with requests.get(
             "http://madlibz.herokuapp.com/api/random?minlength=5&maxlength={maxlength}"
         ) as response:
-            user_repsonses = {}
-            all_blanks = response.json()["blanks"]
-            for blank in all_blanks:
-                await ctx.send(f"enter a/an {blank}:  ")
-                usr_rsp = await self.bot.wait_for(
-                    "message", check=lambda message: message.author == ctx.author
+            if response.status_code == 200:
+                user_repsonses = {}
+                all_blanks = response.json()["blanks"]
+                for blank in all_blanks:
+                    await ctx.send(f"enter a/an {blank}:  ")
+                    usr_rsp = await self.bot.wait_for(
+                        "message", check=lambda message: message.author == ctx.author
+                    )
+                    user_repsonses[blank] = usr_rsp.content
+                combined_respose = zip(
+                    response.json()["value"], user_repsonses.values()
                 )
-                user_repsonses[blank] = usr_rsp.content
-            combined_respose = zip(response.json()["value"], user_repsonses.values())
-            await ctx.reply(
-                response.json()["title"]
-                + "\n"
-                + " ".join([" ".join(i) for i in combined_respose])
-            )
+                await ctx.reply(
+                    response.json()["title"]
+                    + "\n"
+                    + " ".join([" ".join(i) for i in combined_respose])
+                )
+            else:
+                await ctx.send("API is not working.")
 
 
 def setup(bot):
