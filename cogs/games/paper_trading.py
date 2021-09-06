@@ -40,7 +40,7 @@ class Crypto(commands.Cog):
             save(user, x)
             await ctx.send(result)
         else:
-            await ctx.send("No account to buy with! enter: *newacc to create one")
+            await ctx.send("No account to buy with! enter: nb.newacc to create one")
 
     @commands.command(name="sell", help="Sell Crypto Currency")
     async def sell(self, ctx, symbol, amount):
@@ -51,7 +51,7 @@ class Crypto(commands.Cog):
             save(user, x)
             await ctx.send(result)
         else:
-            await ctx.send("No account to sell with.... Enter: *newacc to create one")
+            await ctx.send("No account to sell with.... Enter: nb.newacc to create one")
 
     @commands.command(name="balance", help="Get cash balance of paper trading account")
     async def balance(self, ctx):
@@ -61,7 +61,7 @@ class Crypto(commands.Cog):
             result = user.balance
             await ctx.send(result)
         else:
-            await ctx.send("No account... enter: *newacc to create one")
+            await ctx.send("No account... enter: nb.newacc to create one")
 
     @commands.command(name="coins", help="Get list of coins you have")
     async def coins(self, ctx):
@@ -74,7 +74,7 @@ class Crypto(commands.Cog):
             else:
                 await ctx.send("You haven't purchased any coins yet!")
         else:
-            await ctx.send("No account... enter: *newacc to create one")
+            await ctx.send("No account... enter: nb.newacc to create one")
 
     @commands.command(name="portfolio", help="Get value of portfolio")
     async def portfolio(self, ctx):
@@ -85,7 +85,7 @@ class Crypto(commands.Cog):
             result = user.portfolioValue
             await ctx.send(result)
         else:
-            await ctx.send("No account... enter: *newacc to create one")
+            await ctx.send("No account... enter: nb.newacc to create one")
 
 
 def setup(bot):
