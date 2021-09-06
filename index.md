@@ -84,10 +84,24 @@
 
 #### Game Commands
 * Hangman -
+  * Usage: ``` nb.hangman ```
+  * Description: Play hangman with NUUB-BOT. Run the command to start the game. After that, guess letters (no commands necessary for guesses) and try to complete the word.
 * Higher / Lower Guessing -
+  * Usage: ``` nb.higherlower```
+  * Description: Play a higher lower guessing game with NUUB-BOT. Guess between randomized options from NUUB-BOT for which quantity is greater. Input your guesses in the chat (no commands necessary for guesses)
 * Paper Trading -
+
 * Rock Paper Scissors -
+  * Usage: ``` nb.rps ```
+  * Description: Play rock paper scissors with NUUB-BOT. Running the command toggles the game. Make your selection between rock, paper, or scissors in the chat (no command needed for the selection).
 * Tic Tac Toe -
+  * Multiplayer: 
+      * Usage: ``` nb.play_tic_tac_toe_multiplayer <player> ```
+      * Description: Play tic-tac-toe with another player, hosted by NUUB-HOT. Input another player's name when running the command to play against them. The command initiates the game. Once started, you will input numbers 1-9 to indicate position to placement on the board (no command needed after game initiated).
+  * Singleplayer: 
+      * Usage: ``` nb.play_tic_tac_toe <difficulty> ```
+      * Description: Play tic-tac-toe with NUUB-BOT. Input a difficulty for NUUB-BOT to play against you. The command initiates the game. Once started, you will input numbers 1-9 to indicate position to placement on the board (no command needed after game initiated).
+      * Parameter <difficulty> potential values: easy, difficult, impossible
 
 
 #### Miscellaneous Commands
