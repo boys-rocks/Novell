@@ -16,7 +16,7 @@ class Dictionary(commands.Cog):
         self.bot = bot
 
     @commands.command(help="Get word definitions")
-    async def dictionary(self, ctx, word: str):
+    async def dictionary(self, ctx, word: str) -> None:
         """
         Search the word in dictionary and sends its meaning to user
 

@@ -16,7 +16,13 @@ class PasswordGenerator(commands.Cog):
         self.bot = bot
 
     @commands.command(help="Generates strong password")
-    async def getpassword(self, ctx, query=15):
+    async def getpassword(self, ctx, query: int = 15) -> None:
+        """
+        generate strong passwords
+
+        :param query: length of password, defaults to 15
+        :type query: int, optional
+        """
         characters = string.ascii_letters + string.punctuation + string.digits
         password = "".join(choice(characters) for x in range(query))
         await ctx.author.send(

@@ -19,7 +19,7 @@ class Hash(commands.Cog):
         name="hash",
         help="Command reads in user specified algorithm and string to output hash.",
     )
-    async def make_hash(self, ctx, algorithm, *, user_value: str):
+    async def make_hash(self, ctx, algorithm, *, user_value: str) -> None:
         """
         Command reads in user specified algorithm and string to output hash.
 

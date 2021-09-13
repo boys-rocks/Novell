@@ -37,10 +37,23 @@ class AFK(commands.Cog):
                 print("Exception: ", ex)
 
     @commands.command(help="Toggle afk command")
-    async def afk(self, ctx, *, reason="AFK"):
+    async def afk(self, ctx, *, reason: str = "AFK") -> None:
+        """
+        toggles  user's  AFK status
+
+        :param reason: reason for being AFK, defaults to "AFK"
+        :type reason: str, optional
+        """
         await self.afkcommand(ctx, reason)
 
-    async def afkcommand(self, ctx, reason):
+    async def afkcommand(self, ctx, reason: str) -> None:
+        """
+        set user status AFK
+
+
+        :param reason: reason for being afk
+        :type reason: str
+        """
         try:
             await ctx.author.edit(nick=f"[AFK] {ctx.message.author}")
         except Exception as ex:
@@ -60,7 +73,13 @@ class AFK(commands.Cog):
         except Exception as ex:
             print(ex)
 
-    async def afkcheck(self, message):
+    async def afkcheck(self, message) -> None:
+        """
+        check wether user is AFK
+
+        :param message:discord message
+        :type message: discord message
+        """
         if message.author.bot:
             return
         else:

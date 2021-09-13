@@ -10,12 +10,19 @@ class Listen(commands.Cog):
         self.bot = bot
 
     @commands.command(help="Bot joins voice channel")
-    async def join(self, ctx):
+    async def join(self, ctx) -> None:
+        """
+        bot joins the voice channel
+        """
         channel = ctx.author.voice.channel
         await channel.connect()
 
     @commands.command(help="Bot leaves voice channel")
-    async def leave(self, ctx):
+    async def leave(self, ctx) -> None:
+        """
+        bot leaves voice channel
+
+        """
         await ctx.voice_client.disconnect()
 
 
