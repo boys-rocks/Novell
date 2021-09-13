@@ -6,13 +6,16 @@ import aiohttp
 
 
 class Bored(commands.Cog):
-    "Fun Commands Module"
+    "Fun Commands Module for bored times."
 
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command(help="Get an activity")
-    async def activity(self, ctx):
+    async def activity(self, ctx) -> None:
+        """
+        suggests a random activity.
+        """
         import requests
 
         x = requests.get("https://www.boredapi.com/api/activity")
@@ -23,13 +26,24 @@ class Bored(commands.Cog):
         )
 
     @commands.command(help="Predict which country a name is from")
-    async def name(self, ctx, *, name):
+    async def name(self, ctx, *, name: str) -> None:
+        """
+        predicts the nationality of a person given their name.
+        :param name: name to search for
+        :type name: str
+        """
         y = requests.get(f"https://api.nationalize.io?name={name}")
         result = y.json()["country"][0]["country_id"]
         await ctx.send(f"Your name is likely from {result}")
 
     @commands.command(help="Get information on a country")
-    async def country(self, ctx, *, name):
+    async def country(self, ctx, *, name: str) -> None:
+        """
+        Get information about countries
+
+        :param name: name of the country
+        :type name: str
+        """
         x = requests.get(f"https://restcountries.eu/rest/v2/name/{name}?fullText=true")
         y = x.json()[0]
         em = discord.Embed(title=name)
@@ -53,7 +67,11 @@ class Bored(commands.Cog):
         await ctx.send(embed=em)
 
     @commands.command(help="Cat image command")
-    async def cat(self, ctx):
+    async def cat(self, ctx) -> None:
+        """
+        sends cat images
+
+        """
         x = requests.get("https://api.thecatapi.com/v1/images/search")
         imageurl = x.json()[0]["url"]
         em = discord.Embed(title="Cat?")
@@ -61,7 +79,11 @@ class Bored(commands.Cog):
         await ctx.send(embed=em)
 
     @commands.command(help="Picture of Dog")
-    async def dog(self, ctx):
+    async def dog(self, ctx) -> None:
+        """
+        sends dog images
+
+        """
         catmbed = discord.Embed(title="oOo a Dog!")
         async with aiohttp.ClientSession() as sesh:
             async with sesh.get(
@@ -79,7 +101,11 @@ class Bored(commands.Cog):
             await ctx.reply(embed=catmbed)
 
     @commands.command(help="5 pictures of dogs and cats")
-    async def awwbomb(self, ctx):
+    async def awwbomb(self, ctx) -> None:
+        """
+        send 5 random dog and cats images
+
+        """
         async with aiohttp.ClientSession() as sesh:
             async with sesh.get(
                 "https://www.reddit.com/r/dog/new.json?sort=hot"
@@ -91,7 +117,11 @@ class Bored(commands.Cog):
                 )
 
     @commands.command(help="Get Quizzed on trivia questions!")
-    async def trivia(self, ctx):
+    async def trivia(self, ctx) -> None:
+        """
+        sends a random trivia question
+
+        """
         with requests.get(url=f"http://jservice.io/api/random") as response:
             answer = response.json()[0]["answer"]
             await ctx.send(response.json()[0]["question"])
@@ -106,7 +136,11 @@ class Bored(commands.Cog):
                 await ctx.send(f"Incorrect ✗✗. Correct answer is {answer.lower()} ")
 
     @commands.command(help="Get a free meme XD")
-    async def meme(self, ctx):
+    async def meme(self, ctx) -> None:
+        """
+        sends a random meme
+
+        """
         x = requests.get("https://meme-api.herokuapp.com/gimme").json()
         embed = discord.Embed(title=x["title"])
         url = x["url"]
