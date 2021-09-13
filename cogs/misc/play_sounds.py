@@ -35,7 +35,19 @@ class YTDLSource(discord.PCMVolumeTransformer):
         self.url = ""
 
     @classmethod
-    async def from_url(cls, url, *, loop=None, stream=False):
+    async def from_url(cls, url: str, *, loop=None, stream=False):
+        """
+        extracts audio from specified url
+
+        :param url: specified url
+        :type url: str
+        :param loop: AbstractEventLoop, defaults to None
+        :type loop: Unknown, optional
+        :param stream: Unknown, defaults to False
+        :type stream: bool, optional
+        :return: audio file
+        :rtype: Any
+        """
         loop = loop or asyncio.get_event_loop()
         data = await loop.run_in_executor(
             None, lambda: ytdl.extract_info(url, download=not stream)
@@ -47,13 +59,25 @@ class YTDLSource(discord.PCMVolumeTransformer):
         return filename
 
 
-def textVoice(myText):
+def textVoice(myText: str):
+    """
+    convets text in tts.mp3 file
+
+    :param myText: text to convet in speech
+    :type myText: str
+    """
     myobj = gTTS(text=myText, lang="en", slow=False)
     # Saving the converted audio in a mp3 file
     myobj.save("soundfiles/tts.mp3")
 
 
-def randomSound(dir):
+def randomSound(dir: str) -> str:
+    """
+    plays an random audio from specified directory
+
+    :return: audio's location
+    :rtype: str
+    """
     listOfFiles = []
     for filename in os.listdir("./soundfiles/" + dir):
         listOfFiles.append(filename)
@@ -61,7 +85,13 @@ def randomSound(dir):
     return "soundfiles/" + dir + "/" + chosenOne
 
 
-def playNext(ctx, path):
+def playNext(ctx, path: str) -> None:
+    """
+    skips current playing song and moves to next
+
+    :param path: location / url of next song
+    :type path: str
+    """
     guild = ctx.message.guild
     voice_client = guild.voice_client
     print(path)
@@ -72,7 +102,11 @@ def playNext(ctx, path):
     voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
 
 
-def musicMaker(ctx):
+def musicMaker(ctx) -> None:
+    """
+    plays next chord
+
+    """
     guild = ctx.message.guild
     voice_client = guild.voice_client
     path = randomSound("chord")
@@ -84,7 +118,13 @@ def musicMaker(ctx):
     voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
 
 
-async def joinMusicChannel(ctx):
+async def joinMusicChannel(ctx) -> bool:
+    """
+    makes bot join voice channel
+
+    :return: whether join successful or not
+    :rtype: bool
+    """
     try:
         channel = ctx.author.voice.channel
     except:
@@ -97,7 +137,15 @@ async def joinMusicChannel(ctx):
     return True
 
 
-def endSong(guild, path):
+def endSong(guild, path: str) -> None:
+    """
+    removes song from the playlist
+
+    :param guild: discord guild bot is in
+    :type guild: int
+    :param path: path/location to remove
+    :type path: str
+    """
     os.remove(path)
 
 
@@ -114,7 +162,11 @@ class PlaySounds(commands.Cog):
         self.bot = bot
 
     @commands.command(help="Definitely Doesn't Play Nyan Cat")
-    async def nyan(self, ctx):
+    async def nyan(self, ctx) -> None:
+        """
+        plays Nyan cat audio
+
+        """
         try:
             data = await joinMusicChannel(ctx)
             if data == True:
@@ -129,7 +181,10 @@ class PlaySounds(commands.Cog):
             logHelper.logger.warning(e)
 
     @commands.command(help="Text-To-Speech Command")
-    async def tts(self, ctx, *args):
+    async def tts(self, ctx, *args: list[str]) -> None:
+        """
+        converts text to speech
+        """
         try:
             joinedSentence = " ".join(map(str, args))
             textVoice(joinedSentence)
@@ -148,7 +203,13 @@ class PlaySounds(commands.Cog):
     @commands.command(
         help="Plays random sound file from specified directory,\ntry *pog starwars or *pog animesounds"
     )
-    async def pog(self, ctx, dir):
+    async def pog(self, ctx, dir: str) -> None:
+        """
+        play a random sound from specified directory
+
+        :param dir: specified directory
+        :type dir: str
+        """
         try:
             data = await joinMusicChannel(ctx)
             if data == True:
@@ -164,7 +225,11 @@ class PlaySounds(commands.Cog):
             logHelper.logger.warning(e)
 
     @commands.command(help="creates song from sound clips")
-    async def song(self, ctx):
+    async def song(self, ctx) -> None:
+        """
+        creates song form sound clips
+
+        """
         try:
             data = await joinMusicChannel(ctx)
             if data == True:
@@ -174,7 +239,14 @@ class PlaySounds(commands.Cog):
             logHelper.logger.warning(e)
 
     @commands.command(help="tts from song lyrics or txt files")
-    async def rap(self, ctx, dir):
+    async def rap(self, ctx, dir: str) -> None:
+        """
+        play song from text files in a specified directory or song lyrics
+
+
+        :param dir: specified directory
+        :type dir: str
+        """
         try:
             line = random.choice(open("textfiles/" + dir + ".txt").readlines())
             textVoice(line)
@@ -192,7 +264,13 @@ class PlaySounds(commands.Cog):
             logHelper.logger.warning(e)
 
     @commands.command(help="Plays youtube sound from specified link")
-    async def play(self, ctx, link):
+    async def play(self, ctx, link: str) -> None:
+        """
+        play audion from specified youtube video
+
+        :param link: youtube video link
+        :type link: str
+        """
         try:
             data = await joinMusicChannel(ctx)
             if data == True:
@@ -210,7 +288,11 @@ class PlaySounds(commands.Cog):
             logHelper.logger.warning(e)
 
     @commands.command(name="pause", help="This command pauses the song")
-    async def pause(self, ctx):
+    async def pause(self, ctx) -> None:
+        """
+        pauses current song/audio
+
+        """
         voice_client = ctx.message.guild.voice_client
         if voice_client.is_playing():
             await voice_client.pause()
@@ -218,7 +300,11 @@ class PlaySounds(commands.Cog):
             await ctx.send("The bot is not playing anything at the moment.")
 
     @commands.command(name="resume", help="Resumes the song")
-    async def resume(self, ctx):
+    async def resume(self, ctx) -> None:
+        """
+        resumes previously paused song/audio
+
+        """
         voice_client = ctx.message.guild.voice_client
         if voice_client.is_paused():
             await voice_client.resume()
@@ -228,7 +314,11 @@ class PlaySounds(commands.Cog):
             )
 
     @commands.command(name="stop", help="Stops the song")
-    async def stop(self, ctx):
+    async def stop(self, ctx) -> None:
+        """
+        stops audio/song
+
+        """
         voice_client = ctx.message.guild.voice_client
         if voice_client.is_playing():
             await voice_client.stop()
