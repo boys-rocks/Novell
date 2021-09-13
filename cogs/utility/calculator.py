@@ -9,8 +9,16 @@ class Calculator(commands.Cog):
         self.bot = bot
 
     @commands.command(help="Simple Calculator command")
-    async def clc(self, ctx, *query):
-        problem = " ".join(query)
+    async def clc(self, ctx, *, query: str) -> None:
+        """
+        simple calculator using eval function
+
+        :param ctx: discord context manager
+        :type ctx: discord.ContextManager
+        :param query: equation to solve
+        :type query: str
+        """
+        problem = "".join(query)
         try:
             result = eval(problem)
         except ZeroDivisionError:

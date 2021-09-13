@@ -16,7 +16,14 @@ class Dictionary(commands.Cog):
         self.bot = bot
 
     @commands.command(help="Get word definitions")
-    async def dictionary(self, ctx, word):
+    async def dictionary(self, ctx, word: str):
+        """
+        Search the word in dictionary and sends its meaning to user
+
+        :param word: word to search for
+        :type word: str
+        """
+
         with requests.get(
             url=f"https://owlbot.info/api/v4/dictionary/{word}/",
             headers={"Authorization": "Token 64154ef64d2de67c9f031ac98798fb57eaaf2f41"},

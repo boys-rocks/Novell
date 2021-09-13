@@ -82,7 +82,7 @@ class Search(commands.Cog):
 
             await ctx.send(embed=em)
         except Exception as ex:
-            print("Exception: ", ex)
+            await ctx.reply(f"{package} not found")
 
 
 def setup(bot):

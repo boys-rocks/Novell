@@ -8,6 +8,7 @@ class GetWaifu(commands.Cog):
         self.bot = bot
 
     @commands.command(name="waifu", help="Get yourself a Waifu.")
+    @commands.is_nsfw()
     async def get_waifu(self, ctx, query="waifu"):
         with requests.get(url=f"https://api.waifu.pics/sfw/{query}") as response:
             try:
@@ -16,6 +17,11 @@ class GetWaifu(commands.Cog):
                 await ctx.reply(
                     f"{query} don't wanna be your waifu. Try something else."
                 )
+
+    @commands.Cog.listener()
+    async def on_command_error(self, ctx, error):
+        if isinstance(error, commands.errors.NSFWChannelRequired):
+            return await ctx.reply("not a NSFW CHANNEL.")
 
 
 def setup(bot):
