@@ -11,8 +11,16 @@ class RockPaperScissors(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(help="Play Rock Paper Scissors")
-    async def rps(self, ctx):
+    @commands.command(
+        name="rps",
+        help="Play Rock Paper Scissors",
+        aliases=["play_rps", "rock_paper_scissors"],
+    )
+    async def rock_paper_scissors(self, ctx):
+        """
+        starts rock paper scissors game with computer
+
+        """
         avl_moves = ["rock", "paper", "scissors"]
         await ctx.send(f"rock, paper, or scissors? Choose wisely...")
 

@@ -10,8 +10,14 @@ class Madlibs(commands.Cog):
     def __init__(self, bot) -> None:
         self.bot = bot
 
-    @commands.command(help="starts Madlibs game")
-    async def madlibs(self, ctx, maxlength=None):
+    @commands.command(help="play Madlibs game")
+    async def madlibs(self, ctx, maxlength: int = None) -> None:
+        """
+        starts madlib game
+
+        :param maxlength: max number of blanks, defaults to None
+        :type maxlength: int, optional
+        """
         try:
             if maxlength is None or int(maxlength) < 5:
                 maxlength = 10
@@ -30,7 +36,7 @@ class Madlibs(commands.Cog):
                     usr_rsp = await self.bot.wait_for(
                         "message", check=lambda message: message.author == ctx.author
                     )
-                    user_repsonses[blank] = usr_rsp.content
+                    user_repsonses[blank] = usr_rsp.content.upper()
                 combined_respose = zip(
                     response.json()["value"], user_repsonses.values()
                 )
