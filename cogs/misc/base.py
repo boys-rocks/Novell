@@ -2,13 +2,29 @@ import discord
 from discord.ext import commands
 from helpers import logHelper
 from bot import collection
+import time
+
+
+def time_format(seconds: int):
+    if seconds is not None:
+        seconds = int(seconds)
+        d = seconds // (3600 * 24)
+        h = seconds // 3600 % 24
+        m = seconds % 3600 // 60
+        s = seconds % 3600 % 60
+        if d > 0:
+            return f"{d:02d}D {h:02d}H {m:02d}m {s:02d}s"
+        elif h > 0:
+            return f"{h:02d}H {m:02d}m {s:02d}s"
+        elif m > 0:
+            return f"{m:02d}m {s:02d}s"
+        elif s > 0:
+            return f"{s:02d}s"
+    return None
 
 
 class Base(commands.Cog):
-    """
-    Initail event Module and bot settings
-    merged test cog into here
-    """
+    START_TIME = time.time_ns()
 
     def __init__(self, bot):
         self.bot = bot
@@ -27,8 +43,6 @@ class Base(commands.Cog):
         """
         Changes bot's prefix
 
-        :param ctx: discord ContextManager
-        :type ctx: discord.ContextManager
         :param prefix: new prefix
         :type prefix: str
         """
@@ -47,8 +61,6 @@ class Base(commands.Cog):
         """
         checks if cogs/commands are working
 
-        :param ctx: discord context manager
-        :type ctx: discord.ContextManager
         """
         await ctx.send("Cogs working.")
 
@@ -57,8 +69,6 @@ class Base(commands.Cog):
         """
         checks ping/latency
 
-        :param ctx: discord context manager
-        :type ctx: discord.ContextManager
         """
         import time
 
@@ -76,8 +86,6 @@ class Base(commands.Cog):
         """
         loads cogs/commands
 
-        :param ctx: discord context manager
-        :type ctx: discod.ContextManager
         :param extension: cogs/command to load
         :type extension: str
         """
@@ -90,8 +98,6 @@ class Base(commands.Cog):
         """
         unloads cogs/commands
 
-        :param ctx: discord context manager
-        :type ctx: discod.ContextManager
         :param extension: cogs/command to unload
         :type extension: str
         """
@@ -104,14 +110,30 @@ class Base(commands.Cog):
         """
         reloads cogs/commands i.e unload and then load it again
 
-        :param ctx: discord context manager
-        :type ctx: discod.ContextManager
         :param extension: cogs/command to reload
         :type extension: str
         """
         self.bot.unload_extension(f"cogs.{extension}")
         self.bot.load_extension(f"cogs.{extension}")
         await ctx.send(f"The module '{extension}' has been reloaded successfully!")
+
+    @commands.command(name="uptime")
+    async def get_uptime(self, ctx):
+        """
+        get uptime for bot
+
+        """
+        # convert nanoseconds into seconds
+        uptime_in_seconds = (time.time_ns() - self.START_TIME) * 10 ** -9
+
+        uptime = time_format(uptime_in_seconds)
+        if not uptime is None:
+            try:
+                await ctx.send(f"been running from last {uptime}. I'm tired ")
+            except Exception as error:
+                print(error)
+        else:
+            await ctx.send("failed to get uptime...")
 
 
 def setup(bot):
