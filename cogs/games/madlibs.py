@@ -2,6 +2,7 @@ import logging
 import discord
 from discord.ext import commands
 import requests
+from itertools import zip_longest
 
 
 class Madlibs(commands.Cog):
@@ -27,21 +28,21 @@ class Madlibs(commands.Cog):
             return
         with requests.get(
             "http://madlibz.herokuapp.com/api/random?minlength=5&maxlength={maxlength}"
-        ) as response:
-            if response.status_code == 200:
+        ) as get_response:
+            if get_response.status_code == 200:
                 user_repsonses = {}
-                all_blanks = response.json()["blanks"]
+                all_blanks = get_response.json()["blanks"]
                 for blank in all_blanks:
                     await ctx.send(f"enter a/an {blank}:  ")
                     usr_rsp = await self.bot.wait_for(
                         "message", check=lambda message: message.author == ctx.author
                     )
                     user_repsonses[blank] = usr_rsp.content.upper()
-                combined_respose = zip(
-                    response.json()["value"], user_repsonses.values()
+                combined_respose = zip_longest(
+                    get_response.json()["value"], user_repsonses.values(), fillvalue=""
                 )
                 await ctx.reply(
-                    response.json()["title"]
+                    get_response.json()["title"]
                     + "\n"
                     + " ".join([" ".join(i) for i in combined_respose])
                 )

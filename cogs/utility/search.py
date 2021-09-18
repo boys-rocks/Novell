@@ -27,7 +27,7 @@ class Search(commands.Cog):
         """
         get github user details
 
-        :param user: githbu username
+        :param user: github username
         :type user: str
         """
         x = requests.get(f"https://api.github.com/users/{user}")
