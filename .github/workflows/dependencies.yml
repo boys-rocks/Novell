@@ -1,14 +1,14 @@
 name: Dependencies report
-￼on: [pull_request]
-￼jobs:
-￼  build:
-￼    name:  Dependencies report
-￼    runs-on: ubuntu-latest
-￼    steps:
-￼      - name: Check out code
-￼        uses: actions/checkout@v2
-￼      - name: deps-report
-￼        uses: MeilleursAgents/deps-report@master
-￼        with:
-￼          file: Pipfile.lock
-￼          github_token: ${{ secrets.BLACK_TOKEN }}
+on: [pull_request]
+jobs:
+  build:
+    name:  Dependencies report
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: deps-report
+        uses: MeilleursAgents/deps-report@master
+        with:
+          file: Pipfile.lock
+          github_token: ${{ secrets.BLACK_TOKEN }}
