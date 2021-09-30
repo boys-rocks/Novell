@@ -29,14 +29,13 @@ class Dictionary(commands.Cog):
             headers={"Authorization": "Token 64154ef64d2de67c9f031ac98798fb57eaaf2f41"},
         ) as response:
             rsp = response.json()
-            await ctx.send(
-                f"```word: {rsp['word']}\ndefinition: {rsp['definitions'][0]['definition']}```"
-            )
             try:
+                await ctx.send(
+                    f"```word: {rsp['word']}\ndefinition: {rsp['definitions'][0]['definition']}```"
+                )
                 await ctx.send(response.json()["definitions"][0]["image_url"])
-
-            except:
-                await ctx.send("no image available")
+            except Exception as error:
+                await ctx.send("API down")
 
 
 def setup(bot):

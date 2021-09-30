@@ -42,9 +42,7 @@ for category in all_categories:
 bot.load_extension("jishaku")
 
 
-"""
-check for frequency data in mongo and create a doc for it if it doesn't exist
-"""
+# check for frequency data in mongo and create a doc for it if it doesn't exist
 if not collection.find_one({"_id": "word_command_freq"}):
     freq_data_exist = collection.find_one({"_id": "word_command_freq"})
     collection.insert_one({"_id": "word_command_freq"})

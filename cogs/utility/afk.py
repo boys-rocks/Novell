@@ -109,7 +109,7 @@ class AFK(commands.Cog):
                     except Exception as ex:
                         print(ex)
             except Exception as ex:
-                pass
+                print("Error", ex)
 
 
 def setup(bot):

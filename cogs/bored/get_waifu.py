@@ -21,7 +21,7 @@ class GetWaifu(commands.Cog):
         with requests.get(url=f"https://api.waifu.pics/sfw/{query}") as response:
             try:
                 await ctx.reply(response.json()["url"])
-            except:
+            except Exception as error:
                 await ctx.reply(
                     f"{query} is not a waifu type/action\n type: waifu neko shinobu megumin\n"
                     + "actions:  bully cuddle cry hug awoo kiss lick pat smug bonk yeet blush smile\n wave highfive handhold nom bite glomp slap kill kick happy wink poke dance cringe"
