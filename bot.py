@@ -13,13 +13,11 @@ logging.basicConfig(level=logging.INFO)
 intents = discord.Intents.default()
 intents.members = True
 bot = commands.Bot(
-    command_prefix="nb.",
+    command_prefix="nv.",
     help_command=PrettyHelp(),
     intents=intents,
     case_insensitive=True,
 )
-# bot = commands.Bot(command_prefix='*', help_command=None)
-
 
 client = MongoClient(MONGODB)
 db = client["discord"]
@@ -85,9 +83,6 @@ async def on_message(message):
             print("added " + word + " to word_command_freq")
         # print(collection.find_one({"_id": "word_command_freq"}))
     await bot.process_commands(message)
-
-
-# minecraft
 
 
 @bot.event
