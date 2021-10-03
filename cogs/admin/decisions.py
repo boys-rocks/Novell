@@ -2,11 +2,6 @@ import discord
 from discord.ext import commands
 import datetime
 from random import choice
-from requests.models import Response
-
-"""
-merged choose cog into this cog
-"""
 
 
 class Decisions(commands.Cog):
@@ -30,10 +25,18 @@ class Decisions(commands.Cog):
             10: "🔟",
         }
 
-    @commands.command(help="Create a poll")
-    async def poll(self, ctx, *, suggestion):
+    @commands.command(help="Creates a simple poll with only 👍/👎 as an option.")
+    async def ask(self, ctx, *, question: str) -> None:
+        """
+        creates  simple poll with only 👍/👎 as an option
+
+        :param ctx: discord context manager
+        :type ctx: discord.ContextManager
+        :param question: question to poll on
+        :type question: str
+        """
         await ctx.message.delete()
-        embed = discord.Embed(description=suggestion)
+        embed = discord.Embed(description=question)
         embed.set_author(
             name=f"Poll by {ctx.author.display_name}", icon_url=ctx.author.avatar_url
         )
@@ -42,7 +45,13 @@ class Decisions(commands.Cog):
         await msg.add_reaction("👎")
 
     @commands.Cog.listener()
-    async def on_reaction(self, payload):
+    async def on_reaction(self, payload) -> None:
+        """
+        discord listener, reacts to people's reaction
+
+        :param payload: discord message
+        :type payload: discord.message
+        """
         user = payload.member
         if user.bot:
             return
@@ -72,8 +81,18 @@ class Decisions(commands.Cog):
                             return
                     return
 
-    @commands.command(help="Multi Choice Polls")
-    async def multi_choice(self, ctx, desc, *choices):
+    @commands.command(help="Creates a poll with up to 10 choices.")
+    async def poll(self, ctx, desc, *choices) -> None:
+        """
+        create a poll with up to 10 choices
+
+        :param ctx: discord context manager
+        :type ctx: discod.contextManager
+        :param desc: question/decision to conduct poll
+        :type desc: str
+        :param choices: available choices for the poll
+        :type choices: list[str]
+        """
         await ctx.message.delete()
 
         if len(choices) < 2:
@@ -95,24 +114,36 @@ class Decisions(commands.Cog):
                 for i, choice in enumerate(choices, 1)
             ),
             timestamp=datetime.datetime.utcnow(),
-            color=discord.colour.Color.gold(),
+            color=discord.colour.Color.red(),
         )
         embed.set_footer(text=f"Poll by {str(ctx.author)}")
         msg = await ctx.send(embed=embed)
         for i in range(1, len(choices) + 1):
             await msg.add_reaction(self.reactions[i])
 
-    @commands.command(help="Coin toss command")
-    async def toss(self, ctx):
+    @commands.command(help="toss a coin")
+    async def toss(self, ctx) -> None:
+        """
+        toss a coin
+
+        :param ctx: discord context manager
+        :type ctx: discord.ContextManager
+        """
         await ctx.send(f"Coin is tossed, and.... it's {choice(['HEADS','TAILS'])}")
 
-    @commands.command(help="Make a decision for you command")
-    async def choose(self, ctx, *args):
+    @commands.command(help="takes a decision from available choices")
+    async def choose(self, ctx, *args) -> None:
+        """
+        choose one the given option
+
+        :param ctx: discord context manager
+        :type ctx: discord.ContextManager
+        """
         respose = choice(
             ["choose", "prefer", "think you should go with", "would choose"]
         )
         await ctx.send(f"Well! , I {respose} {choice(args)}")
 
 
-def setup(client):
-    client.add_cog(Decisions(client))
+def setup(bot):
+    bot.add_cog(Decisions(bot))

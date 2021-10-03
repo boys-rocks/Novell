@@ -8,16 +8,37 @@ class Calculator(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(help="Calculator command")
-    async def clc(self, ctx, *query):
-        problem = " ".join(query)
-        result = eval(problem)
-        await ctx.send(f"```{problem} = {result}```")
-
-    @commands.command()
-    async def convert_to_bin(self, ctx, dec: int):
+    @commands.command(help="Simple Calculator command")
+    async def clc(self, ctx, *, query: str) -> None:
         """
-        Converts decimal to binary
+        simple calculator using eval function
+
+        :param ctx: discord context manager
+        :type ctx: discord.ContextManager
+        :param query: equation to solve
+        :type query: str
+        """
+        problem = "".join(query)
+        try:
+            result = eval(problem)
+        except ZeroDivisionError:
+            await ctx.reply("number cannot be divided by 0.")
+            return
+        except SyntaxError:
+            await ctx.reply("Only numbers are supported.")
+            return
+        except:
+            await ctx.reply("Invalid Equation, Please recheck and try again.")
+            return
+        await ctx.reply(f"```{problem} = {result}```")
+
+    @commands.command(help="converts decimal number to binary number")
+    async def convert_to_bin(self, ctx, dec: int) -> None:
+        """
+        convert decimal number to binary number
+
+        :param dec: decimal number
+        :type dec: int
         """
         if isinstance(dec, int):
             result = bin(dec).replace("0b", "")
@@ -25,10 +46,13 @@ class Calculator(commands.Cog):
         else:
             await ctx.send("I can only convert integers")
 
-    @commands.command()
-    async def convert_from_bin(self, ctx, bin: str):
+    @commands.command(help="convets binary number to decimal number")
+    async def convert_from_bin(self, ctx, bin: str) -> None:
         """
-        Converts binary to decimal
+        converts binary number to decimal number
+
+        :param bin: binary number
+        :type bin: str
         """
         try:
             result = int(bin, 2)
@@ -36,10 +60,13 @@ class Calculator(commands.Cog):
             result = "This is not a binary number"
         await ctx.send(result)
 
-    @commands.command()
-    async def convert_to_hex(self, ctx, dec: int):
+    @commands.command(help="Converts decimal to hexadecimal")
+    async def convert_to_hex(self, ctx, dec: int) -> None:
         """
-        Converts decimal to hexadecimal
+        converts decimal number to hexadecimal number
+
+        :param dec: decimal number
+        :type dec: int
         """
         if isinstance(dec, int):
             result = hex(dec).removeprefix("0x").upper()
@@ -47,10 +74,13 @@ class Calculator(commands.Cog):
         else:
             await ctx.send("I can only convert integers")
 
-    @commands.command()
-    async def convert_from_hex(self, ctx, hex: str):
+    @commands.command(help="Converts hexadecimal to decimal")
+    async def convert_from_hex(self, ctx, hex: str) -> None:
         """
-        Converts hexadecimal to decimal
+        converts hexadecimal number to decimal number
+
+        :param hex: hexadecimal number
+        :type hex: str
         """
         try:
             result = int(hex, 16)

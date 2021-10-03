@@ -6,7 +6,15 @@ from random import choice
 LOGO = "**ｈａｎｇｍａｎ**\n\n``rule:\n1.you will get 5 lives\n2.with each incorrect guess, you lose one live\n3.if you can guess all the alphabets in the word with live remaining you WIN\n4.Otherwise, you LOSE.``"
 
 
-async def make_blanks(rng):
+async def make_blanks(rng) -> list[str]:
+    """
+    replaces alphabets in a word with __
+
+    :param rng: word
+    :type rng: str
+    :return: list of blanks
+    :rtype: list[str]
+    """
     blanks = list()
     for _ in range(rng):
         blanks.append("_̲_̲")
@@ -19,6 +27,10 @@ class Hangman(commands.Cog):
 
     @commands.command(help="Play Hangman")
     async def hangman(self, ctx):
+        """
+        play hangman game.
+
+        """
         chosen_word = choice(word_list)
         word_length = len(chosen_word)
 

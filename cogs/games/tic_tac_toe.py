@@ -16,15 +16,23 @@ class TicTacToe(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def play_tic_tac_toe(self, ctx, difficulty: str):
-        """
+    @commands.command(
+        name="ttt",
+        help="""
         Available difficulties:
          - easy
          - difficult
          - impossible
+                      """,
+        aliases=["play_tic_tac_toe"],
+    )
+    async def play_tic_tac_toe(self, ctx, difficulty: str) -> None:
         """
+        play tic tac toe game against computer
 
+        :param difficulty: CPU difficulty
+        :type difficulty: str
+        """
         if difficulty.lower() not in ["easy", "difficult", "impossible"]:
             await ctx.send("Unavailable difficulty")
             return
@@ -62,11 +70,21 @@ class TicTacToe(commands.Cog):
         else:
             await ctx.send("It's a Draw! Wanna play again?")
 
-    @commands.command()
-    async def play_tic_tac_toe_multiplayer(self, ctx, opponent):
-        """
+    @commands.command(
+        name="ttt_mulit",
+        help="""
         Play Tic-Tac-Toe against someone on your discord server!
-        Simply write play_tic_tac_toe_multiplayer and mention them
+        Simply ttt_multi and mention player2
+        """,
+        aliases=["play_tic_tac_toe_multiplayer"],
+    )
+    async def play_tic_tac_toe_multiplayer(self, ctx, opponent) -> None:
+        """
+        play Tic-Tac-Toe against another player
+
+
+        :param opponent: other player
+        :type opponent: discord member
         """
         challenger = ctx.author
         opponent = ctx.guild.get_member(int(re.sub("[^0-9]", "", opponent)))

@@ -11,13 +11,25 @@ class Search(commands.Cog):
         self.bot = bot
 
     @commands.command(help="Searches wikipedia")
-    async def search(self, ctx, *query):
+    async def search(self, ctx, *, query: list[str]) -> None:
+        """
+        search wikipedia for user's query
+
+        :param query: query to search wikipedia for
+        :type query: list[str]
+        """
         sentence = " ".join(query)
         result = wikipedia.summary(sentence, sentences=2)
         await ctx.send(result)
 
     @commands.command(help="Get information on a github account")
-    async def ghuser(self, ctx, *, user):
+    async def ghuser(self, ctx, *, user: str) -> None:
+        """
+        get github user details
+
+        :param user: github username
+        :type user: str
+        """
         x = requests.get(f"https://api.github.com/users/{user}")
 
         try:
@@ -40,7 +52,15 @@ class Search(commands.Cog):
             print("Exception:", ex)
 
     @commands.command(help="Get information on a github repository")
-    async def ghrepo(self, ctx, user, *, repo):
+    async def ghrepo(self, ctx, user: str, *, repo: str) -> None:
+        """
+        get github repository details
+
+        :param user: github username
+        :type user: str
+        :param repo: github  repository name
+        :type repo: str
+        """
         try:
             x = requests.get(f"https://api.github.com/repos/{user}/{repo}")
             x = x.json()
@@ -66,7 +86,13 @@ class Search(commands.Cog):
             print("Exception: ", ex)
 
     @commands.command(help="Search for pypi package info")
-    async def pypi(self, ctx, *, package):
+    async def pypi(self, ctx, *, package: str) -> None:
+        """
+        search pypi for python packages
+
+        :param package: package name
+        :type package: str
+        """
         try:
             x = requests.get(f"https://pypi.python.org/pypi/{package}/json")
             x = x.json()
@@ -82,7 +108,7 @@ class Search(commands.Cog):
 
             await ctx.send(embed=em)
         except Exception as ex:
-            print("Exception: ", ex)
+            await ctx.reply(f"{package} not found")
 
 
 def setup(bot):

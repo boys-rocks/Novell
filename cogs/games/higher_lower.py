@@ -9,12 +9,31 @@ class HigherLower(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(help="Play Higher/Lower")
-    async def higherlower(self, ctx):
+    @commands.command(help="Play Higher/Lower (instagram follower edition).")
+    async def higherlower(self, ctx) -> None:
+        """
+        Play Higher/Lower (instagram follower edition).
+
+        """
+
         def pick():
+            """
+            picks up a random entry for the game
+
+            :return: a random entry from the higherlower data
+            :rtype: dict()
+            """
             return choice(data)
 
-        def format_ques(question):
+        def format_ques(question: dict) -> str:
+            """
+            returns formatted question
+
+            :param question: question/entry
+            :type question: dict
+            :return: formatted question
+            :rtype: str
+            """
             return f"{question['name']}, a {question['description']}, from {question['country']} "
 
         await ctx.send(

@@ -4,34 +4,34 @@ from helpers.logHelper import logger
 import os
 import logging
 from pymongo import MongoClient
-from helpers.getPrefix import getPrefix
-import ast
-from helpers.getWeather import getWeather
-import time
 from pretty_help import PrettyHelp
-
-logging.basicConfig(level=logging.INFO)
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN", None)
 MONGODB = os.environ.get("MONGODB", None)
 
+logging.basicConfig(level=logging.INFO)
 intents = discord.Intents.default()
 intents.members = True
-bot = commands.Bot(command_prefix="nb.", help_command=PrettyHelp(), intents=intents)
-# bot = commands.Bot(command_prefix='*', help_command=None)
+bot = commands.Bot(
+    command_prefix="nv.",
+    help_command=PrettyHelp(),
+    intents=intents,
+    case_insensitive=True,
+)
 
 client = MongoClient(MONGODB)
 db = client["discord"]
 collection = db["bot"]
 
+
 all_categories = [category for category in os.listdir("./cogs")]
-print(all_categories)
 for category in all_categories:
+    print(f"Loading cogs from : {category} ................\n")
     for filename in os.listdir(f"./cogs/{category}"):
         try:
             if filename.endswith(".py"):
                 bot.load_extension(f"cogs.{category}.{filename[:-3]}")
-                logger.info(f"Succesfully Loaded Cog: {filename}")
+                logger.info(f"Successfully Loaded Cog: {filename}")
             else:
                 print(f"Unable to load {filename}")
                 logger.warning(
@@ -39,9 +39,10 @@ for category in all_categories:
                 )
         except Exception as e:
             logger.warning(f"Unable to load cog: {e}")
-"""
-check for frequency data in mongo and create a doc for it if it doesnt exist
-"""
+bot.load_extension("jishaku")
+
+
+# check for frequency data in mongo and create a doc for it if it doesn't exist
 if not collection.find_one({"_id": "word_command_freq"}):
     freq_data_exist = collection.find_one({"_id": "word_command_freq"})
     collection.insert_one({"_id": "word_command_freq"})
@@ -89,13 +90,7 @@ async def on_guild_join(guild):
     print("done")
 
 
-async def latency(ctx):
-    time_1 = time.perf_counter()
-    await ctx.trigger_typing()
-    time_2 = time.perf_counter()
-    ping = round((time_2 - time_1) * 1000)
-    await ctx.send(f"ping = {ping}")
-
+# cookies
 
 try:
     bot.run(DISCORD_TOKEN)

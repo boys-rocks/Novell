@@ -15,8 +15,11 @@ class Hash(commands.Cog):
         """Initialize cog"""
         self.client = client
 
-    @commands.command()
-    async def make_hash(self, ctx, algorithm, *, user_value):
+    @commands.command(
+        name="hash",
+        help="Command reads in user specified algorithm and string to output hash.",
+    )
+    async def make_hash(self, ctx, algorithm, *, user_value: str) -> None:
         """
         Command reads in user specified algorithm and string to output hash.
 

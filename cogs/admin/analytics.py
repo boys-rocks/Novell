@@ -3,7 +3,15 @@ from discord.ext import commands
 from bot import collection
 
 
-def clean_chars(command):
+def clean_chars(command: str) -> str:
+    """
+    replaces character with mongodb characters format
+
+    :param command: discord command to be converted
+    :type command: str
+    :return: converted command
+    :return type: str
+    """
     clean_freq_data = command
     if "." in clean_freq_data:
         clean_freq_data = clean_freq_data.replace(".", "(Dot)")
@@ -12,7 +20,15 @@ def clean_chars(command):
     return clean_freq_data
 
 
-def clean_chars_reverse(command):
+def clean_chars_reverse(command: str) -> str:
+    """
+    replaces mongodb characters format with standard characters
+
+    :param command: discord command to be converted
+    :type command: str
+    :return: converted command
+    :return type: str
+    """
     clean_freq_data = command
     if "(Dot)" in clean_freq_data:
         clean_freq_data = clean_freq_data.replace("(Dot)", ".")
@@ -21,7 +37,15 @@ def clean_chars_reverse(command):
     return clean_freq_data
 
 
-def get_top(number):
+def get_top(number: int) -> list[str]:
+    """
+    shows most used commands in a server
+
+    :param number:
+    :type number: int
+    :return: list of top commands
+    :return type: list[str]
+    """
     words = collection.find({"_id": "word_command_freq"})
     pairlist = []
     for word in words:
@@ -42,7 +66,7 @@ class Analytics(commands.Cog):
         self.bot = bot
 
     @commands.command(help="Gets frequency of command")
-    async def freq(self, ctx, command):
+    async def freq(self, ctx, command: str) -> None:
         freq = collection.find_one({"_id": "word_command_freq"})
         clean_freq_data = clean_chars(command)
         try:
@@ -52,8 +76,8 @@ class Analytics(commands.Cog):
         except Exception as e:
             await ctx.send("Command not found")
 
-    @commands.command(help="Gets frequency of command")
-    async def topcommands(self, ctx, number):
+    @commands.command(help="Gets frequency of most used commands")
+    async def topcommands(self, ctx, number: int = 10) -> None:
         commands = get_top(int(number))
         all_commands = ""
         for command in commands:
