@@ -1,3 +1,4 @@
+import ast
 import discord
 from discord.ext import commands
 
@@ -116,7 +117,7 @@ class Moderation(commands.Cog):
                     delay_mod = delay_mod.replace("h", "*3600+")
                     if delay_mod.endswith("+"):
                         delay_mod = delay_mod[:-1]
-                    total_delay = eval(delay_mod)
+                    total_delay = ast.literal_eval(delay_mod)
                     if total_delay > 21600:
                         await ctx.send("Invalid Delay (max limit is 6hrs)")
                         return
