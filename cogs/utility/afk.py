@@ -82,34 +82,33 @@ class AFK(commands.Cog):
         """
         if message.author.bot:
             return
-        else:
-            results = collection.find_one({"_id": "afk"})
-            try:
-                if results[str(message.author.id)] is not None:
-                    try:
-                        await message.author.edit(nick=None)
-                    except Exception as ex:
-                        print("Exception: ", ex)
+        results = collection.find_one({"_id": "afk"})
+        try:
+            if results[str(message.author.id)] is not None:
+                try:
+                    await message.author.edit(nick=None)
+                except Exception as ex:
+                    print("Exception: ", ex)
 
-                    try:
-                        if results[str(f"k{message.author.id}")] == "10":
-                            collection.update_one(
-                                {"_id": "afk"}, {"$unset": {str(message.author.id): ""}}
-                            )
-                            collection.update_one(
-                                {"_id": "afk"},
-                                {"$unset": {f"k{str(message.author.id)}": ""}},
-                            )
-                            embed = discord.Embed(
-                                title="Welcome back",
-                                description="Removed the AFK.",
-                                color=discord.Color.random(),
-                            )
-                            await message.channel.send(embed=embed)
-                    except Exception as ex:
-                        print(ex)
-            except Exception as ex:
-                print("Error", ex)
+                try:
+                    if results[str(f"k{message.author.id}")] == "10":
+                        collection.update_one(
+                            {"_id": "afk"}, {"$unset": {str(message.author.id): ""}}
+                        )
+                        collection.update_one(
+                            {"_id": "afk"},
+                            {"$unset": {f"k{str(message.author.id)}": ""}},
+                        )
+                        embed = discord.Embed(
+                            title="Welcome back",
+                            description="Removed the AFK.",
+                            color=discord.Color.random(),
+                        )
+                        await message.channel.send(embed=embed)
+                except Exception as ex:
+                    print(ex)
+        except Exception as ex:
+            print("Error", ex)
 
 
 def setup(bot):

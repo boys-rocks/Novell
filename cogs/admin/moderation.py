@@ -121,9 +121,8 @@ class Moderation(commands.Cog):
                     if total_delay > 21600:
                         await ctx.send("Invalid Delay (max limit is 6hrs)")
                         return
-                    else:
-                        await ctx.send(f"Slow Mode activated with `{delay}` delay.")
-                        await ctx.channel.edit(slowmode_delay=total_delay)
+                    await ctx.send(f"Slow Mode activated with `{delay}` delay.")
+                    await ctx.channel.edit(slowmode_delay=total_delay)
                 else:
                     await ctx.send(f"Slow Mode activated with `{delay} seconds` delay.")
                     await ctx.channel.edit(slowmode_delay=int(delay))

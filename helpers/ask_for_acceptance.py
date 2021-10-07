@@ -20,8 +20,7 @@ async def ask(
         if reaction.emoji == emojis.thumbsup:
             await request.delete()
             return True
-        elif reaction.emoji == emojis.thumbsdown:
+        if reaction.emoji == emojis.thumbsdown:
             await request.delete()
             return False
-        else:
-            await reaction.remove(user)
+        await reaction.remove(user)

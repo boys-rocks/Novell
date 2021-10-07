@@ -14,11 +14,11 @@ def time_format(seconds: int):
         s = seconds % 3600 % 60
         if d > 0:
             return f"{d:02d}D {h:02d}H {m:02d}m {s:02d}s"
-        elif h > 0:
+        if h > 0:
             return f"{h:02d}H {m:02d}m {s:02d}s"
-        elif m > 0:
+        if m > 0:
             return f"{m:02d}m {s:02d}s"
-        elif s > 0:
+        if s > 0:
             return f"{s:02d}s"
     return None
 
