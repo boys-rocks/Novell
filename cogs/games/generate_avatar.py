@@ -21,11 +21,10 @@ class GenerateAvatar(commands.Cog):
         """
         if seed is None:
             seed = "".join(random.sample(string.ascii_letters, random.randint(1, 10)))
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                f"https://avatars.dicebear.com/api/avataaars/{seed}.svg?mood[]=happy"
-            ) as resp:
-                img_data = await resp.content.read()
+        async with aiohttp.ClientSession() as session, session.get(
+            f"https://avatars.dicebear.com/api/avataaars/{seed}.svg?mood[]=happy"
+        ) as resp:
+            img_data = await resp.content.read()
         with open("./temp/avatar.svg", "wb") as handler:
             handler.write(img_data)
         drawing = svg2rlg("./temp/avatar.svg")
@@ -44,11 +43,10 @@ class GenerateAvatar(commands.Cog):
         """
         if seed is None:
             seed = "".join(random.sample(string.ascii_letters, random.randint(1, 10)))
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                f"https://avatars.dicebear.com/api/micah/{seed}.svg?mood[]=happy"
-            ) as resp:
-                img_data = await resp.content.read()
+        async with aiohttp.ClientSession() as session, session.get(
+            f"https://avatars.dicebear.com/api/micah/{seed}.svg?mood[]=happy"
+        ) as resp:
+            img_data = await resp.content.read()
         with open("./temp/micah.svg", "wb") as handler:
             handler.write(img_data)
         drawing = svg2rlg("./temp/micah.svg")
