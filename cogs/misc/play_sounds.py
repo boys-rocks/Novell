@@ -102,7 +102,7 @@ def endSong(guild, path):
 
 
 def over():
-    pass
+    raise NotImplementedError()
 
 
 class PlaySounds(commands.Cog):
