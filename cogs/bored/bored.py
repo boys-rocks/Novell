@@ -16,7 +16,6 @@ class Bored(commands.Cog):
         """
         suggests a random activity.
         """
-        import requests
 
         x = requests.get("https://www.boredapi.com/api/activity")
         await ctx.send(
