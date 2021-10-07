@@ -22,7 +22,7 @@ class RockPaperScissors(commands.Cog):
 
         """
         avl_moves = ["rock", "paper", "scissors"]
-        await ctx.send(f"rock, paper, or scissors? Choose wisely...")
+        await ctx.send("rock, paper, or scissors? Choose wisely...")
 
         def check(msg):
             return (

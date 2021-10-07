@@ -33,7 +33,7 @@ class Jokes(commands.Cog):
         sends a random chuck norris joke
         """
         try:
-            with requests.get(url=f"http://api.icndb.com/jokes/random") as response:
+            with requests.get(url="http://api.icndb.com/jokes/random") as response:
                 await ctx.send(response.json()["value"]["joke"])
         except Exception as error:
             await ctx.reply("ooops , looks like api failed.")
@@ -46,7 +46,7 @@ class Jokes(commands.Cog):
         """
         try:
             with requests.get(
-                url=f"https://evilinsult.com/generate_insult.php?lang=en&type=json"
+                url="https://evilinsult.com/generate_insult.php?lang=en&type=json"
             ) as response:
                 await ctx.send(response.json()["insult"])
         except:
@@ -70,7 +70,7 @@ class Jokes(commands.Cog):
 
         """
         with requests.get(
-            url=f"https://v2.jokeapi.dev/joke/programming?type=single"
+            url="https://v2.jokeapi.dev/joke/programming?type=single"
         ) as response:
             await ctx.send(response.json()["joke"])
 

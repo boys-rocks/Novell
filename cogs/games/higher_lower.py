@@ -37,7 +37,7 @@ class HigherLower(commands.Cog):
             return f"{question['name']}, a {question['description']}, from {question['country']} "
 
         await ctx.send(
-            f"""
+            """
               ｈｉｇｈｅｒ ／ ｌｏｗｅｒ
               """
         )

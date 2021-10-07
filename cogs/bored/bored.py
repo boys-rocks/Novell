@@ -121,7 +121,7 @@ class Bored(commands.Cog):
         sends a random trivia question
 
         """
-        with requests.get(url=f"http://jservice.io/api/random") as response:
+        with requests.get(url="http://jservice.io/api/random") as response:
             answer = response.json()[0]["answer"]
             await ctx.send(response.json()[0]["question"])
             guess = await self.bot.wait_for(
