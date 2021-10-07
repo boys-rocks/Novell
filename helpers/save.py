@@ -5,17 +5,15 @@ from bot import collection
 def exist(name):
     if collection.find_one({"_id": "paper_trading_accounts", name: {"$exists": True}}):
         return True
-    else:
-        return False
+    return False
 
 
 def newaccount(x):
     if exist(x):
         return "Account already Exists"
-    else:
-        newaccount = account(x)
-        save(newaccount, x)
-        return "Paper trading account created!"
+    newaccount = account(x)
+    save(newaccount, x)
+    return "Paper trading account created!"
 
 
 def save(e, name):
@@ -75,9 +73,8 @@ def load(name):
             loadAccount.coins = accountSave[3]
             loadAccount.recentTrades = accountSave[4]
             return loadAccount
-        else:
-            print("acc doesnt exist")
-            return "Account Doesnt Exist"
+        print("acc doesnt exist")
+        return "Account Doesnt Exist"
 
     except Exception as e:
         print(e)

@@ -84,17 +84,16 @@ class TicTacToeGame:
     def get_winner(self):
         if self.check_winner(self.PLAYER):
             return self.PLAYER
-        elif self.check_winner(self.COMPUTER):
+        if self.check_winner(self.COMPUTER):
             return self.COMPUTER
-        else:
-            return None
+        return None
 
     def symbol(self, number):
         if number == self.COMPUTER:
             return self.computer_symbol
-        elif number == self.PLAYER:
+        if number == self.PLAYER:
             return self.player_symbol
-        elif number == self.EMPTY:
+        if number == self.EMPTY:
             return " "
         return "?"
 
@@ -117,11 +116,10 @@ class TicTacToeGame:
                 + " " * 10
                 + " 1 | 2 | 3 ```"
             )
-        else:
-            return (
-                f"``` {self.symbol(self.board[7])} | {self.symbol(self.board[8])} | {self.symbol(self.board[9])} \n"
-                + "---+---+---\n"
-                + f" {self.symbol(self.board[4])} | {self.symbol(self.board[5])} | {self.symbol(self.board[6])} \n"
-                + "---+---+---\n"
-                + f" {self.symbol(self.board[1])} | {self.symbol(self.board[2])} | {self.symbol(self.board[3])} ```"
-            )
+        return (
+            f"``` {self.symbol(self.board[7])} | {self.symbol(self.board[8])} | {self.symbol(self.board[9])} \n"
+            + "---+---+---\n"
+            + f" {self.symbol(self.board[4])} | {self.symbol(self.board[5])} | {self.symbol(self.board[6])} \n"
+            + "---+---+---\n"
+            + f" {self.symbol(self.board[1])} | {self.symbol(self.board[2])} | {self.symbol(self.board[3])} ```"
+        )

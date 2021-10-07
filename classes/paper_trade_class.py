@@ -51,9 +51,8 @@ class account:
                 + " purchased for "
                 + str(cost_and_coin[0])
             )
-        else:
-            print("Insufficient Funds")
-            return "Insufficient Funds"
+        print("Insufficient Funds")
+        return "Insufficient Funds"
 
     def sell(self, symbol, amount):
         if self.coins[symbol]:
@@ -70,9 +69,8 @@ class account:
                 self.updateBalance(cost_and_coin[0])
                 self.updateCoin(symbol, -amount)
                 return str(amount) + " " + symbol + " sold for " + str(cost_and_coin[0])
-            else:
-                print("Insufficient " + symbol)
-                return "Insufficient " + symbol
+            print("Insufficient " + symbol)
+            return "Insufficient " + symbol
         else:
             print("Insufficient " + symbol)
             return "Insufficient " + symbol

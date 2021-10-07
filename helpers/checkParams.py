@@ -5,5 +5,4 @@ def checkCommandParams(bot, args):
             values.append(each)
     if values:
         return values
-    else:
-        return None
+    return None
