@@ -1,3 +1,4 @@
+import ast
 import discord
 from discord.ext import commands
 
@@ -116,13 +117,12 @@ class Moderation(commands.Cog):
                     delay_mod = delay_mod.replace("h", "*3600+")
                     if delay_mod.endswith("+"):
                         delay_mod = delay_mod[:-1]
-                    total_delay = eval(delay_mod)
+                    total_delay = ast.literal_eval(delay_mod)
                     if total_delay > 21600:
                         await ctx.send("Invalid Delay (max limit is 6hrs)")
                         return
-                    else:
-                        await ctx.send(f"Slow Mode activated with `{delay}` delay.")
-                        await ctx.channel.edit(slowmode_delay=total_delay)
+                    await ctx.send(f"Slow Mode activated with `{delay}` delay.")
+                    await ctx.channel.edit(slowmode_delay=total_delay)
                 else:
                     await ctx.send(f"Slow Mode activated with `{delay} seconds` delay.")
                     await ctx.channel.edit(slowmode_delay=int(delay))

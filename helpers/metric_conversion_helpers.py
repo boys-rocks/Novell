@@ -29,7 +29,6 @@ def _check_arg_validity(
     :param end_unit: target unit for initial value to be converted to from the starting unit.
     :return: A dictionary of flags indicating the validity of user arguments.
     """
-
     # Initialization
     type_flags = {
         "good_base": False,
@@ -179,7 +178,6 @@ def _intermediate_helper(
     :param metric: Metric dictionary for related type conversion (length, volume, etc.).
     :return: Converted integer or float value of quantity from starting unit to ending unit.
     """
-
     # Initialization
     final = 0
     intermediate_form = 0
@@ -215,7 +213,6 @@ def _convert_temp(
     :param quantity: starting temperature to be converted.
     :return: quantity converted from starting unit to ending unit.
     """
-
     temperature = 0
     if start_unit == "fahrenheit" and end_unit == "celsius":
         temperature = (quantity - 32) * (5 / 9)  # (F - 32) * (5/9) = C

@@ -1,9 +1,8 @@
 def checkCommandParams(bot, args):
     values = []
     for each in bot.get_command(args).params.keys():
-        if each != "ctx" and each != "self":
+        if each not in ("ctx", "self"):
             values.append(each)
     if values:
         return values
-    else:
-        return None
+    return None

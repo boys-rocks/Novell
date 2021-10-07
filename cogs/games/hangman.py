@@ -15,7 +15,7 @@ async def make_blanks(rng) -> list[str]:
     :return: list of blanks
     :rtype: list[str]
     """
-    blanks = list()
+    blanks = []
     for _ in range(rng):
         blanks.append("_̲_̲")
     return blanks

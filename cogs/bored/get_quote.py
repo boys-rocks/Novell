@@ -30,7 +30,7 @@ class GetQuote(commands.Cog):
         try:
             await ctx.send(fetch_quote())
         except Exception as error:
-            await ctx.send(f"something went wrong\n")
+            await ctx.send("something went wrong\n")
 
 
 def setup(bot):

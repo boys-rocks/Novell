@@ -23,7 +23,6 @@ class Dictionary(commands.Cog):
         :param word: word to search for
         :type word: str
         """
-
         with requests.get(
             url=f"https://owlbot.info/api/v4/dictionary/{word}/",
             headers={"Authorization": "Token 64154ef64d2de67c9f031ac98798fb57eaaf2f41"},
