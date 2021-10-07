@@ -43,7 +43,6 @@ class MetricConverter(commands.Cog):
         :param end_unit: The ending unit to be converted to.
         :return: None. This function generates only text output to discord context.
         """
-
         # Initialize input for processing.
         base_type = base_type.lower()
         start_unit = start_unit.lower()

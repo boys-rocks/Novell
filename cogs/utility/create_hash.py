@@ -28,7 +28,6 @@ class Hash(commands.Cog):
         :param user_value: User input string. Can be any length greater than 1.
         :return: No return. Print hash to dialogue window.
         """
-
         # Checks user algorithm argument input.
         if algorithm.lower() == "md5":
             a_hash = hashlib.md5()
@@ -50,7 +49,6 @@ class Hash(commands.Cog):
     @make_hash.error
     async def on_hash_command_error(self, ctx, error):
         """Catches exception when user does not provide all arguments. Outputs required format"""
-
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send("Invalid input. Please provide all required arguments.")
             await ctx.send("Form: .make_hash <hashing algorithm> <string>")

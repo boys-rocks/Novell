@@ -16,7 +16,6 @@ class Bored(commands.Cog):
         """
         suggests a random activity.
         """
-
         x = requests.get("https://www.boredapi.com/api/activity")
         await ctx.send(
             embed=discord.Embed(
