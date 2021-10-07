@@ -1,3 +1,4 @@
+import ast
 import discord
 from discord.ext import commands
 
@@ -20,7 +21,7 @@ class Calculator(commands.Cog):
         """
         problem = "".join(query)
         try:
-            result = eval(problem)
+            result = ast.literal_eval(problem)
         except ZeroDivisionError:
             await ctx.reply("number cannot be divided by 0.")
             return
