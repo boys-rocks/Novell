@@ -70,7 +70,6 @@ class Base(commands.Cog):
         checks ping/latency
 
         """
-        import time
 
         time_1 = time.perf_counter()
         await ctx.trigger_typing()
