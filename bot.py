@@ -24,7 +24,7 @@ db = client["discord"]
 collection = db["bot"]
 
 
-all_categories = [category for category in os.listdir("./cogs")]
+all_categories = list(os.listdir("./cogs"))
 for category in all_categories:
     print(f"Loading cogs from : {category} ................\n")
     for filename in os.listdir(f"./cogs/{category}"):
