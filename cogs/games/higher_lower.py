@@ -49,32 +49,31 @@ class HigherLower(commands.Cog):
                 question_two = pick()
                 if question_one == question_two:
                     continue
+                await ctx.send(
+                    f"```Compare A: {format_ques(question_one)}\n\t\t\t VS \nCompare B: {format_ques(question_two)}\n\nWho has more followers? Type 'A' or 'B':```"
+                )
+                guess = await self.bot.wait_for(
+                    "message",
+                    check=lambda message: message.author == ctx.author,
+                )
+
+                if guess.content.lower() == "a":
+                    guess = question_one["follower_count"]
+                elif guess.content.lower() == "b":
+                    guess = question_two["follower_count"]
+                if guess == max(
+                    question_one["follower_count"], question_two["follower_count"]
+                ):
+                    score += 1
+                    await ctx.send(
+                        f"```{choice(reaction_positive)}, Your score is {score} ```"
+                    )
+
                 else:
                     await ctx.send(
-                        f"```Compare A: {format_ques(question_one)}\n\t\t\t VS \nCompare B: {format_ques(question_two)}\n\nWho has more followers? Type 'A' or 'B':```"
+                        f"```{choice(reaction_negative)}. Final score: {score}```"
                     )
-                    guess = await self.bot.wait_for(
-                        "message",
-                        check=lambda message: message.author == ctx.author,
-                    )
-
-                    if guess.content.lower() == "a":
-                        guess = question_one["follower_count"]
-                    elif guess.content.lower() == "b":
-                        guess = question_two["follower_count"]
-                    if guess == max(
-                        question_one["follower_count"], question_two["follower_count"]
-                    ):
-                        score += 1
-                        await ctx.send(
-                            f"```{choice(reaction_positive)}, Your score is {score} ```"
-                        )
-
-                    else:
-                        await ctx.send(
-                            f"```{choice(reaction_negative)}. Final score: {score}```"
-                        )
-                        break
+                    break
             is_playing = False
 
 
