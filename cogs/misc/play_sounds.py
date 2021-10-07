@@ -92,7 +92,7 @@ async def joinMusicChannel(ctx):
         return False
 
     vc = ctx.voice_client
-    if vc == None:
+    if vc is None:
         await channel.connect()
     return True
 
@@ -117,7 +117,7 @@ class PlaySounds(commands.Cog):
     async def nyan(self, ctx):
         try:
             data = await joinMusicChannel(ctx)
-            if data == True:
+            if data is True:
                 guild = ctx.message.guild
                 voice_client = guild.voice_client
                 path = "soundfiles/Nyan.mp3"
@@ -134,7 +134,7 @@ class PlaySounds(commands.Cog):
             joinedSentence = " ".join(map(str, args))
             textVoice(joinedSentence)
             data = await joinMusicChannel(ctx)
-            if data == True:
+            if data is True:
                 guild = ctx.message.guild
                 voice_client = guild.voice_client
                 path = "soundfiles/tts.mp3"
@@ -151,7 +151,7 @@ class PlaySounds(commands.Cog):
     async def pog(self, ctx, dir):
         try:
             data = await joinMusicChannel(ctx)
-            if data == True:
+            if data is True:
                 guild = ctx.message.guild
                 voice_client = guild.voice_client
                 path = randomSound(dir)
@@ -167,7 +167,7 @@ class PlaySounds(commands.Cog):
     async def song(self, ctx):
         try:
             data = await joinMusicChannel(ctx)
-            if data == True:
+            if data is True:
                 while True:
                     musicMaker(ctx)
         except Exception as e:
@@ -179,7 +179,7 @@ class PlaySounds(commands.Cog):
             line = random.choice(open("textfiles/" + dir + ".txt").readlines())
             textVoice(line)
             data = await joinMusicChannel(ctx)
-            if data == True:
+            if data is True:
                 guild = ctx.message.guild
                 voice_client = guild.voice_client
                 path = "soundfiles/tts.mp3"
@@ -195,7 +195,7 @@ class PlaySounds(commands.Cog):
     async def play(self, ctx, link):
         try:
             data = await joinMusicChannel(ctx)
-            if data == True:
+            if data is True:
                 guild = ctx.message.guild
                 voice_client = guild.voice_client
                 path = await YTDLSource.from_url(link, loop=self.bot.loop)

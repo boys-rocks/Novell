@@ -85,7 +85,7 @@ class AFK(commands.Cog):
         else:
             results = collection.find_one({"_id": "afk"})
             try:
-                if results[str(message.author.id)] != None:
+                if results[str(message.author.id)] is not None:
                     try:
                         await message.author.edit(nick=None)
                     except Exception as ex:
