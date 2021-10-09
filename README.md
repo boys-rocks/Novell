@@ -1,68 +1,67 @@
 <!--
-*** Thanks for checking out the Nuub-Bot. If you have a suggestion
+*** Thanks for checking out the Novell. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
 *** or simply open an issue with the tag "enhancement".
 *** Thanks again! Now go create something AMAZING! :D
-***
-***
-***
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** github_username, repo_name, twitter_handle, email, project_title, project_description
 -->
 
 <p align="center">
 
-![GitHub](https://img.shields.io/github/license/baneetparmar/nuub_bot?color=blue&style=for-the-badge)
+[![GitHub license](https://img.shields.io/github/license/baneetparmar/Novell)](https://github.com/baneetparmar/Novell/blob/main/LICENSE)
 
-![GitHub contributors](https://img.shields.io/github/contributors/baneetparmar/nuub_bot?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues/baneetparmar/nuub_bot?style=for-the-badge)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/baneetparmar/nuub_bot?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/baneetparmar/nuub_bot?style=for-the-badge)
-![GitHub watchers](https://img.shields.io/github/watchers/baneetparmar/nuub_bot?style=for-the-badge)
-![Discord](https://img.shields.io/discord/875306595104481290?color=red&style=for-the-badge)
-
-<br/>
 <br/>
 <!-- PROJECT LOGO -->
 <p align='center'>
-<a href="https://imgur.com/nSsNegd"><img width="150" height="150" src="https://i.imgur.com/dEXOL4I.png" title="source: imgur.com" /></a>
+<a href=""><img src="https://imgur.com/1cd1EsZ.png" title="source: imgur.com" /></a>
 </p>
-<p align='center' style="border-radius:50%;">nuub-bot
-<br />
+</p>
 
-  <h3 align="center">About</h3>
-
-  <p align="center">
-    Nuub-Bot is an open source, fully customizable Discord bot that is constantly growing. You can invite it to your Discord server using this
-    ![Link]()
-    Also, you can join the official nuub-bot Support Server for all questions, suggestions, and assistance! It comes packaged with a variety of commands and a multitude of settings that can be tailored to your server's specific needs.
-    If you liked this repository, feel free to leave a star to help promote Nuub-Bot
-    <br/>
-    <br />
-    <a href="https://github.com/baneetparmar/nuub_bot"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/baneetparmar/nuub_bot">View Demo</a>
-    ·
-    <a href="https://github.com/baneetparmar/nuub_bot/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/baneetparmar/nuub_bot/issues">Request Feature</a>
-  </p>
+<hr style=
+    'height: 1px;
+    color: #pink;
+    background-color: pink;'>
+  <h3 align="center"></h3>
+<p align='center'>
+Novell (means 'newbie' in catalan) is a multi-purpose discord bot developed using python.<br>
+Novell have plethora of commands under her arsenal
+</p>
+<p align='center'>
+<a href='https://github.com/baneetparmar/Novell/issues'>Report Issue</a>&nbsp&nbsp
+<a href='https://github.com/baneetparmar/Novell/issues'>Request Feature</a>&nbsp&nbsp
+<a href='https://baneetparmar.github.io/Novell/'> View Commands </a>
 </p>
 
 # Contributing
+We created Novell aiming to learn and improve our python skills and we welcome everyone who shares a similar goal and would like to help us.
 
-Estimating duration from bitrate, this may be inaccurate. Pull requests are welcome. For major changes please open an issue first to discuss what you would like to change.
 
-Before submitting your PR, consider running some code formatter on the lines you touched or added. This will help reduce the time spent on fixing small styling issues in code review. Good options are yapf or autopep8 which likely can be integrated into your favorite editor.
+You can contribute either by forking our repo and then opening a Pull Request(PR) 
+or 
+by simply opening an issue with the tag "enhancement".
 
-Please refrain from formatting the whole file if you just change some small part of it. If you feel the need to tidy up some particularly egregious code, then do that in a separate PR.
 
-# SELF DEPLOY
+We don't have many restrictions on what Novell can do and what she can't. As long as your Pull Request does not contain anything inappropriate or malicious it will get approved.
 
-Get a personal instance of the bot on heroku for your server.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/baneetparmar/nuub_bot/tree/main)
+# How to use Novell
+Unlike most bots, Novell is a self-hosted bot and requires your intervention but luckily with Heroku, it can be done in few clicks.
+
+Steps:
+
+1. Grab yourself a discord [bot token](https://discord.com/developers/applications)
+
+2. Create an account on [Heroku](https://herokuapp.com/)
+
+3. Click on the Big Purple Deploy button and paste bot token in required filled.
+<p align='center'>
+<a href="https://heroku.com/deploy?template=https://github.com/baneetparmar/nuub_bot/tree/main">
+  <img src="https://www.herokucdn.com/deploy/button.svg"  alt="Deploy">
+</a>
+</p>
+
+4. [Optional] Fill Optional fields (failing to do so will result in reduced features)
+
+5. Now invite your bot.
 
 # License
 
