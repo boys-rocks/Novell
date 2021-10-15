@@ -1,4 +1,10 @@
-## Novell Command Documentation - V0.03
+---
+title: Novell
+has_children: true
+nav_order: 1
+---
+# Novell Bot commands
+
 
 #### Administrative Commands
 * Analytics Commands -
