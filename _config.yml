@@ -1,4 +1,7 @@
 remote_theme: pmarsceill/just-the-docs
 color_scheme: "dark"
-search_enabled: false
-
+search_enabled: true
+logo: "./assests/novell.png"
+heading_anchors: true
+footer_content: "Copyright &copy; 2021-2022 Baneet Parmar. Distributed by an <a href=\"https://github.com/baneetparmar/Novell\">MIT license.</a>"
+gh_edit_repository: "https://github.com/baneetparmar/Novell"
