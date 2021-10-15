@@ -1,6 +1,6 @@
 ---
 title: Game Commands
-parent: index
+parent: Novell
 nav_order: 1
 ---
 

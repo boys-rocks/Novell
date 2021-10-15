@@ -1,6 +1,6 @@
 ---
 title: Fun Commands
-parent: index
+parent: Novell
 nav_order: 1
 ---
 #### Boredom / Fun Commands
