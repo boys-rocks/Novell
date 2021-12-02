@@ -22,8 +22,8 @@
     background-color: pink;'>
   <h3 align="center"></h3>
 <p align='center'>
-Novell (means 'newbie' in catalan) is a multi-purpose discord bot developed using python.<br>
-Novell have plethora of commands under her arsenal
+Novell (meaning 'newbie' in catalan) is a multi-purpose discord bot developed using python.<br>
+Novell has plethora of commands in her arsenal, spanning multiple categories.
 </p>
 <p align='center'>
 <a href='https://github.com/baneetparmar/Novell/issues'>Report Issue</a>&nbsp&nbsp
@@ -40,7 +40,7 @@ or
 by simply opening an issue with the tag "enhancement".
 
 
-We don't have many restrictions on what Novell can do and what she can't. As long as your Pull Request does not contain anything inappropriate or malicious it will get approved.
+We don't have many restrictions on what Novell should do or not. As long as your Pull Request does not contain anything inappropriate or malicious it will get approved.
 
 
 # How to use Novell
