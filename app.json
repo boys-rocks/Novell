@@ -1,12 +1,12 @@
 {
-  "name": "nuub-bot",
-  "description": "nuub-bot is a modular bot built in python. ",
+  "name": "novell",
+  "description": "novell is a discord bot. ",
   "keywords": [
     "discord-bot",
     "python3",
     "discord.py"
   ],
-  "repository": "https://github.com/baneetparmar/nuub_bot",
+  "repository": "https://github.com/baneetparmar/novell",
   "env": {
     "DISCORD_TOKEN": {
       "description": "The auth token for a Discord bot",
@@ -21,7 +21,7 @@
       "required": false
     }
   },
-  "logo": "https://i.imgur.com/dEXOL4I.png",
+  "logo": "https://i.imgur.com/YUgRgIr.png",
   "success_url": "/welcome",
   "image": "heroku/python",
   "buildpacks": [
