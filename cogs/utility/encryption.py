@@ -9,17 +9,10 @@ from utils.format import *
 
 
 class Encryption(commands.Cog):
+    """this cog contains all the encryption/decryption commands"""
+    
     def __init__(self, bot):
         self.bot = bot
-
-
-
-    @commands.Cog.listener()
-    async def on_ready(self):
-		#print("EncryptCog ready!")
-		pass
-
-
 
     @commands.group(aliases=['encrypt'])
     async def encode(self, ctx):
@@ -79,6 +72,17 @@ Lf!Decode [TYPE] [TO DECODE]
             await ctx.send(embed=eb)
 
     async def encryptout(self, ctx, convert, txtinput):
+        '''
+        
+
+        Args:
+            ctx ([type]): [description]
+            convert ([type]): [description]
+            txtinput ([type]): [description]
+
+        Returns:
+            [type]: [description]
+        '''
         if len(txtinput) > 1900:
             return await ctx.send(embed=discord.Embed(
                 description=f"**The result was too long (more than 1900 letters), sorry {ctx.author.name}**"

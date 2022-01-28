@@ -44,7 +44,7 @@ class Polls(commands.Cog):
         try:
             await ctx.channel.delete_messages(messages)
         except:
-            pass # oh well
+            print('Failed to delete messages')
 
         answer = '\n'.join(f'{keycap}: {content}' for keycap, content in answers)
         actual_poll = await ctx.send(embed=discord.Embed(title=f'"{question.title()}"',description=f'{answer}',colour=discord.Colour.random()).set_author(name=f"A poll by {ctx.author.name}",icon_url=ctx.author.avatar_url))
