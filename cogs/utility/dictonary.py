@@ -29,10 +29,16 @@ class Dictionary(commands.Cog):
         ) as response:
             rsp = response.json()
             try:
-                await ctx.send(
-                    f"```word: {rsp['word']}\ndefinition: {rsp['definitions'][0]['definition']}```"
+                em = discord.Embed(
+                    title=rsp["word"],
+                    description=f'{rsp["definitions"][0]["definition"]}\nExample: {rsp["definitions"][0]["example"]}'
                 )
-                await ctx.send(response.json()["definitions"][0]["image_url"])
+                await ctx.send(embed=em)
+                # await ctx.send(
+                #     f"```word: {rsp['word']}\ndefinition: {rsp['definitions'][0]['definition']}```"
+                # )
+                # if response.json()["definitions"][0]["image_url"]:
+                #     await ctx.send(response.json()["definitions"][0]["image_url"])
             except Exception as error:
                 await ctx.send("API down")
 
