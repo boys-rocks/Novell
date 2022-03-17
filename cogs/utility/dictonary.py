@@ -33,7 +33,7 @@ class Dictionary(commands.Cog):
                     title=rsp["word"],
                     description=f'{rsp["definitions"][0]["definition"]}\nExample: {rsp["definitions"][0]["example"]}'
                 )
-                await ctx.send(em)
+                await ctx.send(embed=em)
                 # await ctx.send(
                 #     f"```word: {rsp['word']}\ndefinition: {rsp['definitions'][0]['definition']}```"
                 # )
