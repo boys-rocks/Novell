@@ -51,7 +51,7 @@ Steps:
 
 2. Create an account on [Heroku](https://herokuapp.com/)
 
-3. Click on the Big Purple Deploy button and paste bot token in required field.
+3. Click on the Big Purple Deploy button and paste bot token in the required field.
 <p align='center'>
 <a href="https://heroku.com/deploy?template=https://github.com/baneetparmar/nuub_bot/tree/main">
   <img src="https://www.herokucdn.com/deploy/button.svg"  alt="Deploy">
