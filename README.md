@@ -32,18 +32,17 @@ Novell has plethora of commands in her arsenal, spanning multiple categories.
 </p>
 
 # Contributing
+
 We created Novell aiming to learn and improve our python skills and we welcome everyone who shares a similar goal and would like to help us.
 
-
-You can contribute either by forking our repo and then opening a Pull Request(PR) 
-or 
+You can contribute either by forking our repo and then opening a Pull Request(PR)
+or
 by simply opening an issue with the tag "enhancement".
-
 
 We don't have many restrictions on what Novell should do or not. As long as your Pull Request does not contain anything inappropriate or malicious it will get approved.
 
-
 # How to use Novell
+
 Unlike most bots, Novell is a self-hosted bot and requires your intervention but luckily with Heroku, it can be done in few clicks.
 
 Steps:
@@ -52,7 +51,7 @@ Steps:
 
 2. Create an account on [Heroku](https://herokuapp.com/)
 
-3. Click on the Big Purple Deploy button and paste bot token in required filled.
+3. Click on the Big Purple Deploy button and paste bot token in the required field.
 <p align='center'>
 <a href="https://heroku.com/deploy?template=https://github.com/baneetparmar/nuub_bot/tree/main">
   <img src="https://www.herokucdn.com/deploy/button.svg"  alt="Deploy">
