@@ -7,7 +7,7 @@
 
 <p align="center">
 
-[![GitHub license](https://img.shields.io/github/license/baneetparmar/Novell)](https://github.com/baneetparmar/Novell/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/sneks-sus/Novell)](https://github.com/sneks-sus/Novell/blob/main/LICENSE)
 
 <br/>
 <!-- PROJECT LOGO -->
@@ -26,9 +26,9 @@ Novell (meaning 'newbie' in catalan) is a multi-purpose discord bot developed us
 Novell has plethora of commands in her arsenal, spanning multiple categories.
 </p>
 <p align='center'>
-<a href='https://github.com/baneetparmar/Novell/issues'>Report Issue</a>&nbsp&nbsp
-<a href='https://github.com/baneetparmar/Novell/issues'>Request Feature</a>&nbsp&nbsp
-<a href='https://baneetparmar.github.io/Novell/'> View Commands </a>
+<a href='https://github.com/sneks-sus/Novell/issues'>Report Issue</a>&nbsp&nbsp
+<a href='https://github.com/sneks-sus/Novell/issues'>Request Feature</a>&nbsp&nbsp
+<a href='https://sneks-sus.github.io/Novell/'> View Commands </a>
 </p>
 
 # Contributing
@@ -53,7 +53,7 @@ Steps:
 
 3. Click on the Big Purple Deploy button and paste bot token in the required field.
 <p align='center'>
-<a href="https://heroku.com/deploy?template=https://github.com/baneetparmar/nuub_bot/tree/main">
+<a href="https://heroku.com/deploy?template=https://github.com/sneks-sus/novell/tree/main">
   <img src="https://www.herokucdn.com/deploy/button.svg"  alt="Deploy">
 </a>
 </p>
